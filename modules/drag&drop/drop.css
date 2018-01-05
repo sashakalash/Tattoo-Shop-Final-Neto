@@ -1,0 +1,20 @@
+.drop {
+    width: 50%;
+    height: auto;
+    background-color: rgb(201, 194, 185);
+    color: #1b0404;
+    font-size: 10em; 
+    font-family: montserrat;
+    text-transform: uppercase;
+    text-align: center;
+    vertical-align: middle;
+    border: 5px solid rgb(201, 194, 185);
+    box-sizing: border-box;
+
+}
+.over {
+    border: 5px solid orange;
+    box-sizing: border-box;
+    color: #d8bdbd;
+    background-color: rgb(240, 236, 232);
+  }

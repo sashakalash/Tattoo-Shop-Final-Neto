@@ -1,0 +1,88 @@
+button {
+    background-color: #805350;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 500;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+    transition: 0.6s;
+  }
+  button:hover {
+    background-color: #ffffff;
+    color: #4d2320;
+    transition: 0.6s;
+    cursor: pointer;
+  }
+  #slider {
+    background-color: black;
+    width: 100%;
+    max-height: 500px;
+    height: auto;
+    overflow: scroll;
+    position: relative;
+  }
+  
+  #slider img {
+    width: 70%;
+    height: 70%;
+    display: block;
+    margin: auto;
+    cursor: pointer;
+  }
+  
+  #slider img::after {
+    content: attr(alt);
+    display: block;
+  }
+  
+  .prevPhoto {
+    left: 0;
+  }
+  
+  .prevPhoto::before {
+    content: "« ";
+    font-size: 35px;
+    line-height: 22px;
+    vertical-align: text-top;
+  }
+  
+  .nextPhoto {
+    right: 0;
+  }
+  
+  .nextPhoto::after {
+    content: " »";
+    font-size: 35px;
+    line-height: 22px;
+    vertical-align: text-top;
+  }
+  
+  .preview {
+    background-color: black;
+    padding: 20px 0;
+    display: flex;
+    height: auto;
+    width: auto;
+    justify-content: space-between;
+    align-content: center;
+
+  }
+
+  .preview img {
+    display: inline-block;
+    width: 10%;
+    height: 10%;
+    cursor: pointer;
+  }
+
+  /* #imgPreview {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+  } */

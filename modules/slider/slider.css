@@ -18,8 +18,7 @@ button {
     cursor: pointer;
   }
   #slider {
-    background-color: black;
-    width: 100%;
+    background-color: rgb(255, 255, 255);
     max-height: 500px;
     height: auto;
     overflow: scroll;
@@ -27,8 +26,8 @@ button {
   }
   
   #slider img {
-    width: 70%;
-    height: 70%;
+    width: 50%;
+    height: 50%;
     display: block;
     margin: auto;
     cursor: pointer;
@@ -40,6 +39,7 @@ button {
   }
   
   .prevPhoto {
+    position: absolute;
     left: 0;
   }
   
@@ -51,6 +51,7 @@ button {
   }
   
   .nextPhoto {
+    position: absolute;
     right: 0;
   }
   
@@ -62,7 +63,7 @@ button {
   }
   
   .preview {
-    background-color: black;
+    background-color: rgb(255, 255, 255);
     padding: 20px 0;
     display: flex;
     height: auto;
@@ -73,9 +74,11 @@ button {
   }
 
   .preview img {
+    border: 1px solid black;
+    border-radius: 50%;
     display: inline-block;
-    width: 10%;
-    height: 10%;
+    width: 80px;
+    height: 80px;
     cursor: pointer;
   }
 

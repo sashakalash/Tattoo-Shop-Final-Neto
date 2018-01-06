@@ -1,3 +1,10 @@
+
+
+.drop_section {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
 .drop {
     width: 50%;
     height: auto;
@@ -7,14 +14,37 @@
     font-family: montserrat;
     text-transform: uppercase;
     text-align: center;
-    vertical-align: middle;
     border: 5px solid rgb(201, 194, 185);
     box-sizing: border-box;
-
+    display: inline-block;
 }
 .over {
     border: 5px solid orange;
     box-sizing: border-box;
     color: #d8bdbd;
     background-color: rgb(240, 236, 232);
+  }
+
+  .drag_image {
+    width: 50%;
+    border: 5px solid var(--C);
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  .drag_image img {
+      margin: auto;
+      display: inline-block;
+  }
+
+  .click_to_fit {
+    color: #1b0404;
+    background-color: rgb(201, 194, 185);
+    font-size: 3em; 
+    font-family: montserrat;
+    text-transform: uppercase;
+    text-align: center;
+    position: absolute;
+    margin: 15%;
+    display: var(--N);
   }

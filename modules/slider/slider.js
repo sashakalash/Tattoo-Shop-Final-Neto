@@ -8,11 +8,16 @@ nextBtn.addEventListener('click', nextPhoto);
 prevBtn.addEventListener('click', prevPhoto);
 // sliderImg.addEventListener('click', showFullImg);
 const imgArr = [
-'modules/slider/slideshow/2Wt0lq9Amcs 2.jpg', 
-'modules/slider/slideshow/8gjLIDva9G4.jpg',
-'modules/slider/slideshow/HjCkJJCHfVM.jpg',
-'modules/slider/slideshow/IMG_2341.JPG.jpeg',
-'modules/slider/slideshow/sOnS_fpaxVE.jpg'
+'modules/slider/slideshow/1.png', 
+'modules/slider/slideshow/2.png', 
+'modules/slider/slideshow/3.png', 
+'modules/slider/slideshow/4.png', 
+'modules/slider/slideshow/5.png', 
+'modules/slider/slideshow/6.png', 
+'modules/slider/slideshow/7.png', 
+'modules/slider/slideshow/8.png', 
+'modules/slider/slideshow/9.png', 
+'modules/slider/slideshow/10.png'
 ];
 
 // function showFullImg(e) {

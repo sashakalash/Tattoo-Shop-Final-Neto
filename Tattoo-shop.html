@@ -3,7 +3,9 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="main-style.css">
 		<script src="modules/slider/slider.js" async></script>
-		<script src="modules/drag&drop/drop.js" async></script>
+		<script src="modules/drag&drop/drop.js" defer></script>
+		<script src="modules/canvas_tattoo_fit/tattoo_fit.js" defer></script>
+
 		<title>Tattoo-shop Alina Temnova</title>
 	</head>
 	<body>
@@ -19,15 +21,54 @@
 		<!-- <div id="imgPreview"></div> -->
 		<div class="home"></div>
 		<div id="slider">
-			<img class="currentPhoto" src="modules/slider/slideshow/2Wt0lq9Amcs 2.jpg" alt="">
+			<img class="currentPhoto" src="modules/slider/slideshow/1.png" alt="">
 			<button class="prevPhoto">Назад</button>
 			<button class="nextPhoto">Вперед</button>
 		</div>
 		<div class="preview"></div>
-		<div draggable="true" class="drop">drop your photo here!</div>
-
-		<footer class="bottom-footer">
-		</footer>
-		
+		<div class="drop_section">
+			<div draggable="true" class="drop">drop your photo here!</div>
+			<div class="drag_image">
+				<div class="click_to_fit">Click to fit your tattoo!</div>
+				<img src="images/arrow.png"></div>
+		</div>
+		<canvas class="tattooFit"></canvas>
+		<div class="chat">
+				<div class="chat-title">
+				  <h1>Онлайн-консультант</h1>
+				  <h2 class="chat-status" data-online="в сети" data-offline="не в сети">не в сети</h2>
+				  <figure class="avatar">
+					<img src="modules/chat/garold.jpg">
+				  </figure>
+				</div>
+				<div class="messages">
+				  <div class="messages-templates">
+					<div class="message loading">
+					  <figure class="avatar"><img src="modules/chat/garold.jpg" /></figure>
+					  <span></span>
+					</div>
+					<div class="message">
+					  <figure class="avatar"><img src="modules/chat/garold.jpg" /></figure>
+					  <span class="message-text">Привет!</span>
+					  <div class="timestamp">12:56</div>
+					</div>
+					<div class="message message-personal">
+					  <span class="message-text">Привет</span>
+					  <div class="timestamp">12:56</div>
+					</div>
+					<div class="message message-status">
+					  <span class="message-text">Пользователь не в сети</span>
+					</div>
+				  </div>
+				  <div class="messages-content">
+				  </div>
+				</div>
+				<form class="message-box" action="/404/" method="POST">
+				  <input type="text" class="message-input" placeholder="Ваше сообщение …">
+				  <button disabled type="submit" class="message-submit">Отправить</button>
+				</form>
+			
+			  </div>
+			  <script src="modules/chat/chat.js"></script>
 	</body>
 </html>

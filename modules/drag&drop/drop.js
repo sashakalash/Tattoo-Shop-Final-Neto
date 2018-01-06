@@ -1,6 +1,6 @@
 const dropField = document.querySelector('.drop');
-const canvas = document.querySelector('.tattooFit');
-const ctx = canvas.getContext('2d');
+// const canvas = document.querySelector('.tattooFit');
+// const ctx = canvas.getContext('2d');
 
 dropField.addEventListener('dragover', event => {
   event.preventDefault();
@@ -23,7 +23,6 @@ function setPreview(file) {
 	if (imageTypeRegExp.test(file.type)) {
 		dropField.textContent = '';
 		dropField.classList.remove('over');
-	
 		const img = document.createElement('img');
 		img.width = 400;
 		img.height = 400;
@@ -34,9 +33,9 @@ function setPreview(file) {
 		
 
 		img.addEventListener('load', event => {
-			const ctxImg = new Image();
-			ctx.drawImage(ctxImg, canvas.getBoundingClientRect.left, canvas.getBoundingClientRect.top, 1000, 700);
-			ctxImg.src = event.target.src;
+			// const ctxImg = new Image();
+			// ctx.drawImage(ctxImg, canvas.getBoundingClientRect.left, canvas.getBoundingClientRect.top, 1000, 700);
+			// ctxImg.src = event.target.src;
 			URL.revokeObjectURL(event.target.src);
 		});
 	dropField.appendChild(img);

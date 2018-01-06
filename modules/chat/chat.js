@@ -12,26 +12,26 @@ const messageLoading = messagesTemplates.querySelector('div.message loading');
 const messageUser= messagesTemplates.querySelector('.message-personal');
 const messageStatus = messagesTemplates.querySelector('.message-status');
 
-messagesContent.setAttribute('style', 'overflow-y:scroll');
-
-if (!messagesContent.querySelector('.message-status')) {
-	messagesContent.appendChild(messageStatus.cloneNode(true));		
-}
-
-const messageStatusToRemove = messagesContent.querySelector('.message-status');
-
 let wsConnect;
 
 function wsOpen() {
+	messagesContent.setAttribute('style', 'overflow-y:scroll');
+
+	if (!messagesContent.querySelector('.message-status')) {
+		messagesContent.appendChild(messageStatus.cloneNode(true));		
+	}
+
+	const messageStatusToRemove = messagesContent.querySelector('.message-status');
 	const connectionChat = new WebSocket('wss://neto-api.herokuapp.com/chat');
-connectionChat.addEventListener('open', () => {
+	wsConnect = connectionChat;
+	connectionChat.addEventListener('open', () => {
 	messageStatusToRemove.parentElement.removeChild(messageStatusToRemove);
 	chatStatus.textContent = chatStatus.dataset.online;
 	sendMessBtn.disabled = false;
 	inputMessForm.disabled = false;
 });
 
-const messageAnotherUser = Array.from(document.querySelectorAll('.message'))
+	const messageAnotherUser = Array.from(document.querySelectorAll('.message'))
 	.find(el => {
 		if (!(el.classList.contains('loading') || 
             el.classList.contains('message-personal') || 
@@ -40,40 +40,40 @@ const messageAnotherUser = Array.from(document.querySelectorAll('.message'))
 		}
 	});
 	
-connectionChat.addEventListener('message', (event) => {
-	if (event.data === '...') {
-		messagesContent.appendChild(messageLoading).cloneNode(true);
-	}
-	const date = new Date();
-	messageAnotherUser.querySelector('.message-text').textContent = event.data;
-	messageAnotherUser.querySelector('.timestamp').textContent = date.getHours() + ':' + date.getMinutes();
-	messagesContent.appendChild(messageAnotherUser.cloneNode(true));
-});
+	connectionChat.addEventListener('message', (event) => {
+		if (event.data === '...') {
+			messagesContent.appendChild(messageLoading).cloneNode(true);
+		}
+		const date = new Date();
+		messageAnotherUser.querySelector('.message-text').textContent = event.data;
+		messageAnotherUser.querySelector('.timestamp').textContent = date.getHours() + ':' + date.getMinutes();
+		messagesContent.appendChild(messageAnotherUser.cloneNode(true));
+	});
 
-connectionChat.addEventListener('error', (error) => {
-	console.log(error);
-});
+	connectionChat.addEventListener('error', (error) => {
+		console.log(error);
+	});
 
-newMessageForm.addEventListener('submit', (event) => {
-	event.preventDefault();
-	const date = new Date();
-	connectionChat.send(inputMessForm.value);
-	messageUser.querySelector('.message-text').textContent = inputMessForm.value;
-	messageUser.querySelector('.timestamp').textContent = date.getHours() + ':' + date.getMinutes();
-	messagesContent.appendChild(messageUser.cloneNode(true));
-	inputMessForm.value = '';
-});
+	newMessageForm.addEventListener('submit', (event) => {
+		event.preventDefault();
+		const date = new Date();
+		connectionChat.send(inputMessForm.value);
+		messageUser.querySelector('.message-text').textContent = inputMessForm.value;
+		messageUser.querySelector('.timestamp').textContent = date.getHours() + ':' + date.getMinutes();
+		messagesContent.appendChild(messageUser.cloneNode(true));
+		inputMessForm.value = '';
+	});
 
-connectionChat.addEventListener('close', () => {
-	chatStatus.textContent = chatStatus.dataset.offline;
-	sendMessBtn.disabled = true;
-	inputMessForm.disabled = true;
-	messagesContent.appendChild(messageStatus.cloneNode(true));	
-});
+	connectionChat.addEventListener('close', () => {
+		chatStatus.textContent = chatStatus.dataset.offline;
+		sendMessBtn.disabled = true;
+		inputMessForm.disabled = true;
+		messagesContent.appendChild(messageStatus.cloneNode(true));	
+	});
 
-window.addEventListener('beforeunload', () => {
-	connectionChat.close(1000);
-});
+	window.addEventListener('beforeunload', () => {
+		connectionChat.close(1000);
+	});
 }
 
 chat.style.setProperty('--Top', '135%');
@@ -110,10 +110,11 @@ function chatAnimation(condition = 'open') {
 chatTitleToClick.addEventListener('click', () => {
 	if (isFirstCallingChat) {
 		chatAnimation();
+		wsOpen();
 		isFirstCallingChat = false;
 	} else {
 		chatAnimation('close');
-		connectionChat.close(1000);
+		wsConnect.close(1000);
 		isFirstCallingChat = true;
 	}
 });

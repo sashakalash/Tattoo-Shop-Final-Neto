@@ -3,9 +3,9 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="main-style.css">
 		<script src="modules/slider/slider.js" async></script>
-		<script src="modules/drag&drop/drop.js" defer></script>
-		<script src="modules/canvas_tattoo_fit/tattoo_fit.js" defer></script>
-
+		<script src="modules/drag&drop/drop.js" async></script>
+		<script src="modules/canvas_tattoo_fit/tattoo_fit.js" async></script>
+		<script src="modules/chat/chat.js" async></script>
 		<title>Tattoo-shop Alina Temnova</title>
 	</head>
 	<body>
@@ -32,7 +32,7 @@
 				<div class="click_to_fit">Click to fit your tattoo!</div>
 				<img src="images/arrow.png"></div>
 		</div>
-		<canvas class="tattooFit"></canvas>
+		<canvas id="snow_fall"></canvas>
 		<div class="chat">
 				<div class="chat-title">
 				  <h1>Онлайн-консультант</h1>
@@ -67,8 +67,7 @@
 				  <input type="text" class="message-input" placeholder="Ваше сообщение …">
 				  <button disabled type="submit" class="message-submit">Отправить</button>
 				</form>
-			
-			  </div>
-			  <script src="modules/chat/chat.js"></script>
+		</div>
+		<script src="modules/snowfall/snowfall.js"></script>
 	</body>
 </html>

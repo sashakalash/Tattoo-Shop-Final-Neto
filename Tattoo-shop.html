@@ -9,6 +9,7 @@
 		<title>Tattoo-shop Alina Temnova</title>
 	</head>
 	<body>
+		<div id="imgPreview"></div>
 		<header>
 			<p><a href="mailto:mosquitoeye@gmail.com">mosquitoeye@gmail.com</a></p>
 			<div class="social">
@@ -18,21 +19,24 @@
 				<a href="http://plus.google.com"><div class="social-goo"></div></a>
 			</div>					
 		</header>
-		<!-- <div id="imgPreview"></div> -->
 		<div class="home"></div>
 		<div id="slider">
 			<img class="currentPhoto" src="modules/slider/slideshow/1.png" alt="">
-			<button class="prevPhoto">Назад</button>
-			<button class="nextPhoto">Вперед</button>
+			<button class="prevPhoto"></button>
+			<button class="nextPhoto"></button>
+			<button class="widescreen"></button>
 		</div>
 		<div class="preview"></div>
 		<div class="drop_section">
-			<div draggable="true" class="drop">drop your photo here!</div>
+			<div draggable="true" class="drop">drop your photo here</div>
 			<div class="drag_image">
 				<div class="click_to_fit">Click to fit your tattoo!</div>
 				<img src="images/arrow.png"></div>
 		</div>
-		<!-- <canvas id="snow_fall"></canvas> -->
+		<div class="fit_tattoo">
+				<button class="exit_fitting">exit fitting</button>
+		</div>
+		
 		<div class="chat">
 				<div class="chat-title">
 				  <h1>Онлайн-консультант</h1>
@@ -68,6 +72,6 @@
 				  <button disabled type="submit" class="message-submit">Отправить</button>
 				</form>
 		</div>
-		<script src="modules/snowfall/snowfall.js"></script>
+		<!-- <script src="modules/snowfall/snowfall.js"></script> -->
 	</body>
 </html>

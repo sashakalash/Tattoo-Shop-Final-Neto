@@ -18,6 +18,11 @@
     box-sizing: border-box;
     display: inline-block;
 }
+.drop img {
+    width: 400px;
+    height: 400px;
+    margin: auto;
+}
 .over {
     border: 5px solid orange;
     box-sizing: border-box;
@@ -27,14 +32,18 @@
 
   .drag_image {
     width: 50%;
+    height: auto;
     border: 5px solid var(--C);
     display: inline-block;
     box-sizing: border-box;
     text-align: center;
+    cursor: pointer;
   }
   .drag_image img {
-      margin: auto;
-      display: inline-block;
+    margin: auto;
+    display: inline-block;
+    width: 80%;
+    height: 80%;
   }
 
   .click_to_fit {
@@ -47,4 +56,46 @@
     position: absolute;
     margin: 15%;
     display: var(--N);
+  }
+
+  .fit_tattoo {
+    display: var(--fitTattooDisp);
+    background: rgba(26, 10, 2, 0.6);
+    top: 0;
+    left: 0;
+    z-index: 9;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+
+  .fit_tattoo img {
+    margin: auto;
+    width: auto;
+    height: 100%;
+    display: block;
+    position: relative;
+  }
+
+  .fit_tattoo img.img_choose {
+    position: absolute;
+    top: 0;
+    margin: auto;
+    width: auto;
+    height: 100%;
+    display: block;
+    z-index: 2;
+  }
+
+
+  .exit_fitting {
+    color: #1b0404;
+    background-color: rgb(201, 194, 185);
+    font-size: 3em; 
+    font-family: montserrat;
+    text-transform: uppercase;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: 0;
   }

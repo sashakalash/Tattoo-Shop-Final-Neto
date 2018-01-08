@@ -18,8 +18,14 @@ document.addEventListener('mousedown', event => {
 document.addEventListener('mousemove', event => {
     if (movedTattoo) {
         event.preventDefault();
-        movedTattoo.style.left = event.pageX - shiftX + 'px';
-        movedTattoo.style.top = event.pageY - shiftY + 'px';
+        if (event.shiftKey) {
+            movedTattoo.style.width = event.pageX / 2 + 'px';
+            movedTattoo.style.height = event.pageY / 2 + 'px';
+        } else {
+            movedTattoo.style.left = event.pageX - shiftX + 'px';
+            movedTattoo.style.top = event.pageY - shiftY + 'px';
+        }
+       
   } });
 
 document.addEventListener('mouseup', event => {

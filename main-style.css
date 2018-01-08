@@ -4,7 +4,7 @@
 @import "modules/canvas_tattoo_fit/tattoo_fit.css";
 @import "modules/chat/chat.css";
 @import "modules/snowfall/snowfall_style.css";
-
+@import "modules/fit_tattoo/fit.css";
 
 @font-face{
     font-family:'montserrat';

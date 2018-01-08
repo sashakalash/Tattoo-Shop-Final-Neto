@@ -1,0 +1,44 @@
+.fit_tattoo {
+    display: flex;
+    background: rgb(255, 255, 255);
+    top: 0;
+    left: 0;
+    z-index: 9;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    visibility: var(--fitTattooVisible);
+    
+}
+
+.fit_tattoo img {
+    margin: auto;
+    width: auto;
+    height: 100%;
+  }
+
+.fit_tattoo img.img_choose {
+    top: 0;
+    margin: auto;
+    width: auto;
+    height: 100%;
+    display: block;
+    position: absolute;
+    z-index: 2;
+}
+
+.exit_fitting {
+    color: #1b0404;
+    background-color: rgb(201, 194, 185);
+    font-size: 3em; 
+    font-family: montserrat;
+    text-transform: uppercase;
+    text-align: center;
+    position: absolute;
+    top: 20px;
+    right: 0;
+}
+
+/* .moving {
+   
+} */

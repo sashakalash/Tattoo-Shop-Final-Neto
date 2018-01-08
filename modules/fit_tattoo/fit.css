@@ -18,13 +18,8 @@
   }
 
 .fit_tattoo img.img_choose {
-    top: 0;
-    margin: auto;
-    width: auto;
-    height: 100%;
-    display: block;
+
     position: absolute;
-    z-index: 2;
 }
 
 .exit_fitting {

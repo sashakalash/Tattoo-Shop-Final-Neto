@@ -1,6 +1,4 @@
 const fitBlock = document.querySelector('.fit_tattoo');
-
-
 let movedTattoo = null;
 let shiftX = 0;
 let shiftY = 0;
@@ -25,10 +23,12 @@ document.addEventListener('mousemove', event => {
             movedTattoo.style.left = event.pageX - shiftX + 'px';
             movedTattoo.style.top = event.pageY - shiftY + 'px';
         }
-       
-  } });
+    } 
+});
 
 document.addEventListener('mouseup', event => {
-    fitTattooImage.appendChild(movedTattoo);
-    movedTattoo = null;
+    if (movedTattoo) {
+        fitTattooImage.appendChild(movedTattoo);
+        movedTattoo = null;
+    }
 });

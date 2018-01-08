@@ -17,7 +17,7 @@ button {
   }
   #slider {
     background-color: rgb(255, 255, 255);
-    max-height: 1100px;
+    max-height: 800px;
     height: auto;
     overflow: scroll;
     position: relative;

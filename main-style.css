@@ -1,134 +1,131 @@
 
 @import "modules/slider/slider.css";
 @import "modules/drag&drop/drop.css";
-@import "modules/canvas_tattoo_fit/tattoo_fit.css";
 @import "modules/chat/chat.css";
-@import "modules/snowfall/snowfall_style.css";
 @import "modules/fit_tattoo/fit.css";
+@import "modules/photo-booth/photo_booth_styles.css";
 
 @font-face{
-    font-family:'montserrat';
-    src: url(fonts/montserrat-bold-webfont.eot);
-    src: url(fonts/montserrat-bold-webfont.eot?#iefix) format('embedded-opentype'),
-         url(fonts/montserrat-bold-webfont.woff2) format('woff2'),
-         url(fonts/montserrat-bold-webfont.woff) format('woff'),
-         url(fonts/montserrat-bold-webfont.ttf) format('truetype'),
-         url(fonts/montserrat-bold-webfont.svg#montserratbold) format('svg');
-    font-weight: 700;
-    font-style: normal;
+	font-family:'montserrat';
+	src: url(fonts/montserrat-bold-webfont.eot);
+	src: url(fonts/montserrat-bold-webfont.eot?#iefix) format('embedded-opentype'),
+		 url(fonts/montserrat-bold-webfont.woff2) format('woff2'),
+		 url(fonts/montserrat-bold-webfont.woff) format('woff'),
+		 url(fonts/montserrat-bold-webfont.ttf) format('truetype'),
+		 url(fonts/montserrat-bold-webfont.svg#montserratbold) format('svg');
+	font-weight: 700;
+	font-style: normal;
 }
 @font-face{
-    font-family:'montserrat';
-    src: url(fonts/montserrat-regular-webfont.eot);
-    src: url(fonts/montserrat-regular-webfont.eot?#iefix) format('embedded-opentype'),
-         url(fonts/montserrat-regular-webfont.woff2) format('woff2'),
-         url(fonts/montserrat-regular-webfont.woff) format('woff'),
-         url(fonts/montserrat-regular-webfont.ttf) format('truetype'),
-         url(fonts/montserrat-regular-webfont.svg#montserratregular) format('svg');
-    font-weight: normal;
-    font-style: normal;
+	font-family:'montserrat';
+	src: url(fonts/montserrat-regular-webfont.eot);
+	src: url(fonts/montserrat-regular-webfont.eot?#iefix) format('embedded-opentype'),
+		 url(fonts/montserrat-regular-webfont.woff2) format('woff2'),
+		 url(fonts/montserrat-regular-webfont.woff) format('woff'),
+		 url(fonts/montserrat-regular-webfont.ttf) format('truetype'),
+		 url(fonts/montserrat-regular-webfont.svg#montserratregular) format('svg');
+	font-weight: normal;
+	font-style: normal;
 }
 
 body{
-    width: auto;
-    min-width: 1000px;
-    font-size: 14px;
-    margin: 0;
+	width: auto;
+	min-width: 1000px;
+	font-size: 14px;
+	margin: 0;
 }
 
 header{
-    background-color: rgb(61, 50, 50);
-    display: flex;
-    height: auto;
-    width: auto;
-    justify-content: space-between;
-    align-content: center;
-    min-width: 1280px;
-    
+	background-color: rgb(61, 50, 50);
+	display: flex;
+	height: auto;
+	width: auto;
+	justify-content: space-between;
+	align-content: center;
+	min-width: 1280px;
+	
 }
 header p{
-  
-    display: inline-block;
-    color: #bebebe;
-    font-size: 1em; 
-    font-family: montserrat;
-    margin-left: 20px;
-    text-transform: uppercase;
-    padding: 0 10px;
-    box-sizing: border-box;
-    
+	display: inline-block;
+	color: #bebebe;
+	font-size: 1em; 
+	font-family: montserrat;
+	margin-left: 20px;
+	text-transform: uppercase;
+	padding: 0 10px;
+	box-sizing: border-box;
+	
 
 }
 header a{
-    text-decoration: none;
-    color: #bebebe;
+	text-decoration: none;
+	color: #bebebe;
 }
-.social{
 
-    display: flex;
-    align-content: center;
-    align-items: center;
-    margin-right: 20px;
+.social{
+	display: flex;
+	align-content: center;
+	align-items: center;
+	margin-right: 20px;
 }
 .social p{
-    border-right: 1px solid #916363;
-    display: inline-block;
-    color: #bebebe;
-    font-size: 1em; 
-    font-family: montserrat;
-    text-transform: uppercase;
-    margin-right: 20px;
-    box-sizing: border-box;
-
+	border-right: 1px solid #916363;
+	display: inline-block;
+	color: #bebebe;
+	font-size: 1em; 
+	font-family: montserrat;
+	text-transform: uppercase;
+	margin-right: 20px;
+	box-sizing: border-box;
 }
 .social div{
-    height: 42px;
-    width: 42px;
-    display: inline-block;
-    overflow: hidden;
-    background-image: url(images/social-background-black.png);
-    background-repeat:no-repeat;
-    margin: 0 2px;
+	height: 42px;
+	width: 42px;
+	display: inline-block;
+	overflow: hidden;
+	background-image: url(images/social-background-black.png);
+	background-repeat:no-repeat;
+	margin: 0 2px;
 }
 .social-twit{
-    background-position-x:0px;
-    background-position-y:0px;
+	background-position-x:0px;
+	background-position-y:0px;
 }
 .social-twit:hover{
-    background-position-x:0px;
-    background-position-y:-57px;
+	background-position-x:0px;
+	background-position-y:-57px;
 }
 .social-face{
-    background-position-x:-50px;
-    background-position-y:0px;
+	background-position-x:-50px;
+	background-position-y:0px;
 }
 .social-face:hover{
-    background-position-x:-50px;
-    background-position-y:-57px;
+	background-position-x:-50px;
+	background-position-y:-57px;
 }.social-pin{
-    background-position-x:-99px;
-    background-position-y:0px;
+	background-position-x:-99px;
+	background-position-y:0px;
 }
 .social-pin:hover{
-    background-position-x:-99px;
-    background-position-y:-57px;
+	background-position-x:-99px;
+	background-position-y:-57px;
 }.social-goo{
-    background-position-x:-50px;
-    background-position-y:0px;
+	background-position-x:-50px;
+	background-position-y:0px;
 }
 .social-goo:hover{
-    background-position-x:-50px;
-    background-position-y:-57px;
+	background-position-x:-50px;
+	background-position-y:-57px;
 }
 
 .home{
-    background-image: url(images/MORZETATTOO.png);
-    background-repeat: no-repeat;
-    background-position-x: 50%;
-    background-position-y: 50%;
-    min-width: 1280px;
-    height: 150px;
-    width: auto;
-    margin: auto;
+	background-image: url(images/MORZETATTOO.png);
+	background-repeat: no-repeat;
+	background-position-x: 50%;
+	background-position-y: 50%;
+	min-width: 1280px;
+	height: 150px;
+	width: auto;
+	margin: auto;
 }
 

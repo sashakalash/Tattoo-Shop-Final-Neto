@@ -4,9 +4,9 @@
 		<link rel="stylesheet" type="text/css" href="main-style.css">
 		<script src="modules/slider/slider.js" async></script>
 		<script src="modules/drag&drop/drop.js" async></script>
-		<script src="modules/canvas_tattoo_fit/tattoo_fit.js" async></script>
 		<script src="modules/chat/chat.js" async></script>
 		<script src="modules/fit_tattoo/fit.js" async></script>
+		<script src="modules/photo-booth/photo_booth.js" async></script>		
 		<title>Tattoo-shop Alina Temnova</title>
 	</head>
 	<body>
@@ -18,7 +18,7 @@
 				<a href="http://twitter.com"><div class="social-twit"></div></a>
 				<a href="https://www.facebook.com/mosquitoeye?ref=br_rs"><div class="social-face"></div></a>
 				<a href="http://plus.google.com"><div class="social-goo"></div></a>
-			</div>					
+			</div>
 		</header>
 		<div class="home"></div>
 		<div id="slider">
@@ -27,54 +27,63 @@
 			<button class="nextPhoto"></button>
 			<button class="widescreen"></button>
 		</div>
+		<div class="choose_tattoo">choose your tattoo here</div>
 		<div class="preview"></div>
 		<div class="drop_section">
-			<div draggable="true" class="drop">drop your photo here</div>
+			<div draggable="true" class="drop">
+					<div class="banner">drop your photo here</div>
+				</div>
+			<div class="photobooth">
+				<div class="banner">or make the photo right now</div>
+				<audio></audio>
+				<div class="error_message"></div>
+				<button class="take-photo"></button>
+				<button class="rephoto"></button>
+			</div>
 			<div class="drag_image">
-				<div class="click_to_fit">Click to fit your tattoo!</div>
-				<img src="images/arrow.png"></div>
+				<div class="banner">click to fit your tattoo!</div>
 		</div>
 		<div class="fit_tattoo">
 			<div class="fit_tattoo_image"></div>
 			<div class="fit_tattoo_tattoo"></div>
 			<button class="exit_fitting">exit fitting</button>
+			<button class="make_img">make img</button>
 		</div>
 		
-		<div class="chat">
+		<!-- <div class="chat">
 				<div class="chat-title">
-				  <h1>Онлайн-консультант</h1>
-				  <h2 class="chat-status" data-online="в сети" data-offline="не в сети">не в сети</h2>
-				  <figure class="avatar">
+					<h1>Онлайн-консультант</h1>
+					<h2 class="chat-status" data-online="в сети" data-offline="не в сети">не в сети</h2>
+					<figure class="avatar">
 					<img src="modules/chat/garold.jpg">
-				  </figure>
+					</figure>
 				</div>
 				<div class="messages">
-				  <div class="messages-templates">
+					<div class="messages-templates">
 					<div class="message loading">
-					  <figure class="avatar"><img src="modules/chat/garold.jpg" /></figure>
-					  <span></span>
+						<figure class="avatar"><img src="modules/chat/garold.jpg" /></figure>
+						<span></span>
 					</div>
 					<div class="message">
-					  <figure class="avatar"><img src="modules/chat/garold.jpg" /></figure>
-					  <span class="message-text">Привет!</span>
-					  <div class="timestamp">12:56</div>
+						<figure class="avatar"><img src="modules/chat/garold.jpg" /></figure>
+						<span class="message-text">Привет!</span>
+						<div class="timestamp">12:56</div>
 					</div>
 					<div class="message message-personal">
-					  <span class="message-text">Привет</span>
-					  <div class="timestamp">12:56</div>
+						<span class="message-text">Привет</span>
+						<div class="timestamp">12:56</div>
 					</div>
 					<div class="message message-status">
-					  <span class="message-text">Пользователь не в сети</span>
+						<span class="message-text">Пользователь не в сети</span>
 					</div>
-				  </div>
-				  <div class="messages-content">
-				  </div>
+					</div>
+					<div class="messages-content">
+					</div>
 				</div>
 				<form class="message-box" action="/404/" method="POST">
-				  <input type="text" class="message-input" placeholder="Ваше сообщение …">
-				  <button disabled type="submit" class="message-submit">Отправить</button>
+					<input type="text" class="message-input" placeholder="Ваше сообщение …">
+					<button disabled type="submit" class="message-submit">Отправить</button>
 				</form>
-		</div>
-		<!-- <script src="modules/snowfall/snowfall.js"></script> -->
+		</div> -->
 	</body>
 </html>

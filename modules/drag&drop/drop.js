@@ -1,10 +1,18 @@
+const dropSection = document.querySelector('.drop_section');
+
 const dropField = document.querySelector('.drop');
+dropField.style.setProperty('--bgPosDrop', '0');
 const fitTattooField = document.querySelector('.fit_tattoo');
 fitTattooField.style.setProperty('--fitTattooVisible', 'hidden');
-const exitFittingBtn = document.querySelector('.exit_fitting');
-const clickToFitBanner = document.querySelector('.click_to_fit');
+
 const dragImage = document.querySelector('.drag_image');
-clickToFitBanner.style.setProperty('--N', 'hidden');
+
+Array.from(document.querySelectorAll('.banner'))
+	.forEach(el => {
+		el.style.setProperty('--bannerVis', 'hidden');
+	});
+
+
 const previewImgs = document.querySelectorAll('.preview img');
 const fitTattooImage = fitTattooField.querySelector('.fit_tattoo_image');
 const fitTattooTattoo = fitTattooField.querySelector('.fit_tattoo_tattoo');
@@ -19,12 +27,11 @@ dropField.addEventListener('dragleave', event => {
   event.target.classList.remove('over');
 });
 
-dropField.addEventListener('drop', onFilesDrop);
-
-function onFilesDrop(event) {
-  event.preventDefault();
-  setPreview(event.dataTransfer.files[0]);
-}
+dropField.addEventListener('drop', (event) => {
+	event.preventDefault();
+	setPreview(event.dataTransfer.files[0]);
+	dropField.style.setProperty('--bgPosDrop', '300px');
+});
 
 function setPreview(file) {
 	const imageTypeRegExp = /^image\//;
@@ -35,39 +42,48 @@ function setPreview(file) {
 		img.addEventListener('load', event => {
 			URL.revokeObjectURL(event.target.src);
 		});
-	dropField.innerText = '';
 	dropField.appendChild(img);
 	}
 }
 
-dragImage.addEventListener('mouseover', () => {
-	dragImage.style.setProperty('--C', '#ffa500');
-	clickToFitBanner.style.setProperty('--N', 'visible');
+dropSection.addEventListener('mouseover', (event) => {
+	const banner = event.target.querySelector('.banner');
+	if (banner) {
+		banner.style.setProperty('--bannerVis', 'visible');
+		if (event.target.tagName === 'video') {
+			event.target.parentElement.classList.add('over');
+		}
+		event.target.classList.add('over');
+	}
 });
-dragImage.addEventListener('mouseout', () => {
-	const C = '#fafaf9';
-	const N = 'none';
-	dragImage.style.setProperty('--C', '#fafaf9');
-	clickToFitBanner.style.setProperty('--N', 'hidden');
+
+dropSection.addEventListener('mouseout', (event) => {
+	const banner = event.target.querySelector('.banner');
+	if (banner) {
+		banner.style.setProperty('--bannerVis', 'hidden');
+		if (event.target.tagName === 'video') {
+			event.target.parentElement.classList.remove('over');
+		}
+		event.target.classList.remove('over');
+	}
 });
 
 dragImage.addEventListener('click', () => {
-	const img = dropField.querySelector('img');
-	fitTattooImage.appendChild(img);
+	const imgDropped = dropField.querySelector('img');
+	const imgPhoto = photobooth.querySelector('canvas');
+	if (imgDropped) {
+		imgDropped.classList.add('imgToFit');
+		fitTattooImage.appendChild(imgDropped);
+	} else if (imgPhoto) {
+		imgPhoto.classList.add('imgToFit');
+		fitTattooImage.appendChild(imgPhoto);
+	}
 	const tattooToFit = document.querySelector('.img_choose');
 	const tattooToFitCopy = tattooToFit.cloneNode();
 	fitTattooTattoo.appendChild(tattooToFitCopy);
 	fitTattooField.style.setProperty('--fitTattooVisible', 'visible');
 });
 
-exitFittingBtn.addEventListener('click', () => {
-	dropField.innerText = 'drop your photo here';
-	const img = fitTattooImage.querySelector('img');
-	const tattoo = fitTattooTattoo.querySelector('img');
-	fitTattooImage.removeChild(img);
-	fitTattooTattoo.removeChild(tattoo);
-	fitTattooField.style.setProperty('--fitTattooVisible', 'hidden');
-});
 
 previewImgs.forEach(img => {
 	img.addEventListener('click', (event) => {
@@ -75,6 +91,6 @@ previewImgs.forEach(img => {
 		if(choosedImg) {
 			choosedImg.classList.remove('img_choose');
 		}
-		img.classList.toggle('img_choose', true);
+		img.classList.add('img_choose');
 	});
 });

@@ -11,6 +11,7 @@
 	box-sizing: border-box;
 	cursor: pointer;
 	position: relative;
+	overflow: hidden;
 }
 
 .banner {
@@ -79,6 +80,7 @@
 	max-height: 300px;
 	position: absolute;
 	left: 0;
+	display: var(--canvasDisp);
 }
 
 .over {

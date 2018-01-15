@@ -34,13 +34,18 @@ document.addEventListener('mouseup', event => {
 	}
 });
 
-const sendImgBtn = document.querySelector('.make_img');
-sendImgBtn.addEventListener('click', sendImg);
+const controls = document.querySelector('.controls');
+const sendBtn = document.querySelector('.send_to_server');
+const exitFittingBtn = document.querySelector('.exit_fitting');
+const downloadBtn = document.querySelector('.download');
+controls.addEventListener('click', makeToChangeImg);
 
-function sendImg() {
+function makeToChangeImg(event) {
+	if (event.target.classList.contains('exit_fitting')) {
+		exitFitting();
+	}
 	const canvas = document.createElement('canvas');
 	const ctx = canvas.getContext('2d');
-	fitTattooField.appendChild(canvas);
 	const img1 = fitTattooField.querySelector('.imgToFit');
 	const img2 = fitTattooField.querySelector('.img_choose');
 	const tattooCoord = img2.getBoundingClientRect();
@@ -48,13 +53,30 @@ function sendImg() {
 	canvas.height = img1.height;
 	ctx.drawImage(img1, 0, 0);
 	ctx.drawImage(img2, tattooCoord.left, tattooCoord.top, img2.width, img2.height);
-	const img = document.createElement('img');
-	img.src = canvas.toDataURL();
-	fitTattooField.appendChild(img);
+	if (event.target.classList.contains('send_to_server')) {
+		sendImg(canvas);
+		exitFitting();
+	} else {
+		const img = document.createElement('img');
+		img.src = canvas.toDataURL();
+		const link = document.createElement('a');
+		link.download = 'tattoo.jpg';
+		link.href = img.src;
+		link.click();
+	}	
 }
 
-const exitFittingBtn = document.querySelector('.exit_fitting');
-exitFittingBtn.addEventListener('click', () => {
+function sendImg(canvas) {
+	const xhr = new XMLHttpRequest();
+	xhr.open('POST', 'https://neto-api.herokuapp.com/photo-booth', true);
+	canvas.toBlob(blob => {
+		const imgToSend = new FormData();
+		imgToSend.append('image', blob);
+		xhr.send(imgToSend); 
+	}); 
+}
+
+function exitFitting() {
 	const imgs = fitTattooImage.querySelectorAll('img');
 	const tattoo = fitTattooTattoo.querySelector('img');
 	if (tattoo) {
@@ -67,4 +89,7 @@ exitFittingBtn.addEventListener('click', () => {
 	dropField.style.setProperty('--bgPosDrop', '0');
 	photobooth.style.setProperty('--bgPosPhoto', '0');
 	cameraWindow.style.setProperty('--videoVis', 'hidden');
-});
+}
+
+
+

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tattoo Shop | Alina Temnova</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <!--<link rel="stylesheet" href="resources/css/reset.css" type="text/css">-->
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    <script src="modules/slider/slider.js" async></script>
+		<script src="modules/drag&drop/drop.js" async></script>
+		<script src="modules/chat/chat.js" async></script>
+		<script src="modules/fit_tattoo/fit.js" async></script>
+		<script src="modules/photo-booth/photo_booth.js" async></script>	
+  </head>
+
+  <body>
+    <div class="grid">
+
+      <header>
+        <img src="images/morzetattoo.png" alt="logo morzetattoo" class="logo">
+      </header>
+
+      <div class="banner" id="slider">
+        <p>The #1 Tattoo Master in Sochi.</p>
+        <img src="modules/slider/slideshow/1.png" alt="sketch snake tattoo" class="snake">
+      </div>
+
+      <div class="about">
+        <p class="text">We are a full service Tattoo Shop. Choose tattoo for you here.</p>
+      </div>
+
+      <div class="box drop">
+        <img src="resources/images/drop.png" alt="icon drop files" class="marker">
+        <p>Drop
+        <br>your photo
+        <br>here</p>
+      </div>
+
+      <div class="box make-photo">
+        <img src="resources/images/photo.png" alt="icon photocamera" class="clock">
+        <p>Make
+        <br>the photo
+        <br>right now</p>
+      </div>
+
+      <div class="box fit-tattoo">
+        <img src="resources/images/fit.png" alt="icon fit your tattoo size" class="phone">
+        <p>Click
+        <br>to fit your
+        <br>tattoo!</p>
+      </div>
+
+      <div class="testimontial one">
+        <p>"Tattoo Salon and Shop is a first class. High quality. Thanks guys!"
+        <br> - Eugene Tarasov</p>
+      </div>
+
+      <div class="testimontial two">
+        <p>"Alexander and I are HUGE fans of Morzetattoo. Alina and her crew are always so generous with their time."
+        <br> - MP </p>
+      </div>
+
+      <div class="chat">
+				<div class="chat-title">
+					<h1>Онлайн-консультант</h1>
+					<h2 class="chat-status" data-online="в сети" data-offline="не в сети">не в сети</h2>
+					<figure class="avatar">
+					<img src="modules/chat/garold.jpg">
+					</figure>
+				</div>
+				<div class="messages">
+					<div class="messages-templates">
+					<div class="message loading">
+						<figure class="avatar"><img src="modules/chat/garold.jpg" /></figure>
+						<span></span>
+					</div>
+					<div class="message">
+						<figure class="avatar"><img src="modules/chat/garold.jpg" /></figure>
+						<span class="message-text">Привет!</span>
+						<div class="timestamp">12:56</div>
+					</div>
+					<div class="message message-personal">
+						<span class="message-text">Привет</span>
+						<div class="timestamp">12:56</div>
+					</div>
+					<div class="message message-status">
+						<span class="message-text">Пользователь не в сети</span>
+					</div>
+					</div>
+					<div class="messages-content">
+					</div>
+				</div>
+				<form class="message-box" action="/404/" method="POST">
+					<input type="text" class="message-input" placeholder="Ваше сообщение …">
+					<button disabled type="submit" class="message-submit">Отправить</button>
+				</form>
+		</div>
+
+      <footer>
+        <p>&copy; Tattoo Shop 2017</p>
+      </footer>
+
+    </div>
+
+  </body>
+</html>

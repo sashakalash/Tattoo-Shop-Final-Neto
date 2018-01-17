@@ -25,6 +25,8 @@ function wsOpen() {
 	const connectionChat = new WebSocket('wss://neto-api.herokuapp.com/chat');
 	wsConnect = connectionChat;
 	connectionChat.addEventListener('open', () => {
+		console.log(messageStatusToRemove)
+		console.log(messageStatusToRemove.parentElement)
 	messageStatusToRemove.parentElement.removeChild(messageStatusToRemove);
 	chatStatus.textContent = chatStatus.dataset.online;
 	sendMessBtn.disabled = false;
@@ -115,6 +117,10 @@ chatTitleToClick.addEventListener('click', () => {
 	} else {
 		chatAnimation('close');
 		wsConnect.close(1000);
+		const messageStatusToRemove = messagesContent.querySelector('.message-status');
+		if (messageStatusToRemove) {
+			messageStatusToRemove.parentElement.removeChild(messageStatusToRemove);
+		}	
 		isFirstCallingChat = true;
 	}
 });

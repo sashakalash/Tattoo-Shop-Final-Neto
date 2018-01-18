@@ -21,35 +21,40 @@
       </header>
 
       <div class="banner" id="slider">
-        <p>The #1 Tattoo Master in Sochi.</p>
-        <img src="modules/slider/slideshow/1.png" alt="sketch snake tattoo" class="snake">
+        <p>The #1 Tattoo Master in Sochi</p>
+        <div class="snake">
+          <img src="modules/slider/slideshow/1.png" alt="sketch snake tattoo">
+          <button class="prevPhoto"></button>
+          <button class="nextPhoto"></button>
+          <button class="widescreen"></button>
+        </div>
       </div>
 
       <div class="about">
         <p class="text">We are a full service Tattoo Shop. Choose tattoo for you here.</p>
       </div>
+      <div id="imgPreview"></div>
+      <div class="preview"></div>
+      <div class="drop_section">
+        <div draggable="true" class="box drop">
+          <img src="modules/drag&drop/cloud.png" alt="icon drop files" class="marker">
+          <p class="box_banner">drop your photo here</p>
+        </div>
 
-      <div class="box drop">
-        <img src="resources/images/drop.png" alt="icon drop files" class="marker">
-        <p>Drop
-        <br>your photo
-        <br>here</p>
-      </div>
+        <div class="box make-photo">
+          <img src="modules/photo-booth/photo.png" alt="icon photocamera" class="clock">
+          <p class="box_banner">make the photo right now</p>
+          <audio></audio>
+          <div class="error_message"></div>
+          <button class="take-photo"></button>
+          <button class="rephoto"></button>
+        </div>
 
-      <div class="box make-photo">
-        <img src="resources/images/photo.png" alt="icon photocamera" class="clock">
-        <p>Make
-        <br>the photo
-        <br>right now</p>
-      </div>
-
-      <div class="box fit-tattoo">
-        <img src="resources/images/fit.png" alt="icon fit your tattoo size" class="phone">
-        <p>Click
-        <br>to fit your
-        <br>tattoo!</p>
-      </div>
-
+        <div class="box fit-tattoo">
+          <img src="modules/drag&drop/fitting.png" alt="icon fit your tattoo size" class="phone">
+          <p class="box_banner">click to fit your tattoo!</p>
+        </div>
+      </div>  
       <div class="testimontial one">
         <p>"Tattoo Salon and Shop is a first class. High quality. Thanks guys!"
         <br> - Eugene Tarasov</p>
@@ -58,6 +63,16 @@
       <div class="testimontial two">
         <p>"Alexander and I are HUGE fans of Morzetattoo. Alina and her crew are always so generous with their time."
         <br> - MP </p>
+      </div>
+
+      <div class="tattoo_fitting_room">
+        <div class="fit_tattoo_image"></div>
+        <div class="fit_tattoo_tattoo"></div>
+        <div class="controls">
+          <button class="exit_fitting"></button>
+          <button class="download"></button>
+          <button class="send_to_server"></button>
+        </div>
       </div>
 
       <div class="chat">
@@ -84,7 +99,7 @@
 						<div class="timestamp">12:56</div>
 					</div>
 					<div class="message message-status">
-						<span class="message-text">Пользователь не в сети</span>
+						<span class="message-text">Оператор не в сети</span>
 					</div>
 					</div>
 					<div class="messages-content">

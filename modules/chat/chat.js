@@ -78,7 +78,7 @@ function wsOpen() {
 	});
 }
 
-chat.style.setProperty('--Top', '135%');
+chat.style.setProperty('--Top', '133%');
 chat.style.setProperty('--Left', '80%');
 let isFirstCallingChat = true;
 

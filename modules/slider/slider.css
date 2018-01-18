@@ -1,8 +1,20 @@
+
+.snake {
+  height: 300px;
+  width: 100%;
+  position: relative;
+}
+
+.snake img {
+  max-width: 100%;
+}
+
 button {
     border: none;
     outline: none;
-    color: #000000;
-    font-size: 22px;
+    background-color: #f3e5ca;
+    color: rgb(0, 0, 0);
+    font-family: Poppins;
     font-weight: 500;
     position: absolute;
     top: 50%;
@@ -15,55 +27,36 @@ button {
     transition: 0.6s;
     cursor: pointer;
   }
-  #slider {
-    background-color: rgb(255, 255, 255);
-    max-height: 500px;
-    height: auto;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  #slider img {
-    width: auto;
-    height: 300px;
-    display: block;
-    margin: auto;
-  }
-  
-  #slider img::after {
-    content: attr(alt);
-    display: block;
-  }
   
   .prevPhoto {
     position: absolute;
-    left: 150px;
+    left: 0;
   }
   
   .prevPhoto::before {
     content: "« ";
-    font-size: 50px;
-    line-height: 60px;
+    font-size: 70px;
+    line-height: 80px;
     vertical-align: text-top;
   }
   
   .nextPhoto {
     position: absolute;
-    right: 150px;
+    right: 0;
   }
   
   .nextPhoto::after {
     content: " »";
-    font-size: 50px;
-    line-height: 60px;
+    font-size: 70px;
+    line-height: 80px;
     vertical-align: text-top;
   }
   .widescreen {
     width: 30px;
     height: 30px;
     position: absolute;
-    right: 150px;
-    top: 50px;
+    right: 0;
+    top: 10px;
     background-image: url('./widescreen.png');
     background-size: contain;
   }
@@ -72,12 +65,13 @@ button {
     width: 40px;
     height: 40px;
     position: absolute;
-    right: 150px;
-    top: 50px;
+    right: 0;
+    top: 10px;
     background-image: url('./widescreen.png');
     background-size: contain;
   }
   .preview {
+    grid-column: 1 / span 6;
     background-color: rgb(255, 255, 255);
     padding: 20px 0;
     display: flex;
@@ -99,7 +93,7 @@ button {
   }
 
   .preview img:hover {
-    border: 2px solid rgb(241, 150, 14);
+    border: 2px solid #f1960e;
     border-radius: 50%;
     display: inline-block;
     width: 60px;
@@ -108,7 +102,7 @@ button {
   }
 
   .preview img.img_choose {
-    border: 2px solid rgb(241, 150, 14);
+    border: 2px solid #f1960e;
     border-radius: 50%;
     display: inline-block;
     width: 60px;
@@ -131,8 +125,8 @@ button {
   #imgPreview img {
     width: auto;
     height: auto;
-    max-width: 1920px;
-    max-height: 1080px;
+    max-width: 1280px;
+    max-height: 800px;
     display: block;
     margin: auto;
   }

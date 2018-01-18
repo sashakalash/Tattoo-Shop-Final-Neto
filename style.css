@@ -8,6 +8,7 @@ body {
   background-color: #fff;
   color: #db6363;
   text-align: center;
+  margin: 0;
 }
 
 .grid {
@@ -23,18 +24,24 @@ header {
   grid-column: 1 / span 6;
 }
 
+header img {
+  max-width: 100%;
+}
+
 .banner {
-  background-color: #db6363;
-  color: #fff;
+  background-color: #f3e5ca;
+  color: rgb(0, 0, 0);
   font-family: Poppins;
   font-size: 84px;
   font-weight: 300;
   letter-spacing: 3.7px;
   grid-column: 1 / span 6;
+  position: relative;
 }
 
 img {
   max-width: 25%;
+  height: 100%;
 }
 
 .about {
@@ -57,9 +64,9 @@ img {
   padding-top: 30px;
 }
 
+
 .box {
   background-color: #2f2f2f;
-  color: #fff;
   font-family: Poppins;
   font-size: 20px;
   font-weight: 500;
@@ -67,6 +74,23 @@ img {
   text-align: center;
   padding-top: 20px;
   padding-bottom: 20px;
+  width: 100%;
+  border: 2px solid #ffffff;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.box img {
+  width: 60px;
+  height: 60px;
+  margin: 50px 0;
+  
+}
+
+.drop_section {
+  grid-column: 1 / span 6;
 }
 
 /*.address*/
@@ -84,21 +108,9 @@ img {
   grid-column: 5 / span 2;
 }
 
-.marker {
-  width: 90px;
-  height: 90px;
+tattoo_fitting_room {
+  grid-column: 1 / span 6;
 }
-
-.clock {
-  width: 90px;
-  height: 90px;
-}
-
-.phone {
-  width: 90px;
-  height: 90px;
-}
-
 .testimontial {
   margin: auto;
   padding: auto;

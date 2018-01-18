@@ -14,7 +14,7 @@ const audio = document.createElement('audio');
 audio.textContent = 'Ваш браузер не умеет воспроизводить звуки';
 audio.src = 'modules/photo-booth/audio/click.mp3';
 
-const photobooth = document.querySelector('.photobooth');
+const photobooth = document.querySelector('.make-photo');
 photobooth.style.setProperty('--bgPosPhoto', '0');
 
 const cameraWindow = document.createElement('video');
@@ -28,10 +28,8 @@ photobooth.appendChild(canvas);
 canvas.style.setProperty('--canvasDisp', 'none');
 const ctx = canvas.getContext('2d');
 
+const boxBanner = photobooth.querySelector('.box_banner');
 
-function readyToPhoto() {
-	
-}
 
 let streamRec;
 function accessRequest(event) {
@@ -39,16 +37,17 @@ function accessRequest(event) {
 		return;
 	}
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	takePhotoBtn.style.setProperty('--takePhotoVis', 'visible');
-	rePhotoBtn.style.setProperty('--rephotoVis', 'hidden');
 	navigator.mediaDevices
 	.getUserMedia({video: true, audio: false})
 		.then((stream) => {
-		cameraWindow.style.setProperty('--videoVis', 'visible');
-		streamRec = stream;
-		takePhotoBtn.style.setProperty('--takePhotoVis', 'visible');
-		photobooth.style.setProperty('--bgPosPhoto', '300px');
-		cameraWindow.src = URL.createObjectURL(stream);
+			takePhotoBtn.style.setProperty('--takePhotoVis', 'visible');
+			rePhotoBtn.style.setProperty('--rephotoVis', 'hidden');
+			boxBanner.style.visibility = 'hidden';
+			cameraWindow.style.setProperty('--videoVis', 'visible');
+			streamRec = stream;
+			takePhotoBtn.style.setProperty('--takePhotoVis', 'visible');
+			photobooth.style.setProperty('--bgPosPhoto', '300px');
+			cameraWindow.src = URL.createObjectURL(stream);
 	})
 	.catch(() => {
 		errorMessage.style.setProperty('--errorMes', 'visible');
@@ -67,6 +66,6 @@ function getPhoto() {
 	const img = document.createElement('img');
 	img.src = canvas.toDataURL();
 	streamRec.getTracks().forEach(track => track.stop());
-	cameraWindow.style.visibility = 'hidden';
+	cameraWindow.style.setProperty('--videoVis', 'hidden');
 	cameraWindow.src = URL.revokeObjectURL(streamRec);
 }

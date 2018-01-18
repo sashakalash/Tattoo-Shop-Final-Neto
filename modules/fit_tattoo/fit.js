@@ -1,10 +1,11 @@
 
-const fitBlock = document.querySelector('.fit_tattoo');
+const fitBlock = document.querySelector('.tattoo_fitting_room');
 let movedTattoo = null;
 let shiftX = 0;
 let shiftY = 0;
 document.addEventListener('mousedown', event => {
 	if (event.target.classList.contains('img_choose')) {
+		event.target.style.position = 'absolute';
 		movedTattoo = event.target;
 		const bounds = event.target.getBoundingClientRect();
 		shiftX = event.pageX - bounds.left - window.pageXOffset;
@@ -21,8 +22,8 @@ document.addEventListener('mousemove', event => {
 			movedTattoo.style.width = event.pageX / 2 + 'px';
 			movedTattoo.style.height = event.pageY / 2 + 'px';
 		} else {
-			movedTattoo.style.left = event.pageX - shiftX + 'px';
-			movedTattoo.style.top = event.pageY - shiftY + 'px';
+			movedTattoo.style.left = event.clientX - shiftX + 'px';
+			movedTattoo.style.top = event.clientY - shiftY + 'px';
 		}
 	} 
 });
@@ -89,6 +90,8 @@ function exitFitting() {
 	dropField.style.setProperty('--bgPosDrop', '0');
 	photobooth.style.setProperty('--bgPosPhoto', '0');
 	cameraWindow.style.setProperty('--videoVis', 'hidden');
+	rePhotoBtn.style.setProperty('--rephotoVis', 'hidden');
+	boxBanner.style.visibility = 'visible';
 }
 
 

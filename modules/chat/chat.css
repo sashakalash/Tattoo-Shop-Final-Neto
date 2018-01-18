@@ -74,6 +74,7 @@ Chat Title
 .chat-title .avatar img {
   width: 100%;
   height: auto;
+  max-width: 100%;
 }
 
 /*--------------------
@@ -143,6 +144,7 @@ Messages
 .messages .message .avatar img {
   width: 100%;
   height: auto;
+  max-width: 100%;
 }
 .messages .message.message-personal {
   float: right;
@@ -301,10 +303,10 @@ Message Box
   opacity: 0.4;
 }
 
-/*--------------------
+/* --------------------
 Bounce
 --------------------*/
-@-webkit-keyframes bounce {
+/* @-webkit-keyframes bounce {
   0% {
     -webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
             transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
@@ -431,4 +433,4 @@ Bounce
     -webkit-transform: translateY(-10px);
             transform: translateY(-10px);
   }
-}
+} */

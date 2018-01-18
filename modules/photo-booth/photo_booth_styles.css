@@ -1,4 +1,4 @@
-.photobooth {
+/* .photobooth {
 	width: 33.33%;
 	height: auto;
 	min-height: 300px;
@@ -12,10 +12,10 @@
 	cursor: pointer;
 	position: relative;
 	overflow: hidden;
-}
+} */
 
 .banner {
-	color: #ffffff;
+	/* color: #ffffff;
 	background-color: rgb(228, 137, 19);
 	font-family: montserrat;
 	text-transform: uppercase;
@@ -23,18 +23,20 @@
 	visibility: var(--bannerVis);
 	height: auto;
 	bottom: 80%;
-	visibility: var(--bannerVis);
+	visibility: var(--bannerVis); */
 	
 }
 
-.photobooth video {
+.make-photo video {
+	position: absolute;
+	top: 0;
+	left: 0;
 	width: 100%;
 	height: auto;
-	max-height: 300px;
 	visibility: var(--videoVis);
 }
 
-.photobooth .error_message {
+.make-photo .error_message {
 	position: absolute;
 	top: 50%;
 	display: inline-block;
@@ -46,44 +48,42 @@
 	background-color: #ccc;
 }
 
-.photobooth .take-photo {
+.make-photo .take-photo {
 	height: 50px;
-	width: 50px;
-	position: absolute;
-	bottom: 0;
-	margin: 30% 40%;
-	z-index: 2;
-	visibility: var(--takePhotoVis);
-	text-decoration: none;
-	background-color: #c2b8b8;
-	border: 1px solid rgba(233, 135, 8, 0.877);
-	border-radius: 50%;
-	opacity: 0.7;
+    width: 50px;
+    position: absolute;
+    margin: auto;
+    z-index: 2;
+	top: 90%;
+	left: 45%;
+    visibility: var(--takePhotoVis);
+    text-decoration: none;
+    background-color: #c2b8b8;
+    border: 1px solid rgba(233, 135, 8, 0.877);
+    border-radius: 50%;
+    opacity: 0.7;
 }
 
-.photobooth .rephoto {
+.make-photo .rephoto {
 	height: 50px;
-	width: 50px;
-	position: absolute;
-	background-color: #c2b8b8;
-	background-image: url("./rephoto.png");
-	background-size: cover;
-	bottom: 0;
-	margin: 30% 40%;
-	z-index: 2;
-	visibility: var(--rephotoVis);
+    width: 50px;
+    position: absolute;
+    background-color: #c2b8b8;
+    background-image: url(./rephoto.png);
+    background-size: cover;
+    bottom: 0;
+    margin: auto;
+    top: 98%;
+    z-index: 2;
+    visibility: var(--rephotoVis);
 }
 
-.photobooth canvas {
-	width: auto;
+.make-photo canvas {
+	width: 100%;
 	height: auto;
-	max-height: 300px;
 	position: absolute;
 	left: 0;
+	top: 0;
 	display: var(--canvasDisp);
 }
 
-.over {
-	border: 5px solid orange;
-	box-sizing: border-box;
-}

@@ -2,16 +2,14 @@ const dropSection = document.querySelector('.drop_section');
 
 const dropField = document.querySelector('.drop');
 dropField.style.setProperty('--bgPosDrop', '0');
-const fitTattooField = document.querySelector('.fit_tattoo');
+
+const dropPic = dropField.querySelector('.marker');
+dropPic.style.setProperty('--dropPic', 'visible');
+
+const fitTattooField = document.querySelector('.tattoo_fitting_room');
 fitTattooField.style.setProperty('--fitTattooVisible', 'hidden');
 
-const dragImage = document.querySelector('.drag_image');
-
-Array.from(document.querySelectorAll('.banner'))
-	.forEach(el => {
-		el.style.setProperty('--bannerVis', 'hidden');
-	});
-
+const dragImage = document.querySelector('.fit-tattoo');
 
 const previewImgs = document.querySelectorAll('.preview img');
 const fitTattooImage = fitTattooField.querySelector('.fit_tattoo_image');
@@ -27,17 +25,23 @@ dropField.addEventListener('dragleave', event => {
   event.target.classList.remove('over');
 });
 
-dropField.addEventListener('drop', (event) => {
-	event.preventDefault();
+// dropField.addEventListener('click', addImg);
+dropField.addEventListener('drop', addImg);
+
+function addImg(event) {
+	event.preventDefault(); 
+	const banner = event.target.querySelector('.box_banner');
+	banner.style.visibility = 'hidden';
+	dropPic.style.setProperty('--dropPic', 'hidden');
 	setPreview(event.dataTransfer.files[0]);
-	dropField.style.setProperty('--bgPosDrop', '300px');
-});
+}
 
 function setPreview(file) {
 	const imageTypeRegExp = /^image\//;
 	if (imageTypeRegExp.test(file.type)) {
 		dropField.classList.remove('over');
 		const img = document.createElement('img');
+		img.classList.add('droppedImg');
 		img.src = URL.createObjectURL(file);
 		img.addEventListener('load', event => {
 			URL.revokeObjectURL(event.target.src);
@@ -47,29 +51,23 @@ function setPreview(file) {
 }
 
 dropSection.addEventListener('mouseover', (event) => {
-	const banner = event.target.querySelector('.banner');
-	if (banner) {
-		banner.style.setProperty('--bannerVis', 'visible');
-		if (event.target.tagName === 'video') {
-			event.target.parentElement.classList.add('over');
-		}
+	if (!event.target.classList.contains('box')) {
+		event.target.parentElement.classList.add('over');
+	} else {
 		event.target.classList.add('over');
 	}
 });
 
 dropSection.addEventListener('mouseout', (event) => {
-	const banner = event.target.querySelector('.banner');
-	if (banner) {
-		banner.style.setProperty('--bannerVis', 'hidden');
-		if (event.target.tagName === 'video') {
-			event.target.parentElement.classList.remove('over');
-		}
+	if (!event.target.classList.contains('box')) {
+		event.target.parentElement.classList.remove('over');
+	} else {
 		event.target.classList.remove('over');
 	}
 });
 
 dragImage.addEventListener('click', () => {
-	const imgDropped = dropField.querySelector('img');
+	const imgDropped = dropField.querySelector('.droppedImg');
 	const imgPhoto = photobooth.querySelector('canvas');
 	if (imgDropped) {
 		imgDropped.classList.add('imgToFit');
@@ -85,12 +83,12 @@ dragImage.addEventListener('click', () => {
 });
 
 
-previewImgs.forEach(img => {
+Array.from(previewImgs).forEach(img => {
 	img.addEventListener('click', (event) => {
 		const choosedImg = Array.from(previewImgs).find(el => el.classList.contains('img_choose'));
 		if(choosedImg) {
 			choosedImg.classList.remove('img_choose');
 		}
-		img.classList.add('img_choose');
+		event.target.classList.add('img_choose');
 	});
 });

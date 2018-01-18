@@ -1,5 +1,5 @@
 'use strict';
-const sliderImg = document.querySelector('.currentPhoto');
+const sliderImg = document.querySelector('.snake img');
 const nextBtn = document.querySelector('.nextPhoto');
 const prevBtn = document.querySelector('.prevPhoto');
 const imgPreview = document.querySelector('#imgPreview');

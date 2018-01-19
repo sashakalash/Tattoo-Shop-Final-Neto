@@ -14,11 +14,8 @@ const controlBanners = controls.querySelectorAll('p');
 
 const buttons = controls.querySelectorAll('button');
 
-
 const status = document.querySelector('.fitting_message_status');
 status.style.setProperty('--statusVis', 'hidden');
-
-
 
 document.addEventListener('mousedown', event => {
 	if (event.target.classList.contains('img_choose')) {
@@ -53,9 +50,6 @@ document.addEventListener('mouseup', event => {
 	}
 });
 
-
-
-
 Array.from(controlBanners).forEach(el => {
 	el.style.setProperty('--controlsBannerVis', 'hidden');
 });
@@ -72,7 +66,6 @@ for (const button of buttons) {
 			.style.setProperty('--controlsBannerVis', 'hidden');
 	});
 }
-
 
 function makeToChangeImg(event) {
 	if (event.target.classList.contains('exit_fitting')) {
@@ -98,7 +91,7 @@ function makeToChangeImg(event) {
 		link.download = 'tattoo.jpg';
 		link.href = img.src;
 		link.click();
-	}	
+	}
 }
 
 function sendImg(canvas) {

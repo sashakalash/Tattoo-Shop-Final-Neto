@@ -38,7 +38,6 @@ function hideFullImg() {
 	imgPreview.style.setProperty('--imgPreview', 'none');
 }
 
-
 let step = 0;
 function nextPhoto() {
 	step < imgArr.length - 1? step++: step = 0;

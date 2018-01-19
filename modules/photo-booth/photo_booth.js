@@ -30,7 +30,6 @@ const ctx = canvas.getContext('2d');
 
 const boxBanner = photobooth.querySelector('.box_banner');
 
-
 let streamRec;
 function accessRequest(event) {
 	if (event.target.classList.contains('take-photo')) {

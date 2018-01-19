@@ -52,4 +52,9 @@ div.over {
 	max-width: 100%;
 }
 
+#fileInput {
+	visibility: hidden;
+	position: absolute;
+}
+
 

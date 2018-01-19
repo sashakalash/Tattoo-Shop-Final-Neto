@@ -11,34 +11,77 @@
 }
 
 .tattoo_fitting_room img {
-    /* margin: auto;
-    width: auto;
-    height: 100%; */
     max-width: 100%;
   }
 
 .tattoo_fitting_room img.img_choose {
-    /* position: absolute; */
     top: 0;
 }
-
-.controls button {
-    color: #1b0404;
-    height: 50px;
-    width: 50px;
+.controls {
     position: absolute;
     right: 0;
+}
+.controls button {
+    height: 50px;
+    width: 50px;
+    position: relative;
     background-size: contain;
+    background-color: #ffffff;
+}
+.controls div {
+    display: flex;
+    margin-top: 50px;
+    justify-content: flex-end;
+}
+.controls p {
+    margin: 0 10px;
+    visibility: var(--controlsBannerVis);
 }
 .exit_fitting {
     background-image: url("./exit.png");
-    top: 50px;
 }
 .download {
     background-image: url("./download.png");
-    top: 100px;
 }
 .send_to_server {
     background-image: url("./send.png");
-    top: 150px;
 }
+
+.fitting_message_status {
+    position: fixed;
+    margin: 0 50%;
+    top: 50%;
+    background-color: rgba(255, 255, 255, var(--statusBGAlfa));
+    color: #db6363;
+    font-family: Poppins;
+    text-transform: uppercase;
+    font-size: 3em;
+    letter-spacing: 3.7px;
+    visibility: var(--statusVis);
+}
+
+.fitting_message {
+    position: fixed;
+    top: 50%;
+    left: 25%;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #db6363;
+    font-family: Poppins;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    letter-spacing: 3.7px;
+    visibility: var(--fittingMessage);
+}
+.fitting_message::before {
+    content: "« ";
+    font-size: 70px;
+    line-height: 80px;
+    vertical-align: text-top;
+  }
+
+  .fitting_message::after {
+    content: " «";
+    font-size: 70px;
+    line-height: 80px;
+    vertical-align: text-top;
+  }

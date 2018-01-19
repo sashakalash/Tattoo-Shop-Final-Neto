@@ -73,6 +73,7 @@ button {
   .preview {
     grid-column: 1 / span 6;
     background-color: rgb(255, 255, 255);
+    border: 1px solid var(--previewBorder);
     padding: 20px 0;
     display: flex;
     height: auto;
@@ -80,7 +81,7 @@ button {
     justify-content: space-between;
     align-content: center;
     overflow: scroll;
-
+    box-sizing: border-box;
   }
 
   .preview img {

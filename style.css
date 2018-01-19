@@ -55,7 +55,7 @@ img {
   height: 100%;
   margin: auto;
   padding: auto;
-  color: #2f2d2d;
+  color: var(--textAboutColor);
   font-family: Poppins;
   font-size: 18px;
   font-weight: 500;
@@ -108,7 +108,7 @@ img {
   grid-column: 5 / span 2;
 }
 
-tattoo_fitting_room {
+.tattoo_fitting_room {
   grid-column: 1 / span 6;
 }
 .testimontial {

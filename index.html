@@ -31,14 +31,15 @@
       </div>
 
       <div class="about">
-        <p class="text">We are a full service Tattoo Shop. Choose tattoo for you here.</p>
+        <p class="text">Choose tattoo for you here.</p>
       </div>
       <div id="imgPreview"></div>
       <div class="preview"></div>
       <div class="drop_section">
         <div draggable="true" class="box drop">
+          <input type="file" id="fileInput" accept="image/*">
           <img src="modules/drag&drop/cloud.png" alt="icon drop files" class="marker">
-          <p class="box_banner">drop your photo here</p>
+          <p class="box_banner">drop your photo here or click</p>
         </div>
 
         <div class="box make-photo">
@@ -64,14 +65,24 @@
         <p>"Alexander and I are HUGE fans of Morzetattoo. Alina and her crew are always so generous with their time."
         <br> - MP </p>
       </div>
-
+      <div class="fitting_message_status">Successfully sent to master</div>
       <div class="tattoo_fitting_room">
+        <div class="fitting_message">drag tattoo to your photo</div>
         <div class="fit_tattoo_image"></div>
         <div class="fit_tattoo_tattoo"></div>
         <div class="controls">
-          <button class="exit_fitting"></button>
-          <button class="download"></button>
-          <button class="send_to_server"></button>
+          <div class="controls_exit_box">
+              <p>Push to end fitting</p>
+              <button class="exit_fitting"></button>
+          </div>
+          <div class="controls_download_box">
+              <p>Download your photo</p>
+              <button class="download"></button>
+          </div>
+          <div class="controls_send_box">
+              <p>Send to us your photo</p>
+              <button class="send_to_server"></button>
+          </div>
         </div>
       </div>
 

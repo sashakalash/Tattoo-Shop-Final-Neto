@@ -36,6 +36,7 @@ function accessRequest(event) {
 	if (event.target.classList.contains('take-photo')) {
 		return;
 	}
+	canvas.classList.add('false');
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	navigator.mediaDevices
 	.getUserMedia({video: true, audio: false})
@@ -62,6 +63,7 @@ function getPhoto() {
 	canvas.style.setProperty('--canvasDisp', 'block');
 	canvas.width = cameraWindow.videoWidth;
 	canvas.height = cameraWindow.videoHeight;
+	canvas.classList.add('true');
 	ctx.drawImage(cameraWindow, 0, 0);
 	const img = document.createElement('img');
 	img.src = canvas.toDataURL();

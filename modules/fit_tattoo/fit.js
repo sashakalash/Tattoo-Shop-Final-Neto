@@ -14,8 +14,8 @@ const controlBanners = controls.querySelectorAll('p');
 
 const buttons = controls.querySelectorAll('button');
 
-const status = document.querySelector('.fitting_img_send_mess');
-status.style.setProperty('--statusVis', 'hidden');
+// const status = document.querySelector('.fitting_img_send_mess');
+// status.style.setProperty('--statusVis', 'hidden');
 
 document.addEventListener('mousedown', event => {
 	if (event.target.classList.contains('img_choose')) {

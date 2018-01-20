@@ -47,7 +47,7 @@
 	background-image: url("./send.png");
 }
 
-.fitting_message_status {
+/* .fitting_message_status {
 	position: fixed;
 	top: 50%;
 	background-color: rgba(255, 255, 255, var(--statusBGAlfa));
@@ -57,7 +57,7 @@
 	font-size: 3em;
 	letter-spacing: 3.7px;
 	visibility: var(--statusVis);
-}
+} */
 
 /* .fitting_img_send_mess {
 	position: fixed;

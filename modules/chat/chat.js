@@ -1,5 +1,5 @@
 'use strict';
-const chat = document.querySelector('.chat');
+const chat = document.querySelector('#chat');
 const chatTitleToClick = document.querySelector('.chat-title');
 const newMessageForm = chat.querySelector('.message-box');
 const inputMessForm = chat.querySelector('.message-input');
@@ -11,7 +11,7 @@ const messagesTemplates = chat.querySelector('.messages-templates');
 const messageLoading = messagesTemplates.querySelector('div.message loading');
 const messageUser= messagesTemplates.querySelector('.message-personal');
 const messageStatus = messagesTemplates.querySelector('.message-status');
-
+inputMessForm.addEventListener('input', () => {console.log('ok');});
 let wsConnect;
 
 function wsOpen() {
@@ -25,8 +25,6 @@ function wsOpen() {
 	const connectionChat = new WebSocket('wss://neto-api.herokuapp.com/chat');
 	wsConnect = connectionChat;
 	connectionChat.addEventListener('open', () => {
-		console.log(messageStatusToRemove)
-		console.log(messageStatusToRemove.parentElement)
 	messageStatusToRemove.parentElement.removeChild(messageStatusToRemove);
 	chatStatus.textContent = chatStatus.dataset.online;
 	sendMessBtn.disabled = false;
@@ -79,7 +77,7 @@ function wsOpen() {
 }
 
 chat.style.setProperty('--Top', '133%');
-chat.style.setProperty('--Left', '80%');
+chat.style.setProperty('--Left', '75%');
 let isFirstCallingChat = true;
 
 function chatAnimation(condition = 'open') {

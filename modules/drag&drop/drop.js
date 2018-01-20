@@ -89,7 +89,7 @@ dragImage.addEventListener('click', () => {
 	const tattooToFitCopy = tattooToFit.cloneNode();
 	const imgDropped = dropField.querySelector('.droppedImg');
 	const imgPhoto = photobooth.querySelector('canvas');
-	if (!tattooToFit || !(imgDropped && imgPhoto.classList.contains('true'))) {
+	if (!tattooToFit) {
 		fitWithoutChooseTattooErr();
 		return;
 	}

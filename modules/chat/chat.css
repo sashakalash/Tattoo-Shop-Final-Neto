@@ -3,12 +3,10 @@
 /*--------------------
 Chat
 --------------------*/
-.chat {
+#chat {
   position: fixed;
   top: var(--Top);
-  /* 133%; */
   left: var(--Left);
-  /* 81%; */
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   width: 400px;
@@ -273,7 +271,7 @@ Message Box
   height: 17px;
   margin: 0;
   padding-right: 20px;
-  width: 265px;
+  width: 350px;
 }
 .message-box input[type=text]:focus:-webkit-placeholder {
   color: transparent;
@@ -306,7 +304,7 @@ Message Box
 /* --------------------
 Bounce
 --------------------*/
-/* @-webkit-keyframes bounce {
+@-webkit-keyframes bounce {
   0% {
     -webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
             transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
@@ -433,4 +431,4 @@ Bounce
     -webkit-transform: translateY(-10px);
             transform: translateY(-10px);
   }
-} */
+}

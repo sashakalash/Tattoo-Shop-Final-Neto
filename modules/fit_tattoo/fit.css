@@ -49,7 +49,6 @@
 
 .fitting_message_status {
 	position: fixed;
-	margin: 0 50%;
 	top: 50%;
 	background-color: rgba(255, 255, 255, var(--statusBGAlfa));
 	color: #db6363;
@@ -60,7 +59,7 @@
 	visibility: var(--statusVis);
 }
 
-.fitting_message {
+.fitting_img_send_mess {
 	position: fixed;
 	top: 50%;
 	left: 25%;
@@ -72,14 +71,14 @@
 	letter-spacing: 3.7px;
 	visibility: var(--fittingMessage);
 }
-.fitting_message::before {
+.fitting_img_send_mess::before {
 	content: "« ";
 	font-size: 70px;
 	line-height: 80px;
 	vertical-align: text-top;
 }
 
-.fitting_message::after {
+.fitting_img_send_mess::after {
 	content: " «";
 	font-size: 70px;
 	line-height: 80px;

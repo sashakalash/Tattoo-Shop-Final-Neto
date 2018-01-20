@@ -4,13 +4,12 @@
     <meta charset="utf-8">
     <title>Tattoo Shop | Alina Temnova</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-    <!--<link rel="stylesheet" href="resources/css/reset.css" type="text/css">-->
     <link rel="stylesheet" href="./style.css" type="text/css">
     <script src="modules/slider/slider.js" async></script>
 		<script src="modules/drag&drop/drop.js" async></script>
-		<script src="modules/chat/chat.js" async></script>
 		<script src="modules/fit_tattoo/fit.js" async></script>
-		<script src="modules/photo-booth/photo_booth.js" async></script>	
+    <script src="modules/photo-booth/photo_booth.js" async></script>	
+    <script src="modules/chat/chat.js" async></script>
   </head>
 
   <body>
@@ -65,7 +64,7 @@
         <p>"Alexander and I are HUGE fans of Morzetattoo. Alina and her crew are always so generous with their time."
         <br> - MP </p>
       </div>
-      <div class="fitting_message_status">Successfully sent to master</div>
+      
       <div class="tattoo_fitting_room">
         <div class="fitting_message">drag tattoo to your photo</div>
         <div class="fit_tattoo_image"></div>
@@ -86,7 +85,7 @@
         </div>
       </div>
 
-      <div class="chat">
+      <div id="chat">
 				<div class="chat-title">
 					<h1>Онлайн-консультант</h1>
 					<h2 class="chat-status" data-online="в сети" data-offline="не в сети">не в сети</h2>
@@ -120,8 +119,8 @@
 					<input type="text" class="message-input" placeholder="Ваше сообщение …">
 					<button disabled type="submit" class="message-submit">Отправить</button>
 				</form>
-		</div>
-
+      </div>
+      <!-- <div class="fitting_img_send_mess">Successfully sent to master</div> -->
       <footer>
         <p>&copy; Tattoo Shop 2017</p>
       </footer>

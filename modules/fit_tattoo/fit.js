@@ -14,7 +14,7 @@ const controlBanners = controls.querySelectorAll('p');
 
 const buttons = controls.querySelectorAll('button');
 
-const status = document.querySelector('.fitting_message_status');
+const status = document.querySelector('.fitting_img_send_mess');
 status.style.setProperty('--statusVis', 'hidden');
 
 document.addEventListener('mousedown', event => {

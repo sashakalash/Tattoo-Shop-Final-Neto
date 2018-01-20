@@ -49,7 +49,6 @@
 
 .fitting_message_status {
 	position: fixed;
-	margin: 0 50%;
 	top: 50%;
 	background-color: rgba(255, 255, 255, var(--statusBGAlfa));
 	color: #db6363;

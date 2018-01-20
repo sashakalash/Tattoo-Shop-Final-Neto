@@ -11,7 +11,6 @@ const messagesTemplates = chat.querySelector('.messages-templates');
 const messageLoading = messagesTemplates.querySelector('div.message loading');
 const messageUser= messagesTemplates.querySelector('.message-personal');
 const messageStatus = messagesTemplates.querySelector('.message-status');
-inputMessForm.addEventListener('input', () => {console.log('ok');});
 let wsConnect;
 
 function wsOpen() {

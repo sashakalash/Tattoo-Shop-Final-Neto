@@ -47,8 +47,9 @@
 	background-image: url("./send.png");
 }
 
-/* .fitting_message_status {
+.fitting_message_status {
 	position: fixed;
+	margin: 0 50%;
 	top: 50%;
 	background-color: rgba(255, 255, 255, var(--statusBGAlfa));
 	color: #db6363;
@@ -57,9 +58,9 @@
 	font-size: 3em;
 	letter-spacing: 3.7px;
 	visibility: var(--statusVis);
-} */
+}
 
-/* .fitting_img_send_mess {
+.fitting_message {
 	position: fixed;
 	top: 50%;
 	left: 25%;
@@ -71,16 +72,16 @@
 	letter-spacing: 3.7px;
 	visibility: var(--fittingMessage);
 }
-.fitting_img_send_mess::before {
+.fitting_message::before {
 	content: "« ";
 	font-size: 70px;
 	line-height: 80px;
 	vertical-align: text-top;
 }
 
-.fitting_img_send_mess::after {
+.fitting_message::after {
 	content: " «";
 	font-size: 70px;
 	line-height: 80px;
 	vertical-align: text-top;
-} */
+}

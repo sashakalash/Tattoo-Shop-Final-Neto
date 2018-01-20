@@ -14,8 +14,8 @@ const controlBanners = controls.querySelectorAll('p');
 
 const buttons = controls.querySelectorAll('button');
 
-// const status = document.querySelector('.fitting_img_send_mess');
-// status.style.setProperty('--statusVis', 'hidden');
+const status = document.querySelector('.fitting_message_status');
+status.style.setProperty('--statusVis', 'hidden');
 
 document.addEventListener('mousedown', event => {
 	if (event.target.classList.contains('img_choose')) {
@@ -122,7 +122,7 @@ function exitFitting() {
 }
 
 function showSendStatus() {
-	// status.style.setProperty('--statusVis', 'visible');
+	status.style.setProperty('--statusVis', 'visible');
 	let start = null;
 	let timer = null;
 	let alfa = 1;
@@ -130,9 +130,9 @@ function showSendStatus() {
 		start = start || timestamp;
 		const elapsedTime = timestamp - start;
 		alfa -= 0.01;
-		// status.style.setProperty('--statusBGAlfa', alfa);
+		status.style.setProperty('--statusBGAlfa', alfa);
 		if (alfa < 0) {
-			// status.style.setProperty('--statusVis', 'hidden');
+			status.style.setProperty('--statusVis', 'hidden');
 			return cancelAnimationFrame(timer);
 		}
 		timer = requestAnimationFrame(tick);

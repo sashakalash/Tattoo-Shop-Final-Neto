@@ -59,7 +59,7 @@
 	visibility: var(--statusVis);
 }
 
-.fitting_img_send_mess {
+/* .fitting_img_send_mess {
 	position: fixed;
 	top: 50%;
 	left: 25%;
@@ -83,4 +83,4 @@
 	font-size: 70px;
 	line-height: 80px;
 	vertical-align: text-top;
-}
+} */

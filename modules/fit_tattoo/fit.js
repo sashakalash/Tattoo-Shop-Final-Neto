@@ -122,7 +122,7 @@ function exitFitting() {
 }
 
 function showSendStatus() {
-	status.style.setProperty('--statusVis', 'visible');
+	// status.style.setProperty('--statusVis', 'visible');
 	let start = null;
 	let timer = null;
 	let alfa = 1;
@@ -130,9 +130,9 @@ function showSendStatus() {
 		start = start || timestamp;
 		const elapsedTime = timestamp - start;
 		alfa -= 0.01;
-		status.style.setProperty('--statusBGAlfa', alfa);
+		// status.style.setProperty('--statusBGAlfa', alfa);
 		if (alfa < 0) {
-			status.style.setProperty('--statusVis', 'hidden');
+			// status.style.setProperty('--statusVis', 'hidden');
 			return cancelAnimationFrame(timer);
 		}
 		timer = requestAnimationFrame(tick);

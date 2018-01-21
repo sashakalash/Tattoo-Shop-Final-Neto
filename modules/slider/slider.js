@@ -5,8 +5,10 @@ const prevBtn = document.querySelector('.prevPhoto');
 const imgPreview = document.querySelector('#imgPreview');
 const widescreenBtn = document.querySelector('.widescreen');
 const slider = document.querySelector('#slider');
-nextBtn.addEventListener('click', nextPhoto);
-prevBtn.addEventListener('click', prevPhoto);
+const preview = document.querySelector('.preview');
+
+nextBtn.addEventListener('click', slidePhoto);
+prevBtn.addEventListener('click', slidePhoto);
 widescreenBtn.addEventListener('click', showFullImg);
 imgPreview.addEventListener('click', hideFullImg);
 const imgArr = [
@@ -38,17 +40,21 @@ function hideFullImg() {
 	imgPreview.style.setProperty('--imgPreview', 'none');
 }
 
-let step = 0;
-function nextPhoto() {
-	step < imgArr.length - 1? step++: step = 0;
-	sliderImg.src = imgArr[step];
-}
-function prevPhoto() {
-	step > 0? step--: step = imgArr.length - 1;
-	sliderImg.src = imgArr[step];
+function slidePhoto(event) {
+	const currentImg = document.querySelector('.img_choose');
+	const nextImg = currentImg.nextElementSibling;
+	const prevImg = currentImg.previousElementSibling;
+	const firstImg = previewBlock.firstChild;
+	const lastImg = previewBlock.lastChild;
+	if (event.target.classList.contains('nextPhoto')) {
+		nextImg? sliderImg.src = nextImg.src: sliderImg.src = firstImg.src;
+	} else {
+		prevImg? sliderImg.src = prevImg.src: sliderImg.src = lastImg.src;
+	}
+	chooseImg(sliderImg.src);
 }
 
-const preview = document.querySelector('.preview');
+
 
 for (const imgSrc of imgArr) {
 	const img = document.createElement('img');
@@ -56,8 +62,31 @@ for (const imgSrc of imgArr) {
 	img.addEventListener('click', showPreview);
 	preview.appendChild(img);
 }
+const previewImgs = document.querySelectorAll('.preview img');
+Array.from(previewImgs)[0].classList.add('img_choose');
+
 
 function showPreview(e) {
 	e.preventDefault();
 	sliderImg.src = e.target.src;
+	chooseImg(e.target.src);
+}
+
+function chooseImg(src) {
+	let img, choosedImg;
+	 Array.from(previewImgs).forEach(el => {
+		if (el.classList.contains('img_choose')) {
+			choosedImg = el;
+		}
+		if (el.src == src) {
+			img = el;
+		}
+	 });
+	if (choosedImg && choosedImg != img) {
+		choosedImg.classList.remove('img_choose');
+	} 
+	if (img.classList.contains('img_choose')) {
+		return;
+	}
+	img.classList.add('img_choose');
 }

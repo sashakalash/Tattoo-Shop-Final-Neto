@@ -4,23 +4,17 @@ let movedTattoo = null;
 let shiftX = 0;
 let shiftY = 0;
 
-const controls = document.querySelector('.controls');
-const sendBtn = document.querySelector('.send_to_server');
-const exitFittingBtn = document.querySelector('.exit_fitting');
-const downloadBtn = document.querySelector('.download');
-controls.addEventListener('click', makeToChangeImg);
+const controlsBtns = fitBlock.querySelector('.control_panel');
+controlsBtns.addEventListener('click', makeToChangeImg);
+const controlBanners = controlsBtns.querySelectorAll('p');
+const buttons = control.querySelectorAll('button');
 
-const controlBanners = controls.querySelectorAll('p');
-
-const buttons = controls.querySelectorAll('button');
-
-const status = document.querySelector('.fitting_message_status');
-status.style.setProperty('--statusVis', 'hidden');
+const imgSendStatus = document.querySelector('.img_send_mess');
+imgSendStatus.style.setProperty('--sendMessVis', 'hidden');
 
 document.addEventListener('mousedown', event => {
 	if (event.target.classList.contains('img_choose')) {
 		fittingMessage.style.setProperty('--fittingMessage', 'hidden');
-		event.target.style.position = 'absolute';
 		movedTattoo = event.target;
 		const bounds = event.target.getBoundingClientRect();
 		shiftX = event.pageX - bounds.left - window.pageXOffset;
@@ -54,26 +48,29 @@ Array.from(controlBanners).forEach(el => {
 	el.style.setProperty('--controlsBannerVis', 'hidden');
 });
 
-for (const button of buttons) {
-	button.addEventListener('mouseover', event => {
+buttons.forEach(el => {
+	el.addEventListener('mouseover', event => {
 		event.target
-			.parentElement.querySelector('p')
+			.parentElement
+			.querySelector('p')
 			.style.setProperty('--controlsBannerVis', 'visible');
 	});
-	button.addEventListener('mouseout', event => {
+	el.addEventListener('mouseout', event => {
 		event.target
-			.parentElement.querySelector('p')
+			.parentElement
+			.querySelector('p')
 			.style.setProperty('--controlsBannerVis', 'hidden');
 	});
-}
+});
 
 function makeToChangeImg(event) {
 	if (event.target.classList.contains('exit_fitting')) {
 		exitFitting();
+		return;
 	}
 	const canvas = document.createElement('canvas');
 	const ctx = canvas.getContext('2d');
-	const img1 = fitTattooField.querySelector('.imgToFit');
+	const img1 = fitTattooField.querySelector('.droppedImg');
 	const img2 = fitTattooField.querySelector('.img_choose');
 	const tattooCoord = img2.getBoundingClientRect();
 	canvas.width = img1.width;
@@ -105,24 +102,19 @@ function sendImg(canvas) {
 }
 
 function exitFitting() {
-	const imgs = fitTattooImage.querySelectorAll('img');
-	const tattoo = fitTattooTattoo.querySelector('img');
-	if (tattoo) {
-		fitTattooTattoo.removeChild(tattoo);
-	}
-	Array.from(imgs).forEach(img => {
-		fitTattooImage.removeChild(img);
-	});
+	fittingMessage.style.setProperty('--fittingMessage', 'hidden');
+	const img = fitBlock.querySelector('.droppedImg');
+	const tattoo = fitBlock.querySelector('.img_choose');
+	dropField.appendChild(img);
+	tattoo.parentElement.removeChild(tattoo);
 	fitTattooField.style.setProperty('--fitTattooVisible', 'hidden');
 	cameraWindow.style.setProperty('--videoVis', 'hidden');
 	rePhotoBtn.style.setProperty('--rephotoVis', 'hidden');
-	boxBanner.style.visibility = 'visible';
-	banner.style.visibility = 'visible';
-	dropPic.style.setProperty('--dropPic', 'visible');
+	
 }
 
 function showSendStatus() {
-	status.style.setProperty('--statusVis', 'visible');
+	imgSendStatus.style.setProperty('--sendMessVis', 'visible');
 	let start = null;
 	let timer = null;
 	let alfa = 1;
@@ -130,9 +122,9 @@ function showSendStatus() {
 		start = start || timestamp;
 		const elapsedTime = timestamp - start;
 		alfa -= 0.01;
-		status.style.setProperty('--statusBGAlfa', alfa);
+		imgSendStatus.style.setProperty('--statusBGAlfa', alfa);
 		if (alfa < 0) {
-			status.style.setProperty('--statusVis', 'hidden');
+			imgSendStatus.style.setProperty('--sendMessVis', 'hidden');
 			return cancelAnimationFrame(timer);
 		}
 		timer = requestAnimationFrame(tick);

@@ -3,7 +3,7 @@
 	background: rgb(255, 255, 255);
 	top: 0;
 	left: 0;
-	z-index: 9;
+	z-index: 2;
 	position: fixed;
 	width: 100%;
 	height: 100%;
@@ -16,24 +16,27 @@
 
 .tattoo_fitting_room img.img_choose {
 	top: 0;
+	left: 50%;
+	position: absolute;
 }
-.controls {
+.control_panel {
 	position: absolute;
 	right: 0;
 }
-.controls button {
-	height: 50px;
-	width: 50px;
-	position: relative;
-	background-size: contain;
-	background-color: #ffffff;
-}
-.controls div {
+
+.control_panel div {
 	display: flex;
 	margin-top: 50px;
 	justify-content: flex-end;
 }
-.controls p {
+.control_panel button {
+	height: 50px;
+	width: 50px;
+	position: relative;
+	background-size: contain;
+	background-color: transparent;
+}
+.control_panel p {
 	margin: 0 10px;
 	visibility: var(--controlsBannerVis);
 }
@@ -47,25 +50,13 @@
 	background-image: url("./send.png");
 }
 
-.fitting_message_status {
-	position: fixed;
-	top: 50%;
-	background-color: rgba(255, 255, 255, var(--statusBGAlfa));
-	color: #db6363;
-	font-family: Poppins;
-	text-transform: uppercase;
-	font-size: 3em;
-	letter-spacing: 3.7px;
-	visibility: var(--statusVis);
-}
-
 .fitting_message {
-	position: fixed;
+	position: absolute;
 	top: 50%;
 	left: 25%;
-	background-color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.9);
 	color: #db6363;
-	font-family: Poppins;
+	font-family: montserrat;
 	text-transform: uppercase;
 	font-size: 1.5em;
 	letter-spacing: 3.7px;
@@ -83,4 +74,16 @@
 	font-size: 70px;
 	line-height: 80px;
 	vertical-align: text-top;
+}
+
+.img_send_mess {
+	position: absolute;
+	top: 50%;
+	background-color: rgba(255, 255, 255, var(--statusBGAlfa));
+	color: #db6363;
+	font-family: montserrat;
+	text-transform: uppercase;
+	font-size: 3em;
+	letter-spacing: 3.7px;
+	visibility: var(--sendMessVis);
 }

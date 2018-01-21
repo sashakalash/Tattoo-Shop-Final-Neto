@@ -10,7 +10,6 @@ fitTattooField.style.setProperty('--fitTattooVisible', 'hidden');
 
 const dragImage = document.querySelector('.fit-tattoo');
 
-const previewImgs = document.querySelectorAll('.preview img');
 const fitTattooImage = fitTattooField.querySelector('.fit_tattoo_image');
 const fitTattooTattoo = fitTattooField.querySelector('.fit_tattoo_tattoo');
 
@@ -28,11 +27,22 @@ aboutText.style.setProperty('--textAboutColor', '#2f2d2d');
 const previewBlock = document.querySelector('.preview');
 previewBlock.style.setProperty('--previewBorder', '#ffffff');
 
+const dropBanner = dropField.querySelector('.box_banner');
+dropBanner.style.setProperty('--dropBanner', '#eee4e4');
+const photo = dropSection.querySelector('.make-photo');
+const makePhotoBanner = photo.querySelector('.box_banner');
+makePhotoBanner.style.setProperty('--photoBanner', '#eee4e4');
+
+
 dropField.addEventListener('click', () => {
 	fileInputBtn.click();
 });
 
 function fileDroped(event) {
+	const droppedImg = dropField.querySelector('.droppedImg');
+	if (droppedImg) {
+		dropField.removeChild(droppedImg);
+	}
 	setPreview(event.target.files[0]);
 }
 
@@ -89,15 +99,13 @@ dragImage.addEventListener('click', () => {
 	const tattooToFitCopy = tattooToFit.cloneNode();
 	const imgDropped = dropField.querySelector('.droppedImg');
 	const imgPhoto = photobooth.querySelector('canvas');
-	if (!tattooToFit) {
+	if (!imgDropped) {
 		fitWithoutChooseTattooErr();
 		return;
 	}
 	if (imgDropped) {
-		imgDropped.classList.add('imgToFit');
 		fitTattooImage.appendChild(imgDropped);
 	} else if (imgPhoto) {
-		imgPhoto.classList.add('imgToFit');
 		fitTattooImage.appendChild(imgPhoto);
 	}
 	fitTattooTattoo.appendChild(tattooToFitCopy);
@@ -106,24 +114,13 @@ dragImage.addEventListener('click', () => {
 });
 
 
-Array.from(previewImgs).forEach(img => {
-	img.addEventListener('click', (event) => {
-		const choosedImg = Array.from(previewImgs).find(el => el.classList.contains('img_choose'));
-		if(choosedImg) {
-			choosedImg.classList.remove('img_choose');
-		}
-		if (event.target.classList.contains('img_choose')) {
-			return;
-		}
-		event.target.classList.add('img_choose');
-	});
-});
+	
 
 function fitWithoutChooseTattooErr() {
-	aboutText.style.setProperty('--textAboutColor', '#db6363');
-	previewBlock.style.setProperty('--previewBorder', '#db6363');
+	dropBanner.style.setProperty('--dropBanner', '#db6363');
+	makePhotoBanner.style.setProperty('--photoBanner', '#db6363');
 	setTimeout(() => {
-		aboutText.style.setProperty('--textAboutColor', '#2f2d2d');
-		previewBlock.style.setProperty('--previewBorder', '#ffffff');
-	}, 2000);
+		dropBanner.style.setProperty('--dropBanner', '#eee4e4');
+		makePhotoBanner.style.setProperty('--photoBanner', '#eee4e4');
+	}, 1000);
 }

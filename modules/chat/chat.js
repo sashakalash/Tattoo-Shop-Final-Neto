@@ -12,10 +12,11 @@ const messageLoading = messagesTemplates.querySelector('div.message loading');
 const messageUser= messagesTemplates.querySelector('.message-personal');
 const messageStatus = messagesTemplates.querySelector('.message-status');
 let wsConnect;
+inputMessForm.disabled = false;
 
 function wsOpen() {
 	messagesContent.setAttribute('style', 'overflow-y:scroll');
-
+	
 	if (!messagesContent.querySelector('.message-status')) {
 		messagesContent.appendChild(messageStatus.cloneNode(true));		
 	}
@@ -24,11 +25,11 @@ function wsOpen() {
 	const connectionChat = new WebSocket('wss://neto-api.herokuapp.com/chat');
 	wsConnect = connectionChat;
 	connectionChat.addEventListener('open', () => {
-	messageStatusToRemove.parentElement.removeChild(messageStatusToRemove);
-	chatStatus.textContent = chatStatus.dataset.online;
-	sendMessBtn.disabled = false;
-	inputMessForm.disabled = false;
-});
+		messageStatusToRemove.parentElement.removeChild(messageStatusToRemove);
+		chatStatus.textContent = chatStatus.dataset.online;
+		sendMessBtn.disabled = false;
+		inputMessForm.disabled = false;
+	});
 
 	const messageAnotherUser = Array.from(document.querySelectorAll('.message'))
 	.find(el => {
@@ -44,8 +45,16 @@ function wsOpen() {
 			messagesContent.appendChild(messageLoading).cloneNode(true);
 		}
 		const date = new Date();
+		let hours = date.getHours(); 
+		let minutes = date.getMinutes();
+		if (hours < 10) {
+			hours = '0' + hours;
+		}
+		if (minutes < 10) {
+			minutes = '0' + minutes;
+		}
 		messageAnotherUser.querySelector('.message-text').textContent = event.data;
-		messageAnotherUser.querySelector('.timestamp').textContent = date.getHours() + ':' + date.getMinutes();
+		messageAnotherUser.querySelector('.timestamp').textContent = hours + ':' + minutes;
 		messagesContent.appendChild(messageAnotherUser.cloneNode(true));
 	});
 
@@ -53,7 +62,14 @@ function wsOpen() {
 		console.log(error);
 	});
 
-	newMessageForm.addEventListener('submit', (event) => {
+	newMessageForm.addEventListener('submit', sendMessage);
+	sendMessBtn.addEventListener('click', sendMessage);
+
+	function sendMessage(event) {
+		event.preventDefault();
+		if (!inputMessForm.value) {
+			return;
+		}
 		event.preventDefault();
 		const date = new Date();
 		connectionChat.send(inputMessForm.value);
@@ -61,13 +77,15 @@ function wsOpen() {
 		messageUser.querySelector('.timestamp').textContent = date.getHours() + ':' + date.getMinutes();
 		messagesContent.appendChild(messageUser.cloneNode(true));
 		inputMessForm.value = '';
-	});
+	}
 
 	connectionChat.addEventListener('close', () => {
 		chatStatus.textContent = chatStatus.dataset.offline;
 		sendMessBtn.disabled = true;
-		inputMessForm.disabled = true;
-		messagesContent.appendChild(messageStatus.cloneNode(true));	
+		// inputMessForm.disabled = true;
+		if (!messagesContent.querySelector('.message-status')) {
+			messagesContent.appendChild(messageStatus.cloneNode(true));	
+		}
 	});
 
 	window.addEventListener('beforeunload', () => {
@@ -121,3 +139,6 @@ chatTitleToClick.addEventListener('click', () => {
 		isFirstCallingChat = true;
 	}
 });
+
+chat.addEventListener('mouseover', () => document.querySelector('body').style.setProperty('--bodyScroll', 'hidden'));
+chat.addEventListener('mouseout', () => document.querySelector('body').style.setProperty('--bodyScroll', 'scroll'));

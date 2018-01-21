@@ -15,7 +15,12 @@
 	max-height: 300px;
 	visibility: var(--dropPic);
 }
-
+.drop p.box_banner {
+	color: var(--dropBanner);
+}
+.make-photo p.box_banner{
+	color: var(--photoBanner);
+}
 .box_banner {
 	color: #eee4e4;
 	text-transform: uppercase;

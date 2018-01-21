@@ -14,7 +14,7 @@ button {
 		outline: none;
 		background-color: #f3e5ca;
 		color: rgb(0, 0, 0);
-		font-family: Poppins;
+		font-family: montserrat;
 		font-weight: 500;
 		position: absolute;
 		top: 50%;
@@ -73,7 +73,6 @@ button {
 	.preview {
 		grid-column: 1 / span 6;
 		background-color: rgb(255, 255, 255);
-		border: 1px solid var(--previewBorder);
 		padding: 20px 0;
 		display: flex;
 		height: auto;

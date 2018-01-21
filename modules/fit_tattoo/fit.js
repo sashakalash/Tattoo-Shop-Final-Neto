@@ -142,9 +142,9 @@ function showSendStatus() {
 	function tick(timestamp) {
 		start = start || timestamp;
 		const elapsedTime = timestamp - start;
-		alfa -= 0.01;
+		alfa -= 0.005;
 		imgSendStatus.style.setProperty('--statusBGAlfa', alfa);
-		if (alfa < 0) {
+		if (alfa < 0.01) {
 			imgSendStatus.style.setProperty('--sendMessVis', 'hidden');
 			return cancelAnimationFrame(timer);
 		}

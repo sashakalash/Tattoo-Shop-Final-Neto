@@ -12,7 +12,7 @@ const messageLoading = messagesTemplates.querySelector('div.message loading');
 const messageUser= messagesTemplates.querySelector('.message-personal');
 const messageStatus = messagesTemplates.querySelector('.message-status');
 let wsConnect;
-inputMessForm.disabled = false;
+// inputMessForm.disabled = false;
 
 function wsOpen() {
 	messagesContent.setAttribute('style', 'overflow-y:scroll');
@@ -82,7 +82,7 @@ function wsOpen() {
 	connectionChat.addEventListener('close', () => {
 		chatStatus.textContent = chatStatus.dataset.offline;
 		sendMessBtn.disabled = true;
-		// inputMessForm.disabled = true;
+		inputMessForm.disabled = true;
 		if (!messagesContent.querySelector('.message-status')) {
 			messagesContent.appendChild(messageStatus.cloneNode(true));	
 		}

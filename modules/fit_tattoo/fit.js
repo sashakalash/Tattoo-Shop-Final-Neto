@@ -4,10 +4,11 @@ let movedTattoo = null;
 let shiftX = 0;
 let shiftY = 0;
 
-const controlsBtns = fitBlock.querySelector('.control_panel');
-controlsBtns.addEventListener('click', makeToChangeImg);
-const controlBanners = controlsBtns.querySelectorAll('p');
-const buttons = controlBanners.querySelectorAll('button');
+const controlsPanel = fitBlock.querySelector('.control_panel');
+controlsPanel.addEventListener('click', makeToChangeImg);
+
+const controlBanners = controlsPanel.querySelectorAll('p');
+const buttons = controlsPanel.querySelectorAll('button');
 
 const imgSendStatus = document.querySelector('.img_send_mess');
 imgSendStatus.style.setProperty('--sendMessVis', 'hidden');

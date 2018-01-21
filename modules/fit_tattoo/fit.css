@@ -51,7 +51,7 @@
 }
 
 .fitting_mess {
-	position: absolute;
+	position: fixed;
 	top: 50%;
 	left: 25%;
 	z-index: 3;
@@ -90,7 +90,7 @@
 }
 
 .shift_key_mess {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 50%;
 	z-index: 3;

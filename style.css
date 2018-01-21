@@ -72,9 +72,12 @@ img {
   background-color: #f0f0f0;
   padding-bottom: 20px;
   grid-column: 1 / span 6;
+  
 }
 
 .text {
+  text-align: center;
+  color: #2f2f2f;
   width: 50%;
   height: 100%;
   margin: auto;
@@ -82,7 +85,6 @@ img {
   font-family: montserrat;
   font-size: 18px;
   font-weight: 500;
-  text-align: left;
   letter-spacing: 0.5px;
   padding-top: 30px;
 }

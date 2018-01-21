@@ -13,8 +13,28 @@ const buttons = controlsPanel.querySelectorAll('button');
 const imgSendStatus = document.querySelector('.img_send_mess');
 imgSendStatus.style.setProperty('--sendMessVis', 'hidden');
 
+
+const shiftMess = document.querySelector('.shift_key_mess');
+shiftMess.style.setProperty('--shiftMessage', 'hidden');
+
+function showShiftKey() {
+	shiftMess.style.setProperty('--shiftMessage', 'visible');
+	setTimeout(() => {
+		shiftMess.style.setProperty('--shiftMessage', 'hidden');
+	}, 5000);
+}
+
+let isFirstMove = true;
+
 document.addEventListener('mousedown', event => {
 	if (event.target.classList.contains('img_choose')) {
+		if (isFirstMove) {
+			setTimeout(() => {
+				showShiftKey();
+			}, 2000);
+			isFirstMove = false;
+		}
+
 		fittingMessage.style.setProperty('--fittingMessage', 'hidden');
 		movedTattoo = event.target;
 		const bounds = event.target.getBoundingClientRect();

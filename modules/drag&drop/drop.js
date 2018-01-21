@@ -18,7 +18,7 @@ const banner = document.querySelector('.box_banner');
 const fileInputBtn = document.querySelector('#fileInput');
 fileInputBtn.addEventListener('change', fileDroped);
 
-const fittingMessage = document.querySelector('.fitting_message');
+const fittingMessage = document.querySelector('.fitting_mess');
 fittingMessage.style.setProperty('--fittingMessage', 'hidden');
 
 const aboutText = document.querySelector('.text');

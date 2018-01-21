@@ -7,7 +7,7 @@ let shiftY = 0;
 const controlsBtns = fitBlock.querySelector('.control_panel');
 controlsBtns.addEventListener('click', makeToChangeImg);
 const controlBanners = controlsBtns.querySelectorAll('p');
-const buttons = control.querySelectorAll('button');
+const buttons = controlBanners.querySelectorAll('button');
 
 const imgSendStatus = document.querySelector('.img_send_mess');
 imgSendStatus.style.setProperty('--sendMessVis', 'hidden');

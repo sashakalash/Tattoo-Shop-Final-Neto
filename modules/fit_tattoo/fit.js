@@ -1,13 +1,10 @@
 
 const fitBlock = document.querySelector('.tattoo_fitting_room');
-let movedTattoo = null;
-let shiftX = 0;
-let shiftY = 0;
 
 const controlsPanel = fitBlock.querySelector('.control_panel');
 controlsPanel.addEventListener('click', makeToChangeImg);
 
-const controlBanners = controlsPanel.querySelectorAll('p');
+const controlBanners = controlsPanel.querySelectorAll('.control_panel_banner');
 const buttons = controlsPanel.querySelectorAll('button');
 
 const imgSendStatus = document.querySelector('.img_send_mess');
@@ -25,6 +22,12 @@ function showShiftKey() {
 }
 
 let isFirstMove = true;
+let movedTattoo = null;
+let shiftX, shiftY;
+const minX = 0;
+const minY = 0;
+let maxX, maxY;
+let shift;
 
 document.addEventListener('mousedown', event => {
 	if (event.target.classList.contains('img_choose')) {
@@ -34,26 +37,52 @@ document.addEventListener('mousedown', event => {
 			}, 2000);
 			isFirstMove = false;
 		}
-
 		fittingMessage.style.setProperty('--fittingMessage', 'hidden');
-		movedTattoo = event.target;
 		const bounds = event.target.getBoundingClientRect();
-		shiftX = event.pageX - bounds.left - window.pageXOffset;
-		shiftY = event.pageY - bounds.top - window.pageYOffset;
+		shiftX = bounds.right;
+		shiftY = bounds.bottom;
+		movedTattoo = event.target;
+		maxX = minX + fitBlock.offsetWidth - movedTattoo.offsetWidth;
+		maxY = minY + fitBlock.offsetHeight - movedTattoo.offsetHeight;
+		if ((event.clientX > shiftX - 30 && 
+			event.clientX < shiftX + 30) || 
+			(event.clientY > shiftY - 30 &&
+			event.clientY < shiftY + 30)) {
+			shift = true;
+		}
+		return false;
 	} else {
-		event.preventDefault();
+		return;
 	}
 });
+
 
 document.addEventListener('mousemove', event => {
 	if (movedTattoo) {
 		event.preventDefault();
-		if (event.shiftKey) {
-			movedTattoo.style.width = event.pageX / 2 + 'px';
-			movedTattoo.style.height = event.pageY / 2 + 'px';
+		if (shift) {
+			const regExp = /\d+/; 
+			const width =  +regExp.exec(movedTattoo.style.width)[0];
+			const height = +regExp.exec(movedTattoo.style.heigth)[0];
+			if (event.clientX > shiftX) {
+				movedTattoo.style.width =  (width + event.clientX  - shiftX) / 2 + 'px';
+			} else {
+				movedTattoo.style.width = (width - shiftX - event.clientX) / 2 + 'px';
+			}
+			if (event.clientY > shiftY) {
+				movedTattoo.style.height = (height + event.clientY - shiftY) / 2 + 'px';
+			} else {
+				movedTattoo.style.height = (height - shiftY - event.clientY) / 2 + 'px';
+			}
 		} else {
-			movedTattoo.style.left = event.clientX - shiftX + 'px';
-			movedTattoo.style.top = event.clientY - shiftY + 'px';
+			let x = event.clientX;
+			let y = event.clientY;
+			x = Math.min(x, maxX);
+			y = Math.min(y, maxY);
+			x = Math.max(x, minX);
+			y = Math.max(y, minY);
+			movedTattoo.style.left = `${x}px`;
+			movedTattoo.style.top = `${y}px`;
 		}
 	} 
 });
@@ -62,6 +91,7 @@ document.addEventListener('mouseup', event => {
 	if (movedTattoo) {
 		fitTattooImage.appendChild(movedTattoo);
 		movedTattoo = null;
+		shift = false;
 	}
 });
 
@@ -85,6 +115,9 @@ buttons.forEach(el => {
 });
 
 function makeToChangeImg(event) {
+	if (event.target.classList.contains('control_panel_banner')) {
+		return;
+	}
 	if (event.target.classList.contains('exit_fitting')) {
 		exitFitting();
 		return;
@@ -102,6 +135,7 @@ function makeToChangeImg(event) {
 		sendImg(canvas);
 		exitFitting();
 		showSendStatus();
+		return;
 	} else {
 		const img = document.createElement('img');
 		img.src = canvas.toDataURL();

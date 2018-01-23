@@ -22,10 +22,8 @@
 .make-photo .take-photo {
 	height: 50px;
 	width: 50px;
-	position: absolute;
-	margin: auto;
+	bottom: 0;
 	z-index: 2;
-	top: 90%;
 	left: 45%;
 	visibility: var(--takePhotoVis);
 	text-decoration: none;

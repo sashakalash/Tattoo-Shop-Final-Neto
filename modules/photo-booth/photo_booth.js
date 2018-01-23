@@ -40,14 +40,12 @@ function accessRequest(event) {
 	navigator.mediaDevices
 	.getUserMedia({video: true, audio: false})
 		.then((stream) => {
-			takePhotoBtn.style.setProperty('--takePhotoVis', 'visible');
 			rePhotoBtn.style.setProperty('--rephotoVis', 'hidden');
 			boxBanner.style.visibility = 'hidden';
 			cameraWindow.style.setProperty('--videoVis', 'visible');
 			streamRec = stream;
-			takePhotoBtn.style.setProperty('--takePhotoVis', 'visible');
-			photobooth.style.setProperty('--bgPosPhoto', '300px');
 			cameraWindow.src = URL.createObjectURL(stream);
+			// cameraWindow.addEventListener('loadeddata', () => takePhotoBtn.style.setProperty('--takePhotoVis', 'visible'));
 	})
 	.catch(() => {
 		errorMessage.style.setProperty('--errorMes', 'visible');

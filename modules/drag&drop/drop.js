@@ -74,9 +74,6 @@ function setPreview(file) {
 		img.addEventListener('load', event => {
 			URL.revokeObjectURL(event.target.src);
 		});
-		// const imgBlock = document.createElement('div');
-		// imgBlock.classList.add('drop_img_block');
-		// imgBlock.appendChild(img);
 		dropField.appendChild(img);
 	}
 }

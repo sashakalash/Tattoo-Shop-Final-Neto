@@ -6,7 +6,11 @@
 	align-content: center;
 	justify-content: space-between;
 }
-
+.drop .drop_img_block {
+	width: auto;
+	height: auto;
+	margin: auto;
+}
 .drop img {
 	margin: 0 25%;
 	display: inline-block;
@@ -47,12 +51,12 @@ div.over {
 }
 
 .box img.droppedImg {
-	margin: auto 80px;
+	margin: auto;
 	width: auto;
 	height: 100%;
 	position: absolute;
 	top: 0;
-	left: 0;
+	left: 25%;
 	max-width: 100%;
 }
 

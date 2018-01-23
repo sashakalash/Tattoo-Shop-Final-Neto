@@ -123,7 +123,7 @@ buttons.forEach(el => {
 });
 
 function makeToChangeImg(event) {
-	if (!(event.target.tagName == 'button')) {
+	if (!(event.target.tagName === 'BUTTON')) {
 		return;
 	}
 	if (event.target.classList.contains('exit_fitting')) {

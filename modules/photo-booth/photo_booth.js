@@ -45,7 +45,7 @@ function accessRequest(event) {
 			cameraWindow.style.setProperty('--videoVis', 'visible');
 			streamRec = stream;
 			cameraWindow.src = URL.createObjectURL(stream);
-			// cameraWindow.addEventListener('loadeddata', () => takePhotoBtn.style.setProperty('--takePhotoVis', 'visible'));
+			cameraWindow.addEventListener('loadeddata', () => takePhotoBtn.style.setProperty('--takePhotoVis', 'visible'));
 	})
 	.catch(() => {
 		errorMessage.style.setProperty('--errorMes', 'visible');

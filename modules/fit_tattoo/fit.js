@@ -27,7 +27,7 @@ let shiftX, shiftY;
 const minX = 0;
 const minY = 0;
 let maxX, maxY;
-let shift;
+let isResize;
 
 document.addEventListener('mousedown', event => {
 	if (event.target.classList.contains('img_choose')) {
@@ -41,14 +41,16 @@ document.addEventListener('mousedown', event => {
 		const bounds = event.target.getBoundingClientRect();
 		shiftX = bounds.right;
 		shiftY = bounds.bottom;
+		shiftZeroX = bounds.left;
+		shiftZeroY = bounds.top;
 		movedTattoo = event.target;
 		maxX = minX + fitBlock.offsetWidth - movedTattoo.offsetWidth;
 		maxY = minY + fitBlock.offsetHeight - movedTattoo.offsetHeight;
-		if ((event.clientX > shiftX - 30 && 
-			event.clientX < shiftX + 30) || 
-			(event.clientY > shiftY - 30 &&
-			event.clientY < shiftY + 30)) {
-			shift = true;
+		if (event.clientX < shiftX && 
+			event.clientY < shiftY &&
+			event.clientX > shiftZeroX + 30 &&
+			event.clientY > shiftZeroY + 30) {
+			isResize = true;
 		}
 		return false;
 	} else {
@@ -56,42 +58,39 @@ document.addEventListener('mousedown', event => {
 	}
 });
 
-
 document.addEventListener('mousemove', event => {
 	if (movedTattoo) {
 		event.preventDefault();
-		if (shift) {
-			const regExp = /\d+/; 
-			const width =  +regExp.exec(movedTattoo.style.width)[0];
-			const height = +regExp.exec(movedTattoo.style.heigth)[0];
-			if (event.clientX > shiftX) {
-				movedTattoo.style.width =  (width + event.clientX  - shiftX) / 2 + 'px';
-			} else {
-				movedTattoo.style.width = (width - shiftX - event.clientX) / 2 + 'px';
-			}
-			if (event.clientY > shiftY) {
-				movedTattoo.style.height = (height + event.clientY - shiftY) / 2 + 'px';
-			} else {
-				movedTattoo.style.height = (height - shiftY - event.clientY) / 2 + 'px';
-			}
+		let x = event.clientX;
+		let y = event.clientY;
+		x = Math.min(x, maxX);
+		y = Math.min(y, maxY);
+		x = Math.max(x, minX);
+		y = Math.max(y, minY);
+		if (isResize) {
+			movedTattoo.style.width = `${y}px`;
+			movedTattoo.style.height = `${y}px`;
 		} else {
-			let x = event.clientX;
-			let y = event.clientY;
-			x = Math.min(x, maxX);
-			y = Math.min(y, maxY);
-			x = Math.max(x, minX);
-			y = Math.max(y, minY);
 			movedTattoo.style.left = `${x}px`;
 			movedTattoo.style.top = `${y}px`;
 		}
-	} 
+	} else {
+		return;
+	}
 });
 
 document.addEventListener('mouseup', event => {
 	if (movedTattoo) {
 		fitTattooImage.appendChild(movedTattoo);
 		movedTattoo = null;
-		shift = false;
+		isResize = false;
+	}
+});
+
+document.addEventListener('dblclick', (event) => {
+	if (event.target.classList.contains('img_choose')) {
+		movedTattoo.style.width = '300px';
+		movedTattoo.style.height = '400px';
 	}
 });
 

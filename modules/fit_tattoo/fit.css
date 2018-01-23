@@ -12,16 +12,20 @@
 .tattoo_fitting_room div.fit_tattoo_image {
 	position: relative;
 }
+
 .tattoo_fitting_room img {
 	max-width: 100%;
+}
+
+.tattoo_fitting_room img.img_choose {
+	top: 0;
+	left: 50%;
+	position: absolute;
+	border: 2px solid #db6363;
 }
 .tattoo_fitting_room div.fit_tattoo_image .img_choose {
 	height: auto;
 	border: 2px solid #db6363;
-}
-.tattoo_fitting_room img.img_choose {
-	top: 0;
-	left: 50%;
 	position: absolute;
 }
 .control_panel {

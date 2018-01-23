@@ -63,14 +63,14 @@ document.addEventListener('mousemove', event => {
 		event.preventDefault();
 		let x = event.clientX;
 		let y = event.clientY;
-		x = Math.min(x, maxX);
-		y = Math.min(y, maxY);
-		x = Math.max(x, minX);
-		y = Math.max(y, minY);
 		if (isResize) {
 			movedTattoo.style.width = `${y}px`;
 			movedTattoo.style.height = `${y}px`;
 		} else {
+			x = Math.min(x, maxX);
+			y = Math.min(y, maxY);
+			x = Math.max(x, minX);
+			y = Math.max(y, minY);
 			movedTattoo.style.left = `${x}px`;
 			movedTattoo.style.top = `${y}px`;
 		}
@@ -88,7 +88,7 @@ document.addEventListener('mouseup', event => {
 });
 
 document.addEventListener('dblclick', (event) => {
-	if (event.target.classList.contains('img_choose')) {
+	if (event.target.classList.contains('tattoo_fitting_room') || event.target.classList.contains('droppedImg')) {
 		movedTattoo.style.width = '300px';
 		movedTattoo.style.height = '400px';
 	}

@@ -15,8 +15,6 @@ shiftMess.style.setProperty('--shiftMessage', 'hidden');
 
 const tattooToFit = document.querySelector('.tattoo_to_fit');
 
-
-
 function showShiftKey() {
 	shiftMess.style.setProperty('--shiftMessage', 'visible');
 	setTimeout(() => {

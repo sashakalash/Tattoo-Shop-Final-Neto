@@ -33,7 +33,6 @@ const photo = dropSection.querySelector('.make-photo');
 const makePhotoBanner = photo.querySelector('.box_banner');
 makePhotoBanner.style.setProperty('--photoBanner', '#eee4e4');
 
-
 dropField.addEventListener('click', () => {
 	fileInputBtn.click();
 });
@@ -47,12 +46,12 @@ function fileDroped(event) {
 }
 
 dropField.addEventListener('dragover', event => {
-  event.preventDefault();
-  event.target.classList.add('over');
+	event.preventDefault();
+	event.target.classList.add('over');
 });
 
 dropField.addEventListener('dragleave', event => {
-  event.target.classList.remove('over');
+	event.target.classList.remove('over');
 });
 
 dropField.addEventListener('drop', addImg);

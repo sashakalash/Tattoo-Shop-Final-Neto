@@ -9,6 +9,7 @@
 	height: 100%;
 	visibility: var(--fitTattooVisible);
 }
+
 .tattoo_fitting_room div.fit_tattoo_image {
 	position: relative;
 }
@@ -23,11 +24,13 @@
 	position: absolute;
 	border: 2px solid #db6363;
 }
+
 .tattoo_fitting_room div.fit_tattoo_image .tattoo_to_fit{
 	height: auto;
 	border: 2px solid #db6363;
 	position: absolute;
 }
+
 .control_panel {
 	position: absolute;
 	right: 0;
@@ -38,6 +41,7 @@
 	margin-top: 50px;
 	justify-content: flex-end;
 }
+
 .control_panel button {
 	height: 50px;
 	width: 50px;
@@ -45,6 +49,7 @@
 	background-size: contain;
 	background-color: transparent;
 }
+
 .control_panel p.control_panel_banner {
 	margin: 0 10px;
 	visibility: var(--controlsBannerVis);
@@ -53,12 +58,15 @@
 	text-transform: uppercase;
 	font-size: 1em;
 }
+
 .exit_fitting {
 	background-image: url("./exit.png");
 }
+
 .download {
 	background-image: url("./download.png");
 }
+
 .send_to_server {
 	background-image: url("./send.png");
 }

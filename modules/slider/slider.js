@@ -54,8 +54,6 @@ function slidePhoto(event) {
 	chooseImg(sliderImg.src);
 }
 
-
-
 for (const imgSrc of imgArr) {
 	const img = document.createElement('img');
 	img.src = imgSrc;

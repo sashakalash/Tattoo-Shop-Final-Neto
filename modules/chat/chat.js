@@ -16,7 +16,6 @@ inputMessForm.disabled = false;
 
 function wsOpen() {
 	messagesContent.setAttribute('style', 'overflow-y:scroll');
-	
 	if (!messagesContent.querySelector('.message-status')) {
 		messagesContent.appendChild(messageStatus.cloneNode(true));		
 	}
@@ -34,8 +33,8 @@ function wsOpen() {
 	const messageAnotherUser = Array.from(document.querySelectorAll('.message'))
 	.find(el => {
 		if (!(el.classList.contains('loading') || 
-            el.classList.contains('message-personal') || 
-            el.classList.contains('message-status'))) {
+			el.classList.contains('message-personal') || 
+			el.classList.contains('message-status'))) {
 			return el.cloneNode(true);
 		}
 	});
@@ -135,7 +134,7 @@ chatTitleToClick.addEventListener('click', () => {
 		const messageStatusToRemove = messagesContent.querySelector('.message-status');
 		if (messageStatusToRemove) {
 			messageStatusToRemove.parentElement.removeChild(messageStatusToRemove);
-		}	
+		}
 		isFirstCallingChat = true;
 	}
 });

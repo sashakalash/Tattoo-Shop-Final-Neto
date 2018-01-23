@@ -56,7 +56,6 @@ function accessRequest(event) {
 function getPhoto() {
 	audio.play();
 	takePhotoBtn.style.setProperty('--takePhotoVis', 'hidden');
-	rePhotoBtn.style.setProperty('--rephotoVis', 'visible');
 	canvas.style.setProperty('--canvasDisp', 'block');
 	canvas.width = cameraWindow.videoWidth;
 	canvas.height = cameraWindow.videoHeight;
@@ -64,6 +63,7 @@ function getPhoto() {
 	ctx.drawImage(cameraWindow, 0, 0);
 	const img = document.createElement('img');
 	img.src = canvas.toDataURL();
+	img.addEventListener('load', () => rePhotoBtn.style.setProperty('--rephotoVis', 'visible'));
 	streamRec.getTracks().forEach(track => track.stop());
 	cameraWindow.style.setProperty('--videoVis', 'hidden');
 	cameraWindow.src = URL.revokeObjectURL(streamRec);

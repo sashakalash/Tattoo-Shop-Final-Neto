@@ -36,13 +36,11 @@
 .make-photo .rephoto {
 	height: 50px;
 	width: 50px;
-	position: absolute;
-	background-color: #c2b8b8;
+	background-color: transparent;
 	background-image: url(./rephoto.png);
 	background-size: cover;
 	bottom: 0;
-	margin: auto;
-	top: 98%;
+	left: 45%;
 	z-index: 2;
 	visibility: var(--rephotoVis);
 }

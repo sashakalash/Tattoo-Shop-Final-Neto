@@ -17,13 +17,13 @@
 	max-width: 100%;
 }
 
-.tattoo_fitting_room img.img_choose {
+.tattoo_fitting_room img.tattoo_to_fit {
 	top: 0;
 	left: 50%;
 	position: absolute;
 	border: 2px solid #db6363;
 }
-.tattoo_fitting_room div.fit_tattoo_image .img_choose {
+.tattoo_fitting_room div.fit_tattoo_image .tattoo_to_fit{
 	height: auto;
 	border: 2px solid #db6363;
 	position: absolute;
@@ -63,31 +63,22 @@
 	background-image: url("./send.png");
 }
 
-.fitting_mess {
+.fitting_mess_push {
 	position: absolute;
-	top: 50%;
-	left: 25%;
 	z-index: 3;
 	background-color: rgba(255, 255, 255, 0.9);
 	color: #db6363;
 	font-family: montserrat;
 	text-transform: uppercase;
-	font-size: 1.5em;
+	font-size: 1em;
 	letter-spacing: 3.7px;
 	visibility: var(--fittingMessage);
-}
-.fitting_mess::before {
-	content: "« ";
-	font-size: 70px;
-	line-height: 80px;
-	vertical-align: text-top;
+	right: var(--fittingMesPos);
 }
 
-.fitting_mess::after {
-	content: " «";
-	font-size: 70px;
-	line-height: 80px;
-	vertical-align: text-top;
+.fitting_mess_push::after {
+	content: " »";
+
 }
 
 .img_send_mess {

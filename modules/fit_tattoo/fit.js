@@ -10,9 +10,12 @@ const buttons = controlsPanel.querySelectorAll('button');
 const imgSendStatus = document.querySelector('.img_send_mess');
 imgSendStatus.style.setProperty('--sendMessVis', 'hidden');
 
-
 const shiftMess = document.querySelector('.shift_key_mess');
 shiftMess.style.setProperty('--shiftMessage', 'hidden');
+
+const tattooToFit = document.querySelector('.tattoo_to_fit');
+
+
 
 function showShiftKey() {
 	shiftMess.style.setProperty('--shiftMessage', 'visible');
@@ -29,8 +32,8 @@ const minY = 0;
 let maxX, maxY;
 let isResize;
 
-document.addEventListener('mousedown', event => {
-	if (event.target.classList.contains('img_choose')) {
+function dragTattooStart(event) {
+	if (event.target.classList.contains('tattoo_to_fit')) {
 		if (isFirstMove) {
 			setTimeout(() => {
 				showShiftKey();
@@ -56,11 +59,12 @@ document.addEventListener('mousedown', event => {
 	} else {
 		return;
 	}
-});
+}
 
-document.addEventListener('mousemove', event => {
+function dragTattoo(event) {
 	if (movedTattoo) {
 		event.preventDefault();
+		fittingMessage.style.setProperty('--fittingMessage', 'hidden');
 		let x = event.clientX;
 		let y = event.clientY;
 		if (isResize) {
@@ -77,22 +81,27 @@ document.addEventListener('mousemove', event => {
 	} else {
 		return;
 	}
-});
+}
 
-document.addEventListener('mouseup', event => {
+function droptattoo(event) {
 	if (movedTattoo) {
 		fitTattooImage.appendChild(movedTattoo);
 		movedTattoo = null;
 		isResize = false;
 	}
-});
+}
 
-document.addEventListener('dblclick', (event) => {
+function returnStartSize(event) {
 	if (event.target.classList.contains('tattoo_fitting_room') || event.target.classList.contains('droppedImg')) {
 		movedTattoo.style.width = '300px';
 		movedTattoo.style.height = '400px';
 	}
-});
+}
+
+document.addEventListener('mousedown', dragTattooStart);
+document.addEventListener('mousemove', dragTattoo);
+document.addEventListener('mouseup', droptattoo);
+document.addEventListener('dblclick', returnStartSize);
 
 Array.from(controlBanners).forEach(el => {
 	el.style.setProperty('--controlsBannerVis', 'hidden');
@@ -114,7 +123,7 @@ buttons.forEach(el => {
 });
 
 function makeToChangeImg(event) {
-	if (event.target.classList.contains('control_panel_banner')) {
+	if (!(event.target.tagName == 'button')) {
 		return;
 	}
 	if (event.target.classList.contains('exit_fitting')) {
@@ -124,7 +133,7 @@ function makeToChangeImg(event) {
 	const canvas = document.createElement('canvas');
 	const ctx = canvas.getContext('2d');
 	const img1 = fitTattooField.querySelector('.droppedImg');
-	const img2 = fitTattooField.querySelector('.img_choose');
+	const img2 = fitTattooField.querySelector('.tattoo_to_fit');
 	const tattooCoord = img2.getBoundingClientRect();
 	canvas.width = img1.width;
 	canvas.height = img1.height;
@@ -156,15 +165,13 @@ function sendImg(canvas) {
 }
 
 function exitFitting() {
-	fittingMessage.style.setProperty('--fittingMessage', 'hidden');
 	const img = fitBlock.querySelector('.droppedImg');
-	const tattoo = fitBlock.querySelector('.img_choose');
+	const tattoo = fitBlock.querySelector('.tattoo_to_fit');
 	dropField.appendChild(img);
 	tattoo.parentElement.removeChild(tattoo);
 	fitTattooField.style.setProperty('--fitTattooVisible', 'hidden');
 	cameraWindow.style.setProperty('--videoVis', 'hidden');
 	rePhotoBtn.style.setProperty('--rephotoVis', 'hidden');
-	
 }
 
 function showSendStatus() {

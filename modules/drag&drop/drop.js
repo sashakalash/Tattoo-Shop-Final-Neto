@@ -18,7 +18,7 @@ const banner = document.querySelector('.box_banner');
 const fileInputBtn = document.querySelector('#fileInput');
 fileInputBtn.addEventListener('change', fileDroped);
 
-const fittingMessage = document.querySelector('.fitting_mess');
+const fittingMessage = document.querySelector('.fitting_mess_push');
 fittingMessage.style.setProperty('--fittingMessage', 'hidden');
 
 const aboutText = document.querySelector('.text');
@@ -97,6 +97,8 @@ dropSection.addEventListener('mouseout', (event) => {
 dragImage.addEventListener('click', () => {
 	const tattooToFit = document.querySelector('.img_choose');
 	const tattooToFitCopy = tattooToFit.cloneNode();
+	tattooToFitCopy.classList.remove('img_choose');
+	tattooToFitCopy.classList.add('tattoo_to_fit');
 	const imgDropped = dropField.querySelector('.droppedImg');
 	const imgPhoto = photobooth.querySelector('canvas');
 	if (!imgDropped) {
@@ -111,10 +113,8 @@ dragImage.addEventListener('click', () => {
 	fitTattooTattoo.appendChild(tattooToFitCopy);
 	fitTattooField.style.setProperty('--fitTattooVisible', 'visible');
 	fittingMessage.style.setProperty('--fittingMessage', 'visible');
+	fittingMessage.style.setProperty('--fittingMesPos', '50%');
 });
-
-
-	
 
 function fitWithoutChooseTattooErr() {
 	dropBanner.style.setProperty('--dropBanner', '#db6363');

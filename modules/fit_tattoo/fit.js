@@ -24,11 +24,13 @@ function showShiftKey() {
 
 let isFirstMove = true;
 let movedTattoo = null;
-let shiftX, shiftY;
-const minX = 0;
-const minY = 0;
-let maxX, maxY;
-let isResize;
+let shiftX = 0, shiftY = 0, minX, minY,maxX, maxY, bottom, right, width, height;
+let shift;
+
+document.addEventListener('mousedown', dragTattooStart);
+document.addEventListener('mousemove', dragTattoo);
+document.addEventListener('mouseup', droptattoo);
+document.addEventListener('dblclick', returnStartSize);
 
 function dragTattooStart(event) {
 	if (event.target.classList.contains('tattoo_to_fit')) {
@@ -40,20 +42,30 @@ function dragTattooStart(event) {
 		}
 		fittingMessage.style.setProperty('--fittingMessage', 'hidden');
 		const bounds = event.target.getBoundingClientRect();
-		shiftX = bounds.right;
-		shiftY = bounds.bottom;
-		shiftZeroX = bounds.left;
-		shiftZeroY = bounds.top;
+
 		movedTattoo = event.target;
+		minX = fitBlock.offsetLeft;
+		minY = fitBlock.offsetTop;
 		maxX = minX + fitBlock.offsetWidth - movedTattoo.offsetWidth;
 		maxY = minY + fitBlock.offsetHeight - movedTattoo.offsetHeight;
-		if (event.clientX < shiftX && 
-			event.clientY < shiftY &&
-			event.clientX > shiftZeroX + 30 &&
-			event.clientY > shiftZeroY + 30) {
-			isResize = true;
+		shiftX = event.clientX - bounds.left;
+		shiftY = event.clientY - bounds.top;
+
+		
+		
+		if ((event.clientX > bounds.right - 30 && 
+			event.clientX < bounds.right + 30) || 
+			(event.clientY > bounds.bottom - 30 &&
+			event.clientY < bounds.bottom + 30)) {
+			shift = true;
+			bottom = bounds.bottom;
+			right = bounds.right;
+			width = bounds.right - bounds.left;
+			height = bounds.bottom - bounds.top;
 		}
 		return false;
+	} else if (event.target.classList.contains('droppedImg')) {
+		event.preventDefault();
 	} else {
 		return;
 	}
@@ -62,13 +74,25 @@ function dragTattooStart(event) {
 function dragTattoo(event) {
 	if (movedTattoo) {
 		event.preventDefault();
-		fittingMessage.style.setProperty('--fittingMessage', 'hidden');
-		let x = event.clientX;
-		let y = event.clientY;
-		if (isResize) {
-			movedTattoo.style.width = `${y}px`;
-			movedTattoo.style.height = `${y}px`;
+		if (shift) {
+			// const regExp = /\d+/; 
+			// const width =  +regExp.exec(movedTattoo.style.width)[0];
+			// const height = +regExp.exec(movedTattoo.style.heigth)[0];
+			// if (event.clientX > shiftX) {
+			// 	movedTattoo.style.width =  (width + event.clientX  - shiftX) / 2 + 'px';
+			// } else {
+			// 	movedTattoo.style.width = (width - shiftX - event.clientX) / 2 + 'px';
+			// }
+			if (event.clientY > shiftY) {
+				movedTattoo.style.height = height + event.clientY - bottom + 'px';
+				movedTattoo.style.width =  width + event.clientY  - right+ 'px';
+			} else {
+				movedTattoo.style.height = height - (bottom - event.clientY) + 'px';
+				movedTattoo.style.width =  width + (right  - event.clientY) + 'px';
+			}
 		} else {
+			x = event.clientX - shiftX;
+			y = event.clientY - shiftY;
 			x = Math.min(x, maxX);
 			y = Math.min(y, maxY);
 			x = Math.max(x, minX);
@@ -96,10 +120,7 @@ function returnStartSize(event) {
 	}
 }
 
-document.addEventListener('mousedown', dragTattooStart);
-document.addEventListener('mousemove', dragTattoo);
-document.addEventListener('mouseup', droptattoo);
-document.addEventListener('dblclick', returnStartSize);
+
 
 Array.from(controlBanners).forEach(el => {
 	el.style.setProperty('--controlsBannerVis', 'hidden');

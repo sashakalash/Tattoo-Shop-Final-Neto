@@ -73,7 +73,7 @@
 
 .fitting_mess_push {
 	font-size: 5em;
-    position: absolute;
+	position: absolute;
 	top: 350px;
 	letter-spacing: 20px;
 	z-index: 3;
@@ -94,16 +94,3 @@
 	visibility: var(--sendMessVis);
 }
 
-/* .shift_key_mess {
-	position: fixed;
-	top: 0;
-	left: 50%;
-	z-index: 3;
-	background-color: rgba(255, 255, 255, 0.9);
-	color: #db6363;
-	font-family: montserrat;
-	text-transform: uppercase;
-	font-size: 1.5em;
-	letter-spacing: 3.7px;
-	visibility: var(--shiftMessage);
-} */

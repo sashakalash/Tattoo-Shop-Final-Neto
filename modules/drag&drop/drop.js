@@ -30,8 +30,6 @@ const photo = dropSection.querySelector('.make-photo');
 const makePhotoBanner = photo.querySelector('.box_banner');
 makePhotoBanner.style.setProperty('--photoBanner', '#eee4e4');
 
-
-
 dropField.addEventListener('click', () => {
 	fileInputBtn.click();
 });

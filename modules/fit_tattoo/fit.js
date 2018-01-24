@@ -10,9 +10,6 @@ const buttons = controlsPanel.querySelectorAll('button');
 const imgSendStatus = document.querySelector('.img_send_mess');
 imgSendStatus.style.setProperty('--sendMessVis', 'hidden');
 
-
-
-
 const fittingMessage = document.querySelector('.fitting_mess_push');
 fittingMessage.style.setProperty('--fittingMessVis', 'hidden');
 fittingMessage.style.setProperty('--fittingMessPos', '500');

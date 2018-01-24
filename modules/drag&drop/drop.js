@@ -18,9 +18,6 @@ const banner = document.querySelector('.box_banner');
 const fileInputBtn = document.querySelector('#fileInput');
 fileInputBtn.addEventListener('change', fileDroped);
 
-const fittingMessage = document.querySelector('.fitting_mess_push');
-fittingMessage.style.setProperty('--fittingMessage', 'hidden');
-
 const aboutText = document.querySelector('.text');
 aboutText.style.setProperty('--textAboutColor', '#2f2d2d');
 
@@ -32,6 +29,8 @@ dropBanner.style.setProperty('--dropBanner', '#eee4e4');
 const photo = dropSection.querySelector('.make-photo');
 const makePhotoBanner = photo.querySelector('.box_banner');
 makePhotoBanner.style.setProperty('--photoBanner', '#eee4e4');
+
+
 
 dropField.addEventListener('click', () => {
 	fileInputBtn.click();
@@ -98,6 +97,7 @@ dragImage.addEventListener('click', () => {
 	const tattooToFitCopy = tattooToFit.cloneNode();
 	tattooToFitCopy.classList.remove('img_choose');
 	tattooToFitCopy.classList.add('tattoo_to_fit');
+	tattooToFitCopy.unselectable = 'on';
 	const imgDropped = dropField.querySelector('.droppedImg');
 	const imgPhoto = photobooth.querySelector('canvas');
 	if (!imgDropped) {
@@ -111,8 +111,9 @@ dragImage.addEventListener('click', () => {
 	}
 	fitTattooTattoo.appendChild(tattooToFitCopy);
 	fitTattooField.style.setProperty('--fitTattooVisible', 'visible');
-	fittingMessage.style.setProperty('--fittingMessage', 'visible');
-	fittingMessage.style.setProperty('--fittingMesPos', '50%');
+	fittingMessageAnimation();
+	// fittingMessage.style.setProperty('--fittingMessage', 'visible');
+	// fittingMessage.style.setProperty('--fittingMesPos', '50%');
 });
 
 function fitWithoutChooseTattooErr() {

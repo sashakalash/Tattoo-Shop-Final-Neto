@@ -22,12 +22,12 @@
 	top: 0;
 	left: 50%;
 	position: absolute;
-	border: 2px solid #db6363;
 }
 
 .tattoo_fitting_room div.fit_tattoo_image .tattoo_to_fit{
 	height: 80%;
-	border: 2px solid #db6363;
+	border-bottom: 2px var(--border) #ffffff;
+	border-right: 2px var(--border) #ffffff;
 	position: absolute;
 }
 

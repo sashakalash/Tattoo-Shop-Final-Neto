@@ -97,6 +97,7 @@ dragImage.addEventListener('click', () => {
 	const tattooToFitCopy = tattooToFit.cloneNode();
 	tattooToFitCopy.classList.remove('img_choose');
 	tattooToFitCopy.classList.add('tattoo_to_fit');
+	tattooToFit.style.setProperty('--border', 'none');
 	tattooToFitCopy.unselectable = 'on';
 	const imgDropped = dropField.querySelector('.droppedImg');
 	const imgPhoto = photobooth.querySelector('canvas');
@@ -112,8 +113,6 @@ dragImage.addEventListener('click', () => {
 	fitTattooTattoo.appendChild(tattooToFitCopy);
 	fitTattooField.style.setProperty('--fitTattooVisible', 'visible');
 	fittingMessageAnimation();
-	// fittingMessage.style.setProperty('--fittingMessage', 'visible');
-	// fittingMessage.style.setProperty('--fittingMesPos', '50%');
 });
 
 function fitWithoutChooseTattooErr() {

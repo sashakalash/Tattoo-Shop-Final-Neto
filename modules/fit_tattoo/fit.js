@@ -10,10 +10,8 @@ const buttons = controlsPanel.querySelectorAll('button');
 const imgSendStatus = document.querySelector('.img_send_mess');
 imgSendStatus.style.setProperty('--sendMessVis', 'hidden');
 
-// const shiftMess = document.querySelector('.shift_key_mess');
-// shiftMess.style.setProperty('--shiftMessage', 'hidden');
 
-const tattooToFit = document.querySelector('.tattoo_to_fit');
+
 
 const fittingMessage = document.querySelector('.fitting_mess_push');
 fittingMessage.style.setProperty('--fittingMessVis', 'hidden');
@@ -45,12 +43,17 @@ function fittingMessageAnimation() {
 	tick();
 }
 
-// function showShiftKey() {
-// 	shiftMess.style.setProperty('--shiftMessage', 'visible');
-// 	setTimeout(() => {
-// 		shiftMess.style.setProperty('--shiftMessage', 'hidden');
-// 	}, 5000);
-// }
+
+function showKey(event) {
+	const tattooToFit = document.querySelector('.tattoo_to_fit');
+	if (event.target.classList.contains('tattoo_to_fit')) {
+		if (event.type === 'mouseover') {
+			event.target.style.setProperty('--border', 'dashed');
+		} else if (event.type === 'mouseout') {
+			event.target.style.setProperty('--border', 'none');
+		}
+	}
+}
 
 let isFirstMove = true;
 let movedTattoo = null;
@@ -61,16 +64,12 @@ let isResize = false;
 
 document.addEventListener('mousedown', dragTattooStart);
 document.addEventListener('mousemove', dragTattoo);
-document.addEventListener('mouseup', droptattoo);
+document.addEventListener('mouseup', dropTattoo);
+document.addEventListener('mouseover', showKey);
+document.addEventListener('mouseout', showKey);
 
 function dragTattooStart(event) {
 	if (event.target.classList.contains('tattoo_to_fit')) {
-		// if (isFirstMove) {
-		// 	setTimeout(() => {
-		// 		showShiftKey();
-		// 	}, 2000);
-		// 	isFirstMove = false;
-		// }
 		fittingMessage.style.setProperty('--fittingMessage', 'hidden');
 		const bounds = event.target.getBoundingClientRect();
 		movedTattoo = event.target;
@@ -119,11 +118,13 @@ function dragTattoo(event) {
 	}
 }
 
-function droptattoo(event) {
+function dropTattoo(event) {
 	if (movedTattoo) {
 		fitTattooImage.appendChild(movedTattoo);
 		movedTattoo = null;
 		isResize = false;
+	} else {
+		return;
 	}
 }
 

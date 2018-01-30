@@ -10,7 +10,6 @@
 .make-photo .error_message {
 	position: absolute;
 	top: 50%;
-	display: inline-block;
 	visibility: var(--errorMes);
 	font-family: montserrat;
 	text-transform: uppercase;

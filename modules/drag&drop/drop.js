@@ -13,7 +13,7 @@ const dragImage = document.querySelector('.fit-tattoo');
 const fitTattooImage = fitTattooField.querySelector('.fit_tattoo_image');
 const fitTattooTattoo = fitTattooField.querySelector('.fit_tattoo_tattoo');
 
-const banner = document.querySelector('.box_banner');
+// const banner = document.querySelector('.box_banner');
 
 const fileInputBtn = document.querySelector('#fileInput');
 fileInputBtn.addEventListener('change', fileDroped);
@@ -25,7 +25,9 @@ const previewBlock = document.querySelector('.preview');
 previewBlock.style.setProperty('--previewBorder', '#ffffff');
 
 const dropBanner = dropField.querySelector('.box_banner');
-dropBanner.style.setProperty('--dropBanner', '#eee4e4');
+dropBanner.style.setProperty('--dropBannerColor', '#eee4e4');
+dropBanner.style.setProperty('--dropBannerVis', 'visible');
+
 const photo = dropSection.querySelector('.make-photo');
 const makePhotoBanner = photo.querySelector('.box_banner');
 makePhotoBanner.style.setProperty('--photoBanner', '#eee4e4');
@@ -35,6 +37,9 @@ dropField.addEventListener('click', () => {
 });
 
 function fileDroped(event) {
+	if (!event.target) {
+		return;
+	}
 	const droppedImg = dropField.querySelector('.droppedImg');
 	if (droppedImg) {
 		dropField.removeChild(droppedImg);
@@ -59,7 +64,10 @@ function addImg(event) {
 }
 
 function setPreview(file) {
-	banner.style.visibility = 'hidden';
+	if (!file) {
+		return;
+	}
+	dropBanner.style.setProperty('--dropBannerVis', 'hidden');
 	dropPic.style.setProperty('--dropPic', 'hidden');
 	const imageTypeRegExp = /^image\//;
 	if (imageTypeRegExp.test(file.type)) {
@@ -99,7 +107,7 @@ dragImage.addEventListener('click', () => {
 	tattooToFitCopy.unselectable = 'on';
 	const imgDropped = dropField.querySelector('.droppedImg');
 	const imgPhoto = photobooth.querySelector('canvas');
-	if (!imgDropped) {
+	if (!(imgDropped || imgPhoto.classList.contains('true'))) {
 		fitWithoutChooseTattooErr();
 		return;
 	}
@@ -114,10 +122,10 @@ dragImage.addEventListener('click', () => {
 });
 
 function fitWithoutChooseTattooErr() {
-	dropBanner.style.setProperty('--dropBanner', '#db6363');
+	dropBanner.style.setProperty('--dropBannerColor', '#db6363');
 	makePhotoBanner.style.setProperty('--photoBanner', '#db6363');
 	setTimeout(() => {
-		dropBanner.style.setProperty('--dropBanner', '#eee4e4');
+		dropBanner.style.setProperty('--dropBannerColor', '#eee4e4');
 		makePhotoBanner.style.setProperty('--photoBanner', '#eee4e4');
 	}, 1000);
 }

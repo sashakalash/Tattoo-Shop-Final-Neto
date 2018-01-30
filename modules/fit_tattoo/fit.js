@@ -29,7 +29,7 @@ function fittingMessageAnimation() {
 			left = 500;
 		}
 		fitBlock.addEventListener('mousedown', (event) => {
-			if (!event.target.classList.contains('tattoo_to_fit')) {
+			if (!(event.target.classList.contains('tattoo_to_fit') || event.target.classList.contains('exit_fitting'))) {
 				return;
 			}
 			fittingMessage.style.setProperty('--fittingMessVis', 'hidden');
@@ -70,10 +70,20 @@ function dragTattooStart(event) {
 		fittingMessage.style.setProperty('--fittingMessage', 'hidden');
 		const bounds = event.target.getBoundingClientRect();
 		movedTattoo = event.target;
-		minX = fitBlock.offsetLeft;
-		minY = fitBlock.offsetTop;
-		maxX = minX + fitBlock.offsetWidth - movedTattoo.offsetWidth;
-		maxY = minY + fitBlock.offsetHeight - movedTattoo.offsetHeight;
+		const droppedImg = document.querySelector('.droppedImg');
+		const canvas = document.querySelector('canvas');
+		let photoImg;
+		if (droppedImg) {
+			photoImg = droppedImg;
+		} else {
+			photoImg = canvas;
+		}
+		
+	
+		minX = photoImg.offsetLeft;
+		minY = photoImg.offsetTop;
+		maxX = minX + photoImg.offsetWidth - movedTattoo.offsetWidth;
+		maxY = minY + photoImg.offsetHeight - movedTattoo.offsetHeight;
 		shiftX = event.clientX - bounds.left;
 		shiftY = event.clientY - bounds.top;
 
@@ -86,12 +96,13 @@ function dragTattooStart(event) {
 			tattooWidth = bounds.width;
 			tattooHeight = bounds.height;
 		}
-		return false;
+		
 	} else if (event.target.classList.contains('droppedImg')) {
 		event.preventDefault();
 	} else {
 		return;
 	}
+	return false;
 }
 
 function dragTattoo(event) {
@@ -100,9 +111,10 @@ function dragTattoo(event) {
 	} 
 	event.preventDefault();
 	const k = event.clientY - tattooBottom;
+	const coeff = tattooWidth / tattooHeight; 
 	if (isResize) {
-		movedTattoo.style.height = tattooHeight + k + 'px';
-		movedTattoo.style.width =  tattooWidth + k * tattooWidth / tattooHeight + 'px';
+		movedTattoo.style.height = tattooHeight + k < 35? '35px': `${tattooHeight + k}px`;
+		movedTattoo.style.width =  tattooWidth + k * coeff < 35? `${35 * coeff}px`: `${tattooWidth + k * coeff}px`;
 	} else {
 		x = event.clientX - shiftX;
 		y = event.clientY - shiftY;
@@ -113,6 +125,7 @@ function dragTattoo(event) {
 		movedTattoo.style.left = `${x}px`;
 		movedTattoo.style.top = `${y}px`;
 	}
+	return false;
 }
 
 function dropTattoo(event) {
@@ -154,24 +167,30 @@ function makeToChangeImg(event) {
 	}
 	const canvas = document.createElement('canvas');
 	const ctx = canvas.getContext('2d');
-	const img1 = fitTattooField.querySelector('.droppedImg');
-	const img2 = fitTattooField.querySelector('.tattoo_to_fit');
-	const tattooCoord = img2.getBoundingClientRect();
-	canvas.width = img1.width;
-	canvas.height = img1.height;
-	ctx.drawImage(img1, 0, 0);
-	ctx.drawImage(img2, tattooCoord.left, tattooCoord.top, img2.width, img2.height);
+	const img = fitTattooField.querySelector('.droppedImg');
+	const photo = fitTattooField.querySelector('canvas');
+	const tattoo = fitTattooField.querySelector('.tattoo_to_fit');
+	const tattooCoord = tattoo.getBoundingClientRect();
+	if (img) {
+		canvas.width = img.width;
+		canvas.height = img.height;
+		ctx.drawImage(img, 0, 0);
+	} else {
+		canvas.width = photo.width;
+		canvas.height = photo.height;
+		ctx.drawImage(photo, 0, 0);
+	}
+	console.log(tattoo, tattooCoord.left, tattooCoord.top, tattoo.width, tattoo.height)
+	ctx.drawImage(tattoo, tattooCoord.left, tattooCoord.top, tattoo.width, tattoo.height);
 	if (event.target.classList.contains('send_to_server')) {
 		sendImg(canvas);
 		exitFitting();
 		showSendStatus();
 		return;
 	} else {
-		const img = document.createElement('img');
-		img.src = canvas.toDataURL();
 		const link = document.createElement('a');
 		link.download = 'tattoo.jpg';
-		link.href = img.src;
+		link.href = canvas.toDataURL();
 		link.click();
 	}
 }
@@ -189,9 +208,15 @@ function sendImg(canvas) {
 function exitFitting() {
 	const img = fitBlock.querySelector('.droppedImg');
 	const tattoo = fitBlock.querySelector('.tattoo_to_fit');
-	dropField.appendChild(img);
+	const canvas = fitBlock.querySelector('canvas');
+	if (img) {
+		dropField.appendChild(img);
+	} else if (canvas.classList.contains('true')) {
+		canvas.parentElement.removeChild(canvas);
+	}
 	tattoo.parentElement.removeChild(tattoo);
 	fitTattooField.style.setProperty('--fitTattooVisible', 'hidden');
+	photoBoxBanner.style.setProperty('--photoBannerVis', 'visible');
 	cameraWindow.style.setProperty('--videoVis', 'hidden');
 	rePhotoBtn.style.setProperty('--rephotoVis', 'hidden');
 }

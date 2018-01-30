@@ -28,33 +28,49 @@ photobooth.appendChild(canvas);
 canvas.style.setProperty('--canvasDisp', 'none');
 const ctx = canvas.getContext('2d');
 
-const boxBanner = photobooth.querySelector('.box_banner');
+const photoBoxBanner = photobooth.querySelector('.box_banner');
+photoBoxBanner.style.setProperty('--photoBannerVis', 'visible');
 
 let streamRec;
 function accessRequest(event) {
 	if (event.target.classList.contains('take-photo')) {
 		return;
 	}
-	canvas.classList.add('false');
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	if (canvas.classList.contains('true')) {
+		canvas.classList.remove('true');
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+	}
 	navigator.mediaDevices
 	.getUserMedia({video: true, audio: false})
 		.then((stream) => {
 			rePhotoBtn.style.setProperty('--rephotoVis', 'hidden');
-			boxBanner.style.visibility = 'hidden';
+			photoBoxBanner.style.setProperty('--photoBannerVis', 'hidden');
 			cameraWindow.style.setProperty('--videoVis', 'visible');
 			streamRec = stream;
-			cameraWindow.src = URL.createObjectURL(stream);
+			try {
+				cameraWindow.srcObject = stream;
+			} catch(err) {
+				cameraWindow.src = URL.createObjectURL(stream);
+			}
 			cameraWindow.addEventListener('loadeddata', () => takePhotoBtn.style.setProperty('--takePhotoVis', 'visible'));
 	})
 	.catch(() => {
 		errorMessage.style.setProperty('--errorMes', 'visible');
 		errorMessage.textContent = 'Не удалось получить доступ к камере';
+		setTimeout(() => {
+			errorMessage.style.setProperty('--errorMes', 'hidden');
+		}, 2000);
 	});
 }
 
 function getPhoto() {
 	audio.play();
+	const droppedImg = document.querySelector('.droppedImg');
+	if (droppedImg) {
+		droppedImg.parentElement.removeChild(droppedImg);
+		dropBanner.style.setProperty('--dropBannerVis', 'visible');
+		dropPic.style.setProperty('--dropPic', 'visible');
+	}
 	takePhotoBtn.style.setProperty('--takePhotoVis', 'hidden');
 	canvas.style.setProperty('--canvasDisp', 'block');
 	canvas.width = cameraWindow.videoWidth;

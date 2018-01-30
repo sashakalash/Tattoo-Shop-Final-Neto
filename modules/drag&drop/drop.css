@@ -23,11 +23,13 @@
 }
 
 .drop p.box_banner {
-	color: var(--dropBanner);
+	color: var(--dropBannerColor);
+	visibility: var(--dropBannerVis)
 }
 
 .make-photo p.box_banner{
 	color: var(--photoBanner);
+	visibility: var(--photoBannerVis);
 }
 
 .box_banner {

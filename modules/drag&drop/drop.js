@@ -13,8 +13,6 @@ const dragImage = document.querySelector('.fit-tattoo');
 const fitTattooImage = fitTattooField.querySelector('.fit_tattoo_image');
 const fitTattooTattoo = fitTattooField.querySelector('.fit_tattoo_tattoo');
 
-// const banner = document.querySelector('.box_banner');
-
 const fileInputBtn = document.querySelector('#fileInput');
 fileInputBtn.addEventListener('change', fileDroped);
 
@@ -99,9 +97,8 @@ dropSection.addEventListener('mouseout', (event) => {
 });
 
 dragImage.addEventListener('click', () => {
-	const tattooToFit = document.querySelector('.img_choose');
+	const tattooToFit = document.querySelector('.slider img');
 	const tattooToFitCopy = tattooToFit.cloneNode();
-	tattooToFitCopy.classList.remove('img_choose');
 	tattooToFitCopy.classList.add('tattoo_to_fit');
 	tattooToFit.style.setProperty('--border', 'none');
 	tattooToFitCopy.unselectable = 'on';

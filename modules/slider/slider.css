@@ -1,11 +1,11 @@
 
-.snake {
+.slider {
 	height: 300px;
 	width: 100%;
 	position: relative;
 }
 
-.snake img {
+.slider img {
 	max-width: 100%;
 }
 
@@ -86,8 +86,6 @@ button:hover {
 	border: 2px solid black;
 	border-radius: 50%;
 	display: inline-block;
-	width: 60px;
-	height: 60px;
 	cursor: pointer;
 }
 

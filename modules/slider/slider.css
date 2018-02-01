@@ -82,11 +82,13 @@ button:hover {
 	box-sizing: border-box;
 }
 
-.preview img {
+.preview img.previewImg {
 	border: 2px solid black;
 	border-radius: 50%;
 	display: inline-block;
 	cursor: pointer;
+	width: 60px;
+	height: 60px;
 }
 
 .preview img:hover {

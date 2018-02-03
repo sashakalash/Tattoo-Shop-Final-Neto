@@ -30,6 +30,7 @@ function fittingMessageAnimation() {
     }
     fitBlock.addEventListener('mousedown', (event) => {
       if (!(event.target.classList.contains('tattoo_to_fit') || event.target.classList.contains('exit_fitting'))) {
+        event.preventDefault();
         return;
       }
       fittingMessage.style.setProperty('--fittingMessVis', 'hidden');
@@ -66,41 +67,36 @@ document.addEventListener('mouseover', showKey);
 document.addEventListener('mouseout', showKey);
 
 function dragTattooStart(event) {
-  if (event.target.classList.contains('tattoo_to_fit')) {
-    fittingMessage.style.setProperty('--fittingMessage', 'hidden');
-    const bounds = event.target.getBoundingClientRect();
-    movedTattoo = event.target;
-    const droppedImg = document.querySelector('.droppedImg');
-    const canvas = document.querySelector('canvas');
-    let photoImg;
-    if (droppedImg) {
-      photoImg = droppedImg;
-    } else {
-      photoImg = canvas;
-    }
-    
-  
-    minX = photoImg.offsetLeft;
-    minY = photoImg.offsetTop;
-    maxX = minX + photoImg.offsetWidth - movedTattoo.offsetWidth;
-    maxY = minY + photoImg.offsetHeight - movedTattoo.offsetHeight;
-    shiftX = event.clientX - bounds.left;
-    shiftY = event.clientY - bounds.top;
-
-    if ((event.clientX > bounds.right - 30 && 
-      event.clientX < bounds.right) && 
-      (event.clientY > bounds.bottom - 30 &&
-      event.clientY < bounds.bottom)) {
-      isResize = true;
-      tattooBottom = bounds.bottom;
-      tattooWidth = bounds.width;
-      tattooHeight = bounds.height;
-    }
-    
-  } else if (event.target.classList.contains('droppedImg')) {
-    event.preventDefault();
-  } else {
+  if (!event.target.classList.contains('tattoo_to_fit') || event.target.classList.contains('droppedImg')) {
     return;
+  }
+  fittingMessage.style.setProperty('--fittingMessage', 'hidden');
+  const bounds = event.target.getBoundingClientRect();
+  movedTattoo = event.target;
+  const droppedImg = document.querySelector('.droppedImg');
+  const canvas = document.querySelector('canvas');
+  let photoImg;
+  if (droppedImg) {
+    photoImg = droppedImg;
+  } else {
+    photoImg = canvas;
+  }
+
+  minX = photoImg.offsetLeft;
+  minY = photoImg.offsetTop;
+  maxX = minX + photoImg.offsetWidth - movedTattoo.offsetWidth;
+  maxY = minY + photoImg.offsetHeight - movedTattoo.offsetHeight;
+  shiftX = event.clientX - bounds.left;
+  shiftY = event.clientY - bounds.top;
+
+  if ((event.clientX > bounds.right - 30 && 
+    event.clientX < bounds.right) && 
+    (event.clientY > bounds.bottom - 30 &&
+    event.clientY < bounds.bottom)) {
+    isResize = true;
+    tattooBottom = bounds.bottom;
+    tattooWidth = bounds.width;
+    tattooHeight = bounds.height;
   }
   return false;
 }
@@ -137,7 +133,6 @@ function dropTattoo(event) {
     return;
   }
 }
-
 Array.from(controlBanners).forEach(el => {
   el.style.setProperty('--controlsBannerVis', 'hidden');
 });
@@ -173,7 +168,7 @@ function makeToChangeImg(event) {
   const imgCoord = img.getBoundingClientRect();
   canvas.width = img.width;
   canvas.height = img.height;
-  ctx.drawImage(img, imgCoord.left, imgCoord.top);
+  ctx.drawImage(img, imgCoord.left, imgCoord.top, img.width, img.height);
   ctx.drawImage(tattoo, tattooCoord.left, tattooCoord.top, tattoo.width, tattoo.height);
   if (event.target.classList.contains('send_to_server')) {
     sendImg(canvas);
@@ -186,7 +181,9 @@ function makeToChangeImg(event) {
       link.download = 'tattoo.jpg';
       link.href = URL.createObjectURL(blob);
       link.click();
-    });
+    }, 'image/jpeg', 1);
+    
+
   }
 }
 

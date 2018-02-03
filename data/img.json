@@ -1,0 +1,26 @@
+{
+  "img": [
+    "modules/slider/slideshow/imgs/broked-face.png", 
+    "modules/slider/slideshow/imgs/cat.png", 
+    "modules/slider/slideshow/imgs/snake.png", 
+    "modules/slider/slideshow/imgs/knife.png", 
+    "modules/slider/slideshow/imgs/china.png", 
+    "modules/slider/slideshow/imgs/fishes.png", 
+    "modules/slider/slideshow/imgs/hand-snake.png", 
+    "modules/slider/slideshow/imgs/rose-face.png", 
+    "modules/slider/slideshow/imgs/tiger.png",
+    "modules/slider/slideshow/imgs/rose.png"
+  ],
+  "minis": [
+    "modules/slider/slideshow/minis/broked-face.png", 
+    "modules/slider/slideshow/minis/cat.png", 
+    "modules/slider/slideshow/minis/snake.png", 
+    "modules/slider/slideshow/minis/knife.png", 
+    "modules/slider/slideshow/minis/china.png", 
+    "modules/slider/slideshow/minis/fishes.png", 
+    "modules/slider/slideshow/minis/hand-snake.png", 
+    "modules/slider/slideshow/minis/rose-face.png", 
+    "modules/slider/slideshow/minis/tiger.png",
+    "modules/slider/slideshow/minis/rose.png"
+  ]
+}

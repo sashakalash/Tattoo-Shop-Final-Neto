@@ -1,55 +1,55 @@
 .make-photo video {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: auto;
-	visibility: var(--videoVis);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  visibility: var(--videoVis);
 }
 
 .make-photo .error_message {
-	position: absolute;
-	top: 50%;
-	visibility: var(--errorMes);
-	font-family: montserrat;
-	text-transform: uppercase;
-	text-align: center;
-	color: #ca1313;
-	background-color: #ccc;
+  position: absolute;
+  top: 50%;
+  visibility: var(--errorMes);
+  font-family: montserrat;
+  text-transform: uppercase;
+  text-align: center;
+  color: #ca1313;
+  background-color: #ccc;
 }
 
 .make-photo .take-photo {
-	height: 50px;
-	width: 50px;
-	bottom: 0;
-	z-index: 2;
-	left: 45%;
-	visibility: var(--takePhotoVis);
-	text-decoration: none;
-	background-color: #c2b8b8;
-	border: 1px solid rgba(233, 135, 8, 0.877);
-	border-radius: 50%;
-	opacity: 0.7;
+  height: 50px;
+  width: 50px;
+  bottom: 0;
+  z-index: 2;
+  left: 45%;
+  visibility: var(--takePhotoVis);
+  text-decoration: none;
+  background-color: #c2b8b8;
+  border: 1px solid rgba(233, 135, 8, 0.877);
+  border-radius: 50%;
+  opacity: 0.7;
 }
 
 .make-photo .rephoto {
-	height: 50px;
-	width: 50px;
-	background-color: transparent;
-	background-image: url(./rephoto.png);
-	background-size: cover;
-	bottom: 0;
-	left: 45%;
-	z-index: 2;
-	visibility: var(--rephotoVis);
+  height: 50px;
+  width: 50px;
+  background-color: transparent;
+  background-image: url(./rephoto.png);
+  background-size: cover;
+  bottom: 0;
+  left: 45%;
+  z-index: 2;
+  visibility: var(--rephotoVis);
 }
 
 .make-photo canvas {
-	width: 100%;
-	height: auto;
-	position: absolute;
-	left: 0;
-	top: 0;
-	display: var(--canvasDisp);
+  width: 100%;
+  height: auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: var(--canvasDisp);
 }
 

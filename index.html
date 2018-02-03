@@ -1,122 +1,122 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Tattoo Shop | Alina Temnova</title>
-		<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-		<link rel="stylesheet" href="./style.css" type="text/css">
-		<script src="modules/slider/slider.js" async></script>
-		<script src="modules/drag&drop/drop.js" async></script>
-		<script src="modules/fit_tattoo/fit.js" async></script>
-		<script src="modules/photo-booth/photo_booth.js" async></script>	
-		<script src="modules/chat/chat.js" async></script>
-	</head>
-	<body>
-		<div class="grid">
-			<header>
-				<img src="images/morzetattoo.png" alt="logo morzetattoo" class="logo">
-			</header>
-			<div class="slider_block">
-				<p>The #1 Tattoo Master in Sochi</p>
-				<div class="slider">
-					<img alt="">
-					<button class="prevPhoto"></button>
-					<button class="nextPhoto"></button>
-					<button class="widescreen"></button>
-				</div>
-			</div>
-			<div class="about">
-				<p class="text">Choose tattoo for you here.</p>
-			</div>
-			<div id="imgPreview"></div>
-			<div class="preview"></div>
-			<div class="drop_section">
-				<div draggable="true" class="box drop">
-					<input type="file" id="fileInput" accept="image/*">
-					<img src="modules/drag&drop/cloud.png" alt="icon drop files" class="marker">
-					<p class="box_banner">drop your photo here or click</p>
-				</div>
+  <head>
+    <meta charset="utf-8">
+    <title>Tattoo Shop | Alina Temnova</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    <script src="modules/slider/slider.js" async></script>
+    <script src="modules/drag&drop/drop.js" async></script>
+    <script src="modules/fit_tattoo/fit.js" async></script>
+    <script src="modules/photo-booth/photo_booth.js" async></script>	
+    <script src="modules/chat/chat.js" async></script>
+  </head>
+  <body>
+    <div class="grid">
+      <header>
+        <img src="images/morzetattoo.png" alt="logo morzetattoo" class="logo">
+      </header>
+      <div class="slider_block">
+        <p>The #1 Tattoo Master in Sochi</p>
+        <div class="slider">
+          <img alt="">
+          <button class="prevPhoto"></button>
+          <button class="nextPhoto"></button>
+          <button class="widescreen"></button>
+        </div>
+      </div>
+      <div class="about">
+        <p class="text">Choose tattoo for you here.</p>
+      </div>
+      <div id="imgPreview"></div>
+      <div class="preview"></div>
+      <div class="drop_section">
+        <div draggable="true" class="box drop">
+          <input type="file" id="fileInput" accept="image/*">
+          <img src="modules/drag&drop/cloud.png" alt="icon drop files" class="marker">
+          <p class="box_banner">drop your photo here or click</p>
+        </div>
 
-				<div class="box make-photo">
-					<img src="modules/photo-booth/photo.png" alt="icon photocamera" class="clock">
-					<p class="box_banner">or make the photo right now</p>
-					<audio></audio>
-					<div class="error_message"></div>
-					<button class="take-photo"></button>
-					<button class="rephoto"></button>
-				</div>
+        <div class="box make-photo">
+          <img src="modules/photo-booth/photo.png" alt="icon photocamera" class="clock">
+          <p class="box_banner">or make the photo right now</p>
+          <audio></audio>
+          <div class="error_message"></div>
+          <button class="take-photo"></button>
+          <button class="rephoto"></button>
+        </div>
 
-				<div class="box fit-tattoo">
-					<img src="modules/drag&drop/fitting.png" alt="icon fit your tattoo size" class="phone">
-					<p class="box_banner">click to fit your tattoo!</p>
-				</div>
-			</div>  
-			<div class="testimontial one">
-				<p>"Very useful stuff! Now i can imagine how the tattoo will look like on my skin!"
-				<br> - Eugene Tarasov</p>
-			</div>
-			<div class="testimontial two">
-				<p>"That’s cool that you can see your tattoo on skin! And never do the mistake for all your life!"
-				<br> - MP </p>
-			</div>
-			<div class="tattoo_fitting_room">
-				<div class="fitting_mess_push">«««</div>
-				<div class="fit_tattoo_image"></div>
-				<div class="fit_tattoo_tattoo"></div>
-				<div class="control_panel">
-					<div>
-							<p class="control_panel_banner">Push to end fitting</p>
-							<button class="exit_fitting"></button>
-					</div>
-					<div>
-							<p class="control_panel_banner">Download your photo</p>
-							<button class="download"></button>
-					</div>
-					<div>
-							<p class="control_panel_banner">Send your photo to master</p>
-							<button class="send_to_server"></button>
-					</div>
-				</div>
-			</div>
-			<div class="img_send_mess">Successfully sent to master</div>
-			<div id="chat">
-				<div class="chat-title">
-					<h1>Онлайн-консультант</h1>
-					<h2 class="chat-status" data-online="в сети" data-offline="не в сети">не в сети</h2>
-					<figure class="avatar">
-					<img src="modules/chat/garold.jpg">
-					</figure>
-				</div>
-				<div class="messages">
-					<div class="messages-templates">
-					<div class="message loading">
-						<figure class="avatar"><img src="modules/chat/garold.jpg" /></figure>
-						<span></span>
-					</div>
-					<div class="message">
-						<figure class="avatar"><img src="modules/chat/garold.jpg" /></figure>
-						<span class="message-text">Привет!</span>
-						<div class="timestamp">12:56</div>
-					</div>
-					<div class="message message-personal">
-						<span class="message-text">Привет</span>
-						<div class="timestamp">12:56</div>
-					</div>
-					<div class="message message-status">
-						<span class="message-text">Оператор не в сети</span>
-					</div>
-					</div>
-					<div class="messages-content">
-					</div>
-				</div>
-				<form class="message-box" action="/404/" method="POST">
-					<input type="text" class="message-input" placeholder="Ваше сообщение …">
-					<button disabled type="submit" class="message-submit">Отправить</button>
-				</form>
-			</div>
-			<footer>
-				<p>&copy; Tattoo Shop 2017</p>
-			</footer>
-		</div>
-	</body>
+        <div class="box fit-tattoo">
+          <img src="modules/drag&drop/fitting.png" alt="icon fit your tattoo size" class="phone">
+          <p class="box_banner">click to fit your tattoo!</p>
+        </div>
+      </div>  
+      <div class="testimontial one">
+        <p>"Very useful stuff! Now i can imagine how the tattoo will look like on my skin!"
+        <br> - Eugene Tarasov</p>
+      </div>
+      <div class="testimontial two">
+        <p>"That’s cool that you can see your tattoo on skin! And never do the mistake for all your life!"
+        <br> - MP </p>
+      </div>
+      <div class="tattoo_fitting_room">
+        <div class="fitting_mess_push">«««</div>
+        <div class="fit_tattoo_image"></div>
+        <div class="fit_tattoo_tattoo"></div>
+        <div class="control_panel">
+          <div>
+              <p class="control_panel_banner">Push to end fitting</p>
+              <button class="exit_fitting"></button>
+          </div>
+          <div>
+              <p class="control_panel_banner">Download your photo</p>
+              <button class="download"></button>
+          </div>
+          <div>
+              <p class="control_panel_banner">Send your photo to master</p>
+              <button class="send_to_server"></button>
+          </div>
+        </div>
+      </div>
+      <div class="img_send_mess">Successfully sent to master</div>
+      <div id="chat">
+        <div class="chat-title">
+          <h1>Онлайн-консультант</h1>
+          <h2 class="chat-status" data-online="в сети" data-offline="не в сети">не в сети</h2>
+          <figure class="avatar">
+          <img src="modules/chat/garold.jpg">
+          </figure>
+        </div>
+        <div class="messages">
+          <div class="messages-templates">
+          <div class="message loading">
+            <figure class="avatar"><img src="modules/chat/garold.jpg" /></figure>
+            <span></span>
+          </div>
+          <div class="message">
+            <figure class="avatar"><img src="modules/chat/garold.jpg" /></figure>
+            <span class="message-text">Привет!</span>
+            <div class="timestamp">12:56</div>
+          </div>
+          <div class="message message-personal">
+            <span class="message-text">Привет</span>
+            <div class="timestamp">12:56</div>
+          </div>
+          <div class="message message-status">
+            <span class="message-text">Оператор не в сети</span>
+          </div>
+          </div>
+          <div class="messages-content">
+          </div>
+        </div>
+        <form class="message-box" action="/404/" method="POST">
+          <input type="text" class="message-input" placeholder="Ваше сообщение …">
+          <button disabled type="submit" class="message-submit">Отправить</button>
+        </form>
+      </div>
+      <footer>
+        <p>&copy; Tattoo Shop 2017</p>
+      </footer>
+    </div>
+  </body>
 </html>

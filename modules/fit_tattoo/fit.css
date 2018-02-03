@@ -1,96 +1,98 @@
 .tattoo_fitting_room {
-	display: flex;
-	background: rgb(255, 255, 255);
-	top: 0;
-	left: 0;
-	z-index: 2;
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	visibility: var(--fitTattooVisible);
+  background: rgb(244, 230, 202);
+  top: 0;
+  left: 0;
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  visibility: var(--fitTattooVisible);
+  overflow: scroll;
 }
 
 .tattoo_fitting_room div.fit_tattoo_image {
-	position: relative;
+  position: relative;
 }
 
 .tattoo_fitting_room img {
-	max-width: 100%;
+  max-width: 100%;
 }
 
 .tattoo_fitting_room img.tattoo_to_fit {
-	top: 0;
-	left: 50%;
-	position: absolute;
+  top: 0;
+  left: 50%;
+  position: absolute;
 }
 
 .tattoo_fitting_room div.fit_tattoo_image .tattoo_to_fit{
-	height: 80%;
-	border-bottom: 2px var(--border) #db6363;
-	border-right: 2px var(--border) #db6363;
-	position: absolute;
+  height: 80%;
+  border-bottom: 2px var(--border) #db6363;
+  border-right: 2px var(--border) #db6363;
+  position: absolute;
 }
 
 .control_panel {
-	position: absolute;
-	right: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
 }
 
 .control_panel div {
-	display: flex;
-	margin-top: 50px;
-	justify-content: flex-end;
+  display: flex;
+  margin-top: 50px;
+  justify-content: flex-end;
 }
 
 .control_panel button {
-	height: 50px;
-	width: 50px;
-	position: relative;
-	background-size: contain;
-	background-color: transparent;
+  height: 50px;
+  width: 50px;
+  position: relative;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
 }
 
 .control_panel p.control_panel_banner {
-	margin: 0 10px;
-	visibility: var(--controlsBannerVis);
-	color: #db6363;
-	font-family: montserrat;
-	text-transform: uppercase;
-	font-size: 1em;
+  margin: 0 10px;
+  visibility: var(--controlsBannerVis);
+  color: #db6363;
+  font-family: montserrat;
+  text-transform: uppercase;
+  font-size: 1em;
 }
 
 .exit_fitting {
-	background-image: url("./exit.png");
+  background-image: url("./exit.png");
 }
 
 .download {
-	background-image: url("./download.png");
+  background-image: url("./download.png");
 }
 
 .send_to_server {
-	background-image: url("./send.png");
+  background-image: url("./send.png");
 }
 
 .fitting_mess_push {
-	font-size: 5em;
-	position: absolute;
-	top: 350px;
-	letter-spacing: 20px;
-	z-index: 3;
-	left: var(--fittingMessPos);
-	visibility: var(--fittingMessVis);
+  font-size: 5em;
+  position: absolute;
+  top: 350px;
+  letter-spacing: 20px;
+  z-index: 3;
+  left: var(--fittingMessPos);
+  visibility: var(--fittingMessVis);
 }
 
 .img_send_mess {
-	position: fixed;
-	top: 50%;
-	left: 20%;
-	background-color: rgba(255, 255, 255, var(--statusBGAlfa));
-	color: #db6363;
-	font-family: montserrat;
-	text-transform: uppercase;
-	font-size: 3em;
-	letter-spacing: 3.7px;
-	visibility: var(--sendMessVis);
+  position: fixed;
+  top: 50%;
+  left: 20%;
+  background-color: rgba(255, 255, 255, var(--statusBGAlfa));
+  color: #db6363;
+  font-family: montserrat;
+  text-transform: uppercase;
+  font-size: 3em;
+  letter-spacing: 3.7px;
+  visibility: var(--sendMessVis);
 }
 

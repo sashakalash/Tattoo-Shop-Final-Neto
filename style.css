@@ -5,263 +5,263 @@
 @import "modules/photo-booth/photo_booth_styles.css";
 
 @font-face{
-	font-family:'montserrat';
-	src: url(fonts/montserrat-bold-webfont.eot);
-	src: url(fonts/montserrat-bold-webfont.eot?#iefix) format('embedded-opentype'),
-		 url(fonts/montserrat-bold-webfont.woff2) format('woff2'),
-		 url(fonts/montserrat-bold-webfont.woff) format('woff'),
-		 url(fonts/montserrat-bold-webfont.ttf) format('truetype'),
-		 url(fonts/montserrat-bold-webfont.svg#montserratbold) format('svg');
-	font-weight: 700;
-	font-style: normal;
+  font-family:'montserrat';
+  src: url(fonts/montserrat-bold-webfont.eot);
+  src: url(fonts/montserrat-bold-webfont.eot?#iefix) format('embedded-opentype'),
+     url(fonts/montserrat-bold-webfont.woff2) format('woff2'),
+     url(fonts/montserrat-bold-webfont.woff) format('woff'),
+     url(fonts/montserrat-bold-webfont.ttf) format('truetype'),
+     url(fonts/montserrat-bold-webfont.svg#montserratbold) format('svg');
+  font-weight: 700;
+  font-style: normal;
 }
 @font-face{
-	font-family:'montserrat';
-	src: url(fonts/montserrat-regular-webfont.eot);
-	src: url(fonts/montserrat-regular-webfont.eot?#iefix) format('embedded-opentype'),
-		 url(fonts/montserrat-regular-webfont.woff2) format('woff2'),
-		 url(fonts/montserrat-regular-webfont.woff) format('woff'),
-		 url(fonts/montserrat-regular-webfont.ttf) format('truetype'),
-		 url(fonts/montserrat-regular-webfont.svg#montserratregular) format('svg');
-	font-weight: normal;
-	font-style: normal;
+  font-family:'montserrat';
+  src: url(fonts/montserrat-regular-webfont.eot);
+  src: url(fonts/montserrat-regular-webfont.eot?#iefix) format('embedded-opentype'),
+     url(fonts/montserrat-regular-webfont.woff2) format('woff2'),
+     url(fonts/montserrat-regular-webfont.woff) format('woff'),
+     url(fonts/montserrat-regular-webfont.ttf) format('truetype'),
+     url(fonts/montserrat-regular-webfont.svg#montserratregular) format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
-	background-color: #fff;
-	color: #db6363;
-	text-align: center;
-	margin: 0;
-	overflow-y: var(--bodyScroll); 
+  background-color: #fff;
+  color: #db6363;
+  text-align: center;
+  margin: 0;
+  overflow-y: var(--bodyScroll); 
 }
 
 .grid {
-	display: grid;
-	grid-template: 5% 30% 10% 30% 20% 5% / repeat(6, 1fr);
-	grid-column-gap: 20px;
+  display: grid;
+  grid-template: 5% 30% 10% 30% 20% 5% / repeat(6, 1fr);
+  grid-column-gap: 20px;
 }
 
 header {
-	background-color: #fff;
-	color: #dc6363;
-	padding-top: 10px;
-	grid-column: 1 / span 6;
+  background-color: #fff;
+  color: #dc6363;
+  padding-top: 10px;
+  grid-column: 1 / span 6;
 }
 
 header img {
-	max-width: 100%;
+  max-width: 100%;
 }
 
 .slider_block {
-	background-color: #f3e5ca;
-	color: rgb(0, 0, 0);
-	font-family: montserrat;
-	font-size: 84px;
-	font-weight: 300;
-	letter-spacing: 3.7px;
-	grid-column: 1 / span 6;
-	position: relative;
+  background-color: #f3e5ca;
+  color: rgb(0, 0, 0);
+  font-family: montserrat;
+  font-size: 84px;
+  font-weight: 300;
+  letter-spacing: 3.7px;
+  grid-column: 1 / span 6;
+  position: relative;
 }
 
 img {
-	max-width: 25%;
-	height: 100%;
+  max-width: 25%;
+  height: 100%;
 }
 
 .about {
-	background-color: #f0f0f0;
-	padding-bottom: 20px;
-	grid-column: 1 / span 6;
-	
+  background-color: #f0f0f0;
+  padding-bottom: 20px;
+  grid-column: 1 / span 6;
+  
 }
 
 .text {
-	text-align: center;
-	color: #2f2f2f;
-	width: 50%;
-	height: 100%;
-	margin: auto;
-	padding: auto;
-	font-family: montserrat;
-	font-size: 18px;
-	font-weight: 500;
-	letter-spacing: 0.5px;
-	padding-top: 30px;
+  text-align: center;
+  color: #2f2f2f;
+  width: 50%;
+  height: 100%;
+  margin: auto;
+  padding: auto;
+  font-family: montserrat;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  padding-top: 30px;
 }
 
 
 .box {
-	background-color: #2f2f2f;
-	font-family: montserrat;
-	font-size: 20px;
-	font-weight: 500;
-	letter-spacing: 0.5px;
-	text-align: center;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	width: 100%;
-	border: 2px solid #ffffff;
-	box-sizing: border-box;
-	position: relative;
-	cursor: pointer;
-	overflow: hidden;
+  background-color: #2f2f2f;
+  font-family: montserrat;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  border: 2px solid #ffffff;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
 }
 
 .box img {
-	width: 60px;
-	height: 60px;
-	margin: 50px 0;
-	
+  width: 60px;
+  height: 60px;
+  margin: 50px 0;
+  
 }
 
 .drop_section {
-	grid-column: 1 / span 6;
+  grid-column: 1 / span 6;
 }
 
 /*.address*/
 .drop {
-	grid-column: 1 / span 2;
+  grid-column: 1 / span 2;
 }
 
 /*.hours */
 .make-photo {
-	grid-column: 3 / span 2;
+  grid-column: 3 / span 2;
 }
 
 /*.call-us*/
 .fit-tattoo {
-	grid-column: 5 / span 2;
+  grid-column: 5 / span 2;
 }
 
 .tattoo_fitting_room {
-	grid-column: 1 / span 6;
+  grid-column: 1 / span 6;
 }
 .testimontial {
-	margin: auto;
-	padding: auto;
-	background-color: #f0f0f0;
-	color: #db6363;
-	font-family: montserrat;
-	font-size: 20px;
-	font-weight: 300;
-	letter-spacing: 3.7px;
-	font-style: italic;
-	height: 125px;
+  margin: auto;
+  padding: auto;
+  background-color: #f0f0f0;
+  color: #db6363;
+  font-family: montserrat;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 3.7px;
+  font-style: italic;
+  height: 125px;
 }
 
 .one {
-	grid-column: 1 / span 3;
+  grid-column: 1 / span 3;
 }
 
 .two {
-	grid-column: 4 / span 3;
+  grid-column: 4 / span 3;
 }
 
 
 footer {
-	background-color: #db6363;
-	color: #fff;
-	font-family: montserrat;
-	font-size: 14px;
-	font-weight: 300;
-	letter-spacing: 0.4px;
-	grid-column: 1 / span 6;
+  background-color: #db6363;
+  color: #fff;
+  font-family: montserrat;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.4px;
+  grid-column: 1 / span 6;
 }
 
 @media only screen and (max-width: 600px) {
-	.grid {
-		grid-template-columns: 100%;
-		grid-template-rows: 5% 30% 10% repeat(3, 10%) repeat(2, 10%) 5%;
-		grid-row-gap: 20px;
-	}
+  .grid {
+    grid-template-columns: 100%;
+    grid-template-rows: 5% 30% 10% repeat(3, 10%) repeat(2, 10%) 5%;
+    grid-row-gap: 20px;
+  }
 
-	header {
-		margin-bottom: -20px;
-		grid-column: 1 / span 1;
-	}
+  header {
+    margin-bottom: -20px;
+    grid-column: 1 / span 1;
+  }
 
-	.slider_block {
-		font-size: 20px;
-		font-weight: 300;
-		line-height: 2.75;
-		letter-spacing: 1.9px;
-		margin-bottom: -20px;
-		grid-column: 1 / span 1;
-	}
+  .slider_block {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 2.75;
+    letter-spacing: 1.9px;
+    margin-bottom: -20px;
+    grid-column: 1 / span 1;
+  }
 
-	.slider {
-		width: 195px;
-		height: 237px;
-		padding-left: 50px;
-	}
+  .slider {
+    width: 195px;
+    height: 237px;
+    padding-left: 50px;
+  }
 
-	.about {
-		margin-bottom: -20px;
-		grid-column: 1 / span 1;
-	}
+  .about {
+    margin-bottom: -20px;
+    grid-column: 1 / span 1;
+  }
 
-	.text {
-		width: 75%;
-		padding-top: 50px;
-		padding-bottom: 50px;
-		font-size: 14px;
-		font-weight: 500;
+  .text {
+    width: 75%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
-	.box {
-		font-size: 14px;
-		font-weight: 500;
-		letter-spacing: 0.3px;
-	}
+  .box {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
 
-	.drop {
-		grid-row: 4 / span 1;
-		grid-column: 1 / span 1;
-	}
+  .drop {
+    grid-row: 4 / span 1;
+    grid-column: 1 / span 1;
+  }
 
-	.make-photo {
-		grid-row: 5 / span 1;
-		grid-column: 1 / span 1;
-	}
+  .make-photo {
+    grid-row: 5 / span 1;
+    grid-column: 1 / span 1;
+  }
 
-	.fit-tattoo {
-		grid-row: 6 / span 1;
-		grid-column: 1 / span 1;
-	}
+  .fit-tattoo {
+    grid-row: 6 / span 1;
+    grid-column: 1 / span 1;
+  }
 
-	.marker {
-		width: 45px;
-		height: 45px;
-	}
+  .marker {
+    width: 45px;
+    height: 45px;
+  }
 
-	.clock {
-		width: 45px;
-		height: 45px;
-	}
+  .clock {
+    width: 45px;
+    height: 45px;
+  }
 
-	.phone {
-		width: 45px;
-		height: 45px;
-	}
+  .phone {
+    width: 45px;
+    height: 45px;
+  }
 
-	.testimonial {
-		font-size: 14px;
-		font-weight: 500;
-		letter-spacing: 0.3px;
-	}
+  .testimonial {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
 
-	.one {
-		grid-row: 7 / span 1;
-		grid-column: 1 / span 1;
-	}
+  .one {
+    grid-row: 7 / span 1;
+    grid-column: 1 / span 1;
+  }
 
-	.two {
-		grid-row: 8 / span 1;
-		grid-column: 1 / span 1;
-	}
+  .two {
+    grid-row: 8 / span 1;
+    grid-column: 1 / span 1;
+  }
 
-	footer {
-		margin-top: -20px;
-		grid-column: 1 / span 1;
-	}
+  footer {
+    margin-top: -20px;
+    grid-column: 1 / span 1;
+  }
 }

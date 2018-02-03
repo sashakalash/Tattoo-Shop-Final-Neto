@@ -1,75 +1,75 @@
 
 .drop_section {
-	display: flex;
-	height: auto;
-	max-height: 300px;
-	align-content: center;
-	justify-content: space-between;
+  display: flex;
+  height: auto;
+  max-height: 300px;
+  align-content: center;
+  justify-content: space-between;
 }
 
 .drop .drop_img_block {
-	width: auto;
-	height: auto;
-	margin: auto;
+  width: auto;
+  height: auto;
+  margin: auto;
 }
 
 .drop img {
-	margin: 0 25%;
-	display: inline-block;
-	width: auto;
-	height: auto;
-	max-height: 300px;
-	visibility: var(--dropPic);
+  margin: 0 25%;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  max-height: 300px;
+  visibility: var(--dropPic);
 }
 
 .drop p.box_banner {
-	color: var(--dropBannerColor);
-	visibility: var(--dropBannerVis)
+  color: var(--dropBannerColor);
+  visibility: var(--dropBannerVis)
 }
 
 .make-photo p.box_banner{
-	color: var(--photoBanner);
-	visibility: var(--photoBannerVis);
+  color: var(--photoBanner);
+  visibility: var(--photoBannerVis);
 }
 
 .box_banner {
-	color: #eee4e4;
-	text-transform: uppercase;
-	font-size: 0.8em;
-	height: auto;
-	top: 0;
-	left: 10px;
-	z-index: 2;
+  color: #eee4e4;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  height: auto;
+  top: 0;
+  left: 10px;
+  z-index: 2;
 }
 
 div.over {
-	border: 2px solid #f1960e;;
-	box-sizing: border-box;
+  border: 2px solid #f1960e;;
+  box-sizing: border-box;
 }
 
 .choose_tattoo {
-	height: auto;
-	color: #1b0404;
-	font-size: 1em; 
-	font-family: montserrat;
-	text-transform: uppercase;
-	text-align: center;
-	display: inline-block;
+  height: auto;
+  color: #1b0404;
+  font-size: 1em; 
+  font-family: montserrat;
+  text-transform: uppercase;
+  text-align: center;
+  display: inline-block;
 }
 
 .box img.droppedImg {
-	margin: auto;
-	width: auto;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 25%;
-	max-width: 100%;
+  margin: auto;
+  width: auto;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 25%;
+  max-width: 100%;
 }
 
 #fileInput {
-	visibility: hidden;
-	position: absolute;
+  visibility: hidden;
+  position: absolute;
 }
 
 

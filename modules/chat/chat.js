@@ -15,81 +15,81 @@ let wsConnect;
 inputMessForm.disabled = false;
 
 function wsOpen() {
-	messagesContent.setAttribute('style', 'overflow-y:scroll');
-	if (!messagesContent.querySelector('.message-status')) {
-		messagesContent.appendChild(messageStatus.cloneNode(true));		
-	}
+  messagesContent.setAttribute('style', 'overflow-y:scroll');
+  if (!messagesContent.querySelector('.message-status')) {
+    messagesContent.appendChild(messageStatus.cloneNode(true));		
+  }
 
-	const messageStatusToRemove = messagesContent.querySelector('.message-status');
-	const connectionChat = new WebSocket('wss://neto-api.herokuapp.com/chat');
-	wsConnect = connectionChat;
-	connectionChat.addEventListener('open', () => {
-		messageStatusToRemove.parentElement.removeChild(messageStatusToRemove);
-		chatStatus.textContent = chatStatus.dataset.online;
-		sendMessBtn.disabled = false;
-		inputMessForm.disabled = false;
-	});
+  const messageStatusToRemove = messagesContent.querySelector('.message-status');
+  const connectionChat = new WebSocket('wss://neto-api.herokuapp.com/chat');
+  wsConnect = connectionChat;
+  connectionChat.addEventListener('open', () => {
+    messageStatusToRemove.parentElement.removeChild(messageStatusToRemove);
+    chatStatus.textContent = chatStatus.dataset.online;
+    sendMessBtn.disabled = false;
+    inputMessForm.disabled = false;
+  });
 
-	const messageAnotherUser = Array.from(document.querySelectorAll('.message'))
-	.find(el => {
-		if (!(el.classList.contains('loading') || 
-			el.classList.contains('message-personal') || 
-			el.classList.contains('message-status'))) {
-			return el.cloneNode(true);
-		}
-	});
-	
-	connectionChat.addEventListener('message', (event) => {
-		if (event.data === '...') {
-			messagesContent.appendChild(messageLoading).cloneNode(true);
-		}
-		const date = new Date();
-		let hours = date.getHours(); 
-		let minutes = date.getMinutes();
-		if (hours < 10) {
-			hours = '0' + hours;
-		}
-		if (minutes < 10) {
-			minutes = '0' + minutes;
-		}
-		messageAnotherUser.querySelector('.message-text').textContent = event.data;
-		messageAnotherUser.querySelector('.timestamp').textContent = hours + ':' + minutes;
-		messagesContent.appendChild(messageAnotherUser.cloneNode(true));
-	});
+  const messageAnotherUser = Array.from(document.querySelectorAll('.message'))
+  .find(el => {
+    if (!(el.classList.contains('loading') || 
+      el.classList.contains('message-personal') || 
+      el.classList.contains('message-status'))) {
+      return el.cloneNode(true);
+    }
+  });
+  
+  connectionChat.addEventListener('message', (event) => {
+    if (event.data === '...') {
+      messagesContent.appendChild(messageLoading).cloneNode(true);
+    }
+    const date = new Date();
+    let hours = date.getHours(); 
+    let minutes = date.getMinutes();
+    if (hours < 10) {
+      hours = '0' + hours;
+    }
+    if (minutes < 10) {
+      minutes = '0' + minutes;
+    }
+    messageAnotherUser.querySelector('.message-text').textContent = event.data;
+    messageAnotherUser.querySelector('.timestamp').textContent = hours + ':' + minutes;
+    messagesContent.appendChild(messageAnotherUser.cloneNode(true));
+  });
 
-	connectionChat.addEventListener('error', (error) => {
-		console.log(error);
-	});
+  connectionChat.addEventListener('error', (error) => {
+    console.log(error);
+  });
 
-	newMessageForm.addEventListener('submit', sendMessage);
-	sendMessBtn.addEventListener('click', sendMessage);
+  newMessageForm.addEventListener('submit', sendMessage);
+  sendMessBtn.addEventListener('click', sendMessage);
 
-	function sendMessage(event) {
-		event.preventDefault();
-		if (!inputMessForm.value) {
-			return;
-		}
-		event.preventDefault();
-		const date = new Date();
-		connectionChat.send(inputMessForm.value);
-		messageUser.querySelector('.message-text').textContent = inputMessForm.value;
-		messageUser.querySelector('.timestamp').textContent = date.getHours() + ':' + date.getMinutes();
-		messagesContent.appendChild(messageUser.cloneNode(true));
-		inputMessForm.value = '';
-	}
+  function sendMessage(event) {
+    event.preventDefault();
+    if (!inputMessForm.value) {
+      return;
+    }
+    event.preventDefault();
+    const date = new Date();
+    connectionChat.send(inputMessForm.value);
+    messageUser.querySelector('.message-text').textContent = inputMessForm.value;
+    messageUser.querySelector('.timestamp').textContent = date.getHours() + ':' + date.getMinutes();
+    messagesContent.appendChild(messageUser.cloneNode(true));
+    inputMessForm.value = '';
+  }
 
-	connectionChat.addEventListener('close', () => {
-		chatStatus.textContent = chatStatus.dataset.offline;
-		sendMessBtn.disabled = true;
-		// inputMessForm.disabled = true;
-		if (!messagesContent.querySelector('.message-status')) {
-			messagesContent.appendChild(messageStatus.cloneNode(true));	
-		}
-	});
+  connectionChat.addEventListener('close', () => {
+    chatStatus.textContent = chatStatus.dataset.offline;
+    sendMessBtn.disabled = true;
+    // inputMessForm.disabled = true;
+    if (!messagesContent.querySelector('.message-status')) {
+      messagesContent.appendChild(messageStatus.cloneNode(true));	
+    }
+  });
 
-	window.addEventListener('beforeunload', () => {
-		connectionChat.close(1000);
-	});
+  window.addEventListener('beforeunload', () => {
+    connectionChat.close(1000);
+  });
 }
 
 chat.style.setProperty('--Top', '133%');
@@ -97,46 +97,46 @@ chat.style.setProperty('--Left', '75%');
 let isFirstCallingChat = true;
 
 function chatAnimation(condition = 'open') {
-	let start = null;
-	let timer = null;
-	let top = 135;
-	let bottom = 60;
-	function tick(timestamp) {
-		start = start || timestamp;
-		const elapsedTime = timestamp - start;
-		if (condition === 'open') {
-			top -= 3;
-			if (top < bottom) {
-				return cancelAnimationFrame(timer);
-			}
-			chat.style.setProperty('--Top', `${top}%`);
-		} else {
-			bottom += 3;
-			if (top < bottom) {
-				return cancelAnimationFrame(timer);
-			}
-			chat.style.setProperty('--Top', `${bottom}%`);
-		}
-		timer = requestAnimationFrame(tick);
-	}
-	tick();
+  let start = null;
+  let timer = null;
+  let top = 135;
+  let bottom = 60;
+  function tick(timestamp) {
+    start = start || timestamp;
+    const elapsedTime = timestamp - start;
+    if (condition === 'open') {
+      top -= 3;
+      if (top < bottom) {
+        return cancelAnimationFrame(timer);
+      }
+      chat.style.setProperty('--Top', `${top}%`);
+    } else {
+      bottom += 3;
+      if (top < bottom) {
+        return cancelAnimationFrame(timer);
+      }
+      chat.style.setProperty('--Top', `${bottom}%`);
+    }
+    timer = requestAnimationFrame(tick);
+  }
+  tick();
 }
 
 
 chatTitleToClick.addEventListener('click', () => {
-	if (isFirstCallingChat) {
-		chatAnimation();
-		wsOpen();
-		isFirstCallingChat = false;
-	} else {
-		chatAnimation('close');
-		wsConnect.close(1000);
-		const messageStatusToRemove = messagesContent.querySelector('.message-status');
-		if (messageStatusToRemove) {
-			messageStatusToRemove.parentElement.removeChild(messageStatusToRemove);
-		}
-		isFirstCallingChat = true;
-	}
+  if (isFirstCallingChat) {
+    chatAnimation();
+    wsOpen();
+    isFirstCallingChat = false;
+  } else {
+    chatAnimation('close');
+    wsConnect.close(1000);
+    const messageStatusToRemove = messagesContent.querySelector('.message-status');
+    if (messageStatusToRemove) {
+      messageStatusToRemove.parentElement.removeChild(messageStatusToRemove);
+    }
+    isFirstCallingChat = true;
+  }
 });
 
 chat.addEventListener('mouseover', () => document.querySelector('body').style.setProperty('--bodyScroll', 'hidden'));

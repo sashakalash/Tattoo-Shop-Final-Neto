@@ -50,7 +50,7 @@ function slidePhoto(event) {
   } else {
     prevImg? sliderImg.src = previewSrcToImg(prevImg.src): sliderImg.src = previewSrcToImg(lastImg.src);
   }
-  chooseImg(previewSrcToImg(sliderImg.src));
+  chooseImg(sliderImg.src.replace('imgs', 'minis'));
 }
 
 var tattooImg;

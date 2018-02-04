@@ -106,11 +106,11 @@ function dragTattoo(event) {
     return;
   } 
   event.preventDefault();
-  const k = event.clientY - tattooBottom;
-  const coeff = tattooWidth / tattooHeight; 
+  const resizeValue = event.clientY - tattooBottom;
+  const ratio = tattooWidth / tattooHeight; 
   if (isResize) {
-    movedTattoo.style.height = tattooHeight + k < 35? '35px': `${tattooHeight + k}px`;
-    movedTattoo.style.width =  tattooWidth + k * coeff < 35? `${35 * coeff}px`: `${tattooWidth + k * coeff}px`;
+    movedTattoo.style.height = tattooHeight + resizeValue < 35? '35px': `${tattooHeight + resizeValue}px`;
+    movedTattoo.style.width =  tattooWidth + resizeValue * ratio < 35? `${35 * ratio}px`: `${tattooWidth + resizeValue * ratio}px`;
   } else {
     x = event.clientX - shiftX;
     y = event.clientY - shiftY;

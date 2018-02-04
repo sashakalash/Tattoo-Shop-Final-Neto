@@ -34,6 +34,11 @@ function hideFullImg() {
   imgPreview.style.setProperty('--imgPreview', 'none');
 }
 
+function previewSrcToImg(url) {
+  return url.replace('minis', 'imgs');
+}
+
+
 function slidePhoto(event) {
   const currentImg = document.querySelector('.img_choose');
   const nextImg = currentImg.nextElementSibling;
@@ -41,11 +46,11 @@ function slidePhoto(event) {
   const firstImg = previewBlock.firstChild;
   const lastImg = previewBlock.lastChild;
   if (event.target.classList.contains('nextPhoto')) {
-    nextImg? sliderImg.src = nextImg.src.replace('minis', 'imgs'): sliderImg.src = firstImg.src.replace('minis', 'imgs');
+    nextImg? sliderImg.src = previewSrcToImg(nextImg.src): sliderImg.src = previewSrcToImg(firstImg.src);
   } else {
-    prevImg? sliderImg.src = prevImg.src.replace('minis', 'imgs'): sliderImg.src = lastImg.src.replace('minis', 'imgs');
+    prevImg? sliderImg.src = previewSrcToImg(prevImg.src): sliderImg.src = previewSrcToImg(lastImg.src);
   }
-  chooseImg(sliderImg.src.replace('imgs', 'minis'));
+  chooseImg(previewSrcToImg(sliderImg.src));
 }
 
 var tattooImg;

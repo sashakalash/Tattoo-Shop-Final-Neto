@@ -183,13 +183,13 @@ function makeToChangeImg(event) {
   const ctx = canvas.getContext('2d');
   const img = fitTattooField.querySelector('.droppedImg');
   const tattoo = fitTattooField.querySelector('.tattoo_to_fit');
-  const tattooFullSize = changeTattooSize(tattoo. src, tattoo.width, tattoo.height);
+  const tattooResize = changeTattooSize(tattoo. src, tattoo.width, tattoo.height);
   const tattooCoord = tattoo.getBoundingClientRect();
   const imgCoord = img.getBoundingClientRect();
   canvas.width = img.width;
   canvas.height = img.height;
   ctx.drawImage(img, imgCoord.left, imgCoord.top, img.width, img.height);
-  ctx.drawImage(tattooFullSize, tattooCoord.left, tattooCoord.top, tattooFullSize.width, tattooFullSize.height);
+  ctx.drawImage(tattooResize, tattooCoord.left, tattooCoord.top, tattooResize.width, tattooResize.height);
   if (event.target.classList.contains('send_to_server')) {
     sendImg(canvas);
     exitFitting();

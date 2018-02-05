@@ -108,10 +108,8 @@ function showPreview(event) {
   }
   event.preventDefault();
   const index = tattooImg.minis.findIndex(el => {
-    consol.log(el)
     el === event.target;
-    });
-  console.log(index)
+  });
   chooseImg(index);
 }
 

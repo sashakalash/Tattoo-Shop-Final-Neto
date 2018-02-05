@@ -30,11 +30,6 @@ function hideFullImg() {
   imgWideScreenBlock.style.setProperty('--imgPreview', 'none');
 }
 
-function previewSrcToImg(url) {
-  return url.replace('minis', 'imgs');
-}
-
-
 function slidePhoto(event) {
   let currentImg = document.querySelector('.img_choose');
   const nextImg = currentImg.nextElementSibling;
@@ -107,9 +102,8 @@ function showPreview(event) {
     return;
   }
   event.preventDefault();
-  const index = tattooImg.minis.findIndex(el => {
-    el === event.target;
-  });
+  const imgs = preview.querySelectorAll('img');
+  const index = Array.from(imgs).indexOf(event.target);
   chooseImg(index);
 }
 
@@ -123,9 +117,9 @@ function chooseImg(index) {
     }
   });
   Array.from(sliderImgs).forEach((img, imgIndex) => {
-    img.classList.remove('current_slide');
+    img.parentElement.classList.remove('current_slide');
     if (imgIndex === index) {
-      img.classList.add('current_slide');
+      img.parentElement.classList.add('current_slide');
     }
   });
 }

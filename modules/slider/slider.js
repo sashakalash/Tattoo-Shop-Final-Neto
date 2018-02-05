@@ -5,7 +5,6 @@ const prevBtn = document.querySelector('.prevPhoto');
 const imgWideScreenBlock = document.querySelector('.imgPreview');
 const imgWideScreen = imgWideScreenBlock.querySelector('img');
 const widescreenBtn = document.querySelector('.widescreen');
-// const slider = document.querySelector('.slider_block');
 const preview = document.querySelector('.preview');
 
 nextBtn.addEventListener('click', slidePhoto);

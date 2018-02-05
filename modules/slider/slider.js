@@ -1,16 +1,17 @@
 'use strict';
-const sliderImg = document.querySelector('.slider img');
+const slider = document.querySelector('.slider');
 const nextBtn = document.querySelector('.nextPhoto');
 const prevBtn = document.querySelector('.prevPhoto');
-const imgPreview = document.querySelector('#imgPreview');
+const imgWideScreenBlock = document.querySelector('.imgPreview');
+const imgWideScreen = imgWideScreenBlock.querySelector('img');
 const widescreenBtn = document.querySelector('.widescreen');
-const slider = document.querySelector('.slider_block');
+// const slider = document.querySelector('.slider_block');
 const preview = document.querySelector('.preview');
 
 nextBtn.addEventListener('click', slidePhoto);
 prevBtn.addEventListener('click', slidePhoto);
 widescreenBtn.addEventListener('click', showFullImg);
-imgPreview.addEventListener('click', hideFullImg);
+imgWideScreen.addEventListener('click', hideFullImg);
 
 const imgData = new XMLHttpRequest();
 imgData.addEventListener('load', createPreviewImgBlock);
@@ -19,19 +20,15 @@ imgData.open('GET', './data/img.json');
 imgData.send();
 
 let isFullSizeImg = true;
-imgPreview.style.setProperty('--imgPreview', 'none');
+imgWideScreenBlock.style.setProperty('--imgPreview', 'none');
 
-function showFullImg(e) {
-  const img = new Image();
-  img.src = sliderImg.src;
-  imgPreview.appendChild(img);
-  imgPreview.style.setProperty('--imgPreview', 'block');
+function showFullImg() {
+  imgWideScreen.src = document.querySelector('.current_slide img').src;
+  imgWideScreenBlock.style.setProperty('--imgPreview', 'block');
 }
 
 function hideFullImg() {
-  const img = imgPreview.querySelector('img');
-  imgPreview.removeChild(img);
-  imgPreview.style.setProperty('--imgPreview', 'none');
+  imgWideScreenBlock.style.setProperty('--imgPreview', 'none');
 }
 
 function previewSrcToImg(url) {
@@ -40,17 +37,38 @@ function previewSrcToImg(url) {
 
 
 function slidePhoto(event) {
-  const currentImg = document.querySelector('.img_choose');
+  let currentImg = document.querySelector('.img_choose');
   const nextImg = currentImg.nextElementSibling;
   const prevImg = currentImg.previousElementSibling;
-  const firstImg = previewBlock.firstChild;
-  const lastImg = previewBlock.lastChild;
+  const firstImg = preview.firstChild;
+  const lastImg = preview.lastChild;
+
+  let currentSlide = document.querySelector('.current_slide');
+  const nextSlide = currentSlide.nextElementSibling;
+  const prevSlide = currentSlide.previousElementSibling;
+  const firstSlide = slider.firstChild;
+  const lastSlide = slider.lastChild;
+
+  currentSlide.classList.remove('current_slide');
+  currentImg.classList.remove('img_choose');
+
   if (event.target.classList.contains('nextPhoto')) {
-    nextImg? sliderImg.src = previewSrcToImg(nextImg.src): sliderImg.src = previewSrcToImg(firstImg.src);
+    if (nextSlide) {
+      nextSlide.classList.add('current_slide');
+      nextImg.classList.add('img_choose');
+    } else {
+      firstSlide.classList.add('current_slide');
+      firstImg.classList.add('img_choose');
+    }
   } else {
-    prevImg? sliderImg.src = previewSrcToImg(prevImg.src): sliderImg.src = previewSrcToImg(lastImg.src);
+    if (prevSlide) {
+      prevSlide.classList.add('current_slide');
+      prevImg.classList.add('img_choose');
+    } else {
+      lastSlide.classList.add('current_slide');
+      lastImg.classList.add('img_choose');
+    }
   }
-  chooseImg(sliderImg.src.replace('imgs', 'minis'));
 }
 
 var tattooImg;
@@ -58,18 +76,21 @@ function createPreviewImgBlock() {
   if (imgData.responseText) {
     try {
       tattooImg = JSON.parse(imgData.responseText);
-      if (Array.isArray(tattooImg.img)) {
-        sliderImg.src = tattooImg.img[0];
-      }
+      tattooImg.img.forEach(el => {
+        const imgBlock = document.createElement('li');
+        const img = document.createElement('img');
+        img.src = el;
+        imgBlock.appendChild(img);
+        slider.appendChild(imgBlock);
+      });
+      slider.firstChild.classList.add('current_slide');
       tattooImg.minis.forEach(el => {
         const img = document.createElement('img');
         img.src = el;
         img.classList.add('previewImg');
         preview.appendChild(img);
       });
-      if (preview.firstChild) {
-        preview.firstChild.classList.add('img_choose');
-      }
+      preview.firstChild.classList.add('img_choose');
     } catch (e) {
       console.error(e.name, e.message);
     }
@@ -82,21 +103,32 @@ function errorReqData(err) {
 
 preview.addEventListener('click', showPreview);
 
-function showPreview(e) {
-  if (!e.target.classList.contains('previewImg')) {
+function showPreview(event) {
+  if (!event.target.classList.contains('previewImg')) {
     return;
   }
-  e.preventDefault();
-  sliderImg.src = e.target.src.replace('minis', 'imgs');
-  chooseImg(e.target.src);
+  event.preventDefault();
+  const index = tattooImg.minis.findIndex(el => {
+    consol.log(el)
+    el === event.target;
+    });
+  console.log(index)
+  chooseImg(index);
 }
 
-function chooseImg(imgSrc) {
+function chooseImg(index) {
   const previewImgs = preview.querySelectorAll('img');
-  Array.from(previewImgs).forEach(el => {
-    el.classList.remove('img_choose');
-    if (el.src === imgSrc) {
-      el.classList.add('img_choose');
+  const sliderImgs = slider.querySelectorAll('img');
+  Array.from(previewImgs).forEach((img, imgIndex) => {
+    img.classList.remove('img_choose');
+    if (imgIndex === index) {
+      img.classList.add('img_choose');
+    }
+  });
+  Array.from(sliderImgs).forEach((img, imgIndex) => {
+    img.classList.remove('current_slide');
+    if (imgIndex === index) {
+      img.classList.add('current_slide');
     }
   });
 }

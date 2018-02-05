@@ -64,7 +64,7 @@ header img {
 }
 
 img {
-  max-width: 25%;
+  /* max-width: 25%; */
   height: 100%;
 }
 
@@ -118,17 +118,14 @@ img {
   grid-column: 1 / span 6;
 }
 
-/*.address*/
 .drop {
   grid-column: 1 / span 2;
 }
 
-/*.hours */
 .make-photo {
   grid-column: 3 / span 2;
 }
 
-/*.call-us*/
 .fit-tattoo {
   grid-column: 5 / span 2;
 }

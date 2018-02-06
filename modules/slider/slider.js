@@ -70,17 +70,19 @@ function createPreviewImgBlock() {
   if (imgData.responseText) {
     try {
       tattooImg = JSON.parse(imgData.responseText);
-      tattooImg.img.forEach(el => {
+      tattooImg.img.forEach((el, index) => {
         const imgBlock = document.createElement('li');
         const img = document.createElement('img');
         img.src = el;
+        img.dataset.number = index;
         imgBlock.appendChild(img);
         slider.appendChild(imgBlock);
       });
       slider.firstChild.classList.add('current_slide');
-      tattooImg.minis.forEach(el => {
+      tattooImg.minis.forEach((el, index) => {
         const img = document.createElement('img');
         img.src = el;
+        img.dataset.number = index;
         img.classList.add('previewImg');
         preview.appendChild(img);
       });
@@ -102,8 +104,9 @@ function showPreview(event) {
     return;
   }
   event.preventDefault();
-  const imgs = preview.querySelectorAll('img');
-  const index = Array.from(imgs).indexOf(event.target);
+  // const imgs = preview.querySelectorAll('img');
+  // const index = Array.from(imgs).indexOf(event.target);
+  const index = event.target.dataset.number;
   chooseImg(index);
 }
 
@@ -112,13 +115,19 @@ function chooseImg(index) {
   const sliderImgs = slider.querySelectorAll('img');
   Array.from(previewImgs).forEach((img, imgIndex) => {
     img.classList.remove('img_choose');
-    if (imgIndex === index) {
+    // if (imgIndex === index) {
+    //   img.classList.add('img_choose');
+    // }
+    if (img.dataset.number === index) {
       img.classList.add('img_choose');
     }
   });
   Array.from(sliderImgs).forEach((img, imgIndex) => {
     img.parentElement.classList.remove('current_slide');
-    if (imgIndex === index) {
+    // if (imgIndex === index) {
+    //   img.parentElement.classList.add('current_slide');
+    // }
+    if (img.dataset.number === index) {
       img.parentElement.classList.add('current_slide');
     }
   });

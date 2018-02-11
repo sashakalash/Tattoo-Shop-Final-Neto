@@ -152,10 +152,14 @@ buttons.forEach(el => {
   });
 });
 
+function findImg(number) {
+  const sliderImgs = slider.querySelectorAll('img');
+  return Array.from(sliderImgs).find((number, index) => img.dataset.number === index).src;
+}
 
-function changeTattooSize(src, w, h) {
+function changeTattooSize(number, w, h) {
   const tattooFullSize = new Image();
-  tattooFullSize.src = previewSrcToImg(src);
+  tattooFullSize.src = findImg(number);
   let x = 1.01;
   while (tattooFullSize.width > w) {
     let width = tattooFullSize.width;
@@ -183,7 +187,7 @@ function makeToChangeImg(event) {
   const ctx = canvas.getContext('2d');
   const img = fitTattooField.querySelector('.droppedImg');
   const tattoo = fitTattooField.querySelector('.tattoo_to_fit');
-  const tattooResize = changeTattooSize(tattoo. src, tattoo.width, tattoo.height);
+  const tattooResize = changeTattooSize(tattoo.dataset.number, tattoo.width, tattoo.height);
   const tattooCoord = tattoo.getBoundingClientRect();
   const imgCoord = img.getBoundingClientRect();
   canvas.width = img.width;

@@ -97,7 +97,7 @@ dropSection.addEventListener('mouseout', (event) => {
 });
 
 dragImage.addEventListener('click', () => {
-  const tattooToFit = document.querySelector('.current_slide');
+  const tattooToFit = document.querySelector('.current_slide img');
   const tattooToFitCopy = tattooToFit.cloneNode();
   tattooToFitCopy.classList.add('tattoo_to_fit');
   tattooToFit.style.setProperty('--border', 'none');

@@ -54,7 +54,8 @@ function accessRequest(event) {
       }
       takePhotoBtn.style.setProperty('--takePhotoVis', 'visible');
   })
-  .catch(() => {
+  .catch((err) => {
+    console.log(err);
     errorMessage.style.setProperty('--errorMes', 'visible');
     errorMessage.textContent = 'Не удалось получить доступ к камере';
     setTimeout(() => {

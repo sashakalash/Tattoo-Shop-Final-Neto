@@ -65,11 +65,10 @@ function slidePhoto(event) {
   }
 }
 
-var tattooImg;
 function createPreviewImgBlock() {
   if (imgData.responseText) {
     try {
-      tattooImg = JSON.parse(imgData.responseText);
+      const tattooImg = JSON.parse(imgData.responseText);
       tattooImg.img.forEach((el, index) => {
         const imgBlock = document.createElement('li');
         const img = document.createElement('img');
@@ -104,31 +103,17 @@ function showPreview(event) {
     return;
   }
   event.preventDefault();
-  // const imgs = preview.querySelectorAll('img');
-  // const index = Array.from(imgs).indexOf(event.target);
   const index = event.target.dataset.number;
   chooseImg(index);
 }
 
 function chooseImg(index) {
-  const previewImgs = preview.querySelectorAll('img');
-  const sliderImgs = slider.querySelectorAll('img');
-  Array.from(previewImgs).forEach((img, imgIndex) => {
-    img.classList.remove('img_choose');
-    // if (imgIndex === index) {
-    //   img.classList.add('img_choose');
-    // }
-    if (img.dataset.number === index) {
-      img.classList.add('img_choose');
-    }
-  });
-  Array.from(sliderImgs).forEach((img, imgIndex) => {
-    img.parentElement.classList.remove('current_slide');
-    // if (imgIndex === index) {
-    //   img.parentElement.classList.add('current_slide');
-    // }
-    if (img.dataset.number === index) {
-      img.parentElement.classList.add('current_slide');
-    }
-  });
+  const currentPreviewImg = preview.querySelector('.img_choose');
+  currentPreviewImg.classList.remove('img_choose');
+  const currentSliderImg = slider.querySelector('.current_slide');
+  currentSliderImg.classList.remove('current_slide');
+  const choosedPreviewImg = preview.querySelector(`[data-number=${index}]`);
+  choosedPreviewImg.classList.add('img_choose');
+  const choosedSliderImg = slider.querySelector(`[data-number=${index}]`);
+  choosedSliderImg.classList.add('current_slide');
 }

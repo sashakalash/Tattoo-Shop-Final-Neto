@@ -39,30 +39,22 @@ function slidePhoto(event) {
   const lastImg = preview.lastChild;
 
   let currentSlide = document.querySelector('.current_slide');
-  // const nextSlide = currentSlide.nextElementSibling;
-  // const prevSlide = currentSlide.previousElementSibling;
-  // const firstSlide = slider.firstChild;
-  // const lastSlide = slider.lastChild;
   currentSlide.classList.remove('current_slide');
   currentImg.classList.remove('img_choose');
 
   if (event.target.classList.contains('nextPhoto')) {
     if (nextImg) {
-      // nextSlide.classList.add('current_slide');
       nextImg.classList.add('img_choose');
       sliderImg.src = nextImg.dataset.imgSrc;
     } else {
-      // firstSlide.classList.add('current_slide');
       firstImg.classList.add('img_choose');
       sliderImg.src = firstImg.dataset.imgSrc;
     }
   } else {
     if (prevImg) {
-      // prevSlide.classList.add('current_slide');
       prevImg.classList.add('img_choose');
       sliderImg.src = prevImg.dataset.imgSrc;
     } else {
-      // lastSlide.classList.add('current_slide');
       lastImg.classList.add('img_choose');
       sliderImg.src = lastImg.dataset.imgSrc;
     }
@@ -70,18 +62,9 @@ function slidePhoto(event) {
 }
 
 function createPreviewImgBlock(evt) {
-  if (imgData.responseText) {
+  if (evt.responseText) {
     try {
       const tattooImg = JSON.parse(evt.responseText);
-      // tattooImg.img.forEach((el, index) => {
-      //   const imgBlock = document.createElement('li');
-      //   const img = document.createElement('img');
-      //   img.src = el;
-      //   img.dataset.number = index;
-      //   imgBlock.appendChild(img);
-      //   slider.appendChild(imgBlock);
-      // });
-      // slider.firstChild.classList.add('current_slide');
       tattooImg.minis.forEach((el, index) => {
         const img = document.createElement('img');
         img.src = el;
@@ -110,18 +93,12 @@ function showPreview(event) {
     return;
   }
   event.preventDefault();
-  // const index = event.target.dataset.number;
   chooseImg(event.target);
 }
 
 function chooseImg(previewImg) {
   const currentPreviewImg = preview.querySelector('.img_choose');
   currentPreviewImg.classList.remove('img_choose');
-  // const currentSliderImg = slider.querySelector('.current_slide');
-  // currentSliderImg.classList.remove('current_slide');
-  // const choosedPreviewImg = preview.querySelector(`[data-number=${index}]`);
   previewImg.classList.add('img_choose');
   sliderImg.src = previewImg.dataset.imgSrc;
-  // const choosedSliderImg = slider.querySelector(`[data-number=${index}]`);
-  // choosedSliderImg.classList.add('current_slide');
 }

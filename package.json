@@ -1,7 +1,7 @@
 {
-  "name": "hj-homeworks",
+  "name": "tattoo-shop",
   "version": "1.0.0",
-  "description": "",
+  "description": "<h1>Тату-магазин</h1> <p>Представляет собой сайт, на котором можно выбрать из галереи эскиз, загрузить фотографию, в редакторе наложить этот эскиз на фотографию, другими словами «примерить» эскиз на себя и отправить на сервер.</p>  <p>В честь нового года на странице сайта «идёт снег»</p>  <p>Для обратной связи на сайте есть чат-бот</p>",
   "main": "index.js",
   "scripts": {
     "start": "browser-sync start --server --no-ghost-mode --files '**/*.html' '**/*.css' '**/*.js' '**/*.png' '**/*.jpeg' '**/*.jpg'",
@@ -28,6 +28,8 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^3.0.1"
-  }
+    "eslint-plugin-standard": "^3.0.1",
+    "npm": "^6.4.1"
+  },
+  "author": ""
 }

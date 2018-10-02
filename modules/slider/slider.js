@@ -13,11 +13,16 @@ prevBtn.addEventListener('click', slidePhoto);
 widescreenBtn.addEventListener('click', showFullImg);
 imgWideScreen.addEventListener('click', hideFullImg);
 
-const imgData = new XMLHttpRequest();
-imgData.addEventListener('load', createPreviewImgBlock);
-imgData.addEventListener('error', errorReqData);
-imgData.open('GET', './data/img.json');
-imgData.send();
+// const imgData = new XMLHttpRequest();
+// imgData.addEventListener('load', createPreviewImgBlock);
+// imgData.addEventListener('error', errorReqData);
+// imgData.open('GET', '/data/img.json');
+// imgData.send();
+
+fetch('/data/img.json')
+.then(res => res.json())
+.then(res => createPreviewImgBlock(res))
+.catch(err => errorReqData(err))
 
 let isFullSizeImg = true;
 imgWideScreenBlock.style.setProperty('--imgPreview', 'none');
@@ -61,20 +66,19 @@ function slidePhoto(event) {
   }
 }
 
-function createPreviewImgBlock(evt) {
-  if (evt.responseText) {
+function createPreviewImgBlock(data) {
+  if (data) {
     try {
-      const tattooImg = JSON.parse(evt.responseText);
-      tattooImg.minis.forEach((el, index) => {
+      data.minis.forEach((el, index) => {
         const img = document.createElement('img');
         img.src = el;
-        img.dataset.imgSrc = tattooImg.img[index];
+        img.dataset.imgSrc = data.img[index];
         img.classList.add('previewImg');
         preview.appendChild(img);
       });
       preview.firstChild.classList.add('img_choose');
       const img = slider.querySelector('img');
-      img.src = tattooImg.img[0];
+      img.src = data.img[0];
       img.classList.add('current_slide');
     } catch (e) {
       console.error(e.name, e.message);
